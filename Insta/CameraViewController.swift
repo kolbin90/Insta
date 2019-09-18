@@ -1,5 +1,5 @@
 //
-//  SignUpViewController.swift
+//  CameraViewController.swift
 //  Insta
 //
 //  Created by Apple User on 9/18/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class CameraViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
