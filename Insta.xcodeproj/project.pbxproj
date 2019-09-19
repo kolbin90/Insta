@@ -98,6 +98,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		851A103F2333160E00DB20CB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				851A10232331E3E500DB20CB /* Start.storyboard */,
+				851A10332332AFEB00DB20CB /* Main.storyboard */,
+				851A103D2332E97D00DB20CB /* Profile.storyboard */,
+				851A103B2332E94800DB20CB /* Activity.storyboard */,
+				851A10392332E91400DB20CB /* Camera.storyboard */,
+				851A10372332E8D300DB20CB /* Discover.storyboard */,
+				851A10352332E85D00DB20CB /* Home.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		851A10402333164A00DB20CB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				851A10252331E7F200DB20CB /* SignInViewController.swift */,
+				851A10292332095D00DB20CB /* HomeViewController.swift */,
+				851A102B2332096A00DB20CB /* DiscoverViewController.swift */,
+				851A102D2332097F00DB20CB /* CameraViewController.swift */,
+				851A10272331ED7B00DB20CB /* SignUpViewController.swift */,
+				851A102F2332099100DB20CB /* ActivityViewController.swift */,
+				851A1031233209A700DB20CB /* ProfileViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		851FC9292331D9B6009ADC13 = {
 			isa = PBXGroup;
 			children = (
@@ -122,23 +150,11 @@
 			isa = PBXGroup;
 			children = (
 				851FC9352331D9B6009ADC13 /* AppDelegate.swift */,
-				851A10252331E7F200DB20CB /* SignInViewController.swift */,
-				851A10292332095D00DB20CB /* HomeViewController.swift */,
-				851A102B2332096A00DB20CB /* DiscoverViewController.swift */,
-				851A102D2332097F00DB20CB /* CameraViewController.swift */,
-				851A10272331ED7B00DB20CB /* SignUpViewController.swift */,
-				851A102F2332099100DB20CB /* ActivityViewController.swift */,
-				851A1031233209A700DB20CB /* ProfileViewController.swift */,
+				851A10402333164A00DB20CB /* Controller */,
 				851FC93C2331D9B8009ADC13 /* Assets.xcassets */,
 				851FC93E2331D9B8009ADC13 /* LaunchScreen.storyboard */,
 				851FC9412331D9B8009ADC13 /* Info.plist */,
-				851A10232331E3E500DB20CB /* Start.storyboard */,
-				851A10332332AFEB00DB20CB /* Main.storyboard */,
-				851A103D2332E97D00DB20CB /* Profile.storyboard */,
-				851A103B2332E94800DB20CB /* Activity.storyboard */,
-				851A10392332E91400DB20CB /* Camera.storyboard */,
-				851A10372332E8D300DB20CB /* Discover.storyboard */,
-				851A10352332E85D00DB20CB /* Home.storyboard */,
+				851A103F2333160E00DB20CB /* Storyboards */,
 			);
 			path = Insta;
 			sourceTree = "<group>";
