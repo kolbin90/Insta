@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignInViewController: UIViewController {
 
@@ -32,5 +33,14 @@ class SignInViewController: UIViewController {
         bottomLayerPassword.frame = CGRect(x: 0, y: 29, width: passwordTextField.frame.width, height: 0.85)
         bottomLayerPassword.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 25/255, alpha: 1).cgColor
         passwordTextField.layer.addSublayer(bottomLayerPassword)
+    }
+    
+    @IBAction func signInBtn_TchUpIns(_ sender: Any) {
+    }
+    
+    @IBAction func signUpBtn_TchUpIns(_ sender: Any) {
+        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (data, error) in
+            print(error?.localizedDescription)
+        }
     }
 }

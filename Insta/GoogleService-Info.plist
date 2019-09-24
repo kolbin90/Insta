@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>670150926320-u5ogi1au8mc6kmim3au5fq4em7bemu7i.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.670150926320-u5ogi1au8mc6kmim3au5fq4em7bemu7i</string>
+	<key>API_KEY</key>
+	<string>AIzaSyATQwEaFlMBRWoj_yjm08Ad05AgxcAxpmU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>670150926320</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Ark.Insta</string>
+	<key>PROJECT_ID</key>
+	<string>insta-42f80</string>
+	<key>STORAGE_BUCKET</key>
+	<string>insta-42f80.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:670150926320:ios:adf7cbd4347dbb5d22c735</string>
+	<key>DATABASE_URL</key>
+	<string>https://insta-42f80.firebaseio.com</string>
+</dict>
+</plist>
