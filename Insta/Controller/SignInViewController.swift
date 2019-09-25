@@ -38,9 +38,4 @@ class SignInViewController: UIViewController {
     @IBAction func signInBtn_TchUpIns(_ sender: Any) {
     }
     
-    @IBAction func signUpBtn_TchUpIns(_ sender: Any) {
-        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (data, error) in
-            print(error?.localizedDescription)
-        }
-    }
 }

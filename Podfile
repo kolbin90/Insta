@@ -7,6 +7,8 @@ target 'Insta' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+
 
   # Pods for Insta
 
