@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -125,7 +125,6 @@
 				D7B4181E4DB00326CB72CE8B /* Pods-InstaUITests.debug.xcconfig */,
 				4758CF279ECEB52A927A3D4D /* Pods-InstaUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -146,11 +145,11 @@
 		851A10402333164A00DB20CB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				851A10272331ED7B00DB20CB /* SignUpViewController.swift */,
 				851A10252331E7F200DB20CB /* SignInViewController.swift */,
 				851A10292332095D00DB20CB /* HomeViewController.swift */,
 				851A102B2332096A00DB20CB /* DiscoverViewController.swift */,
 				851A102D2332097F00DB20CB /* CameraViewController.swift */,
-				851A10272331ED7B00DB20CB /* SignUpViewController.swift */,
 				851A102F2332099100DB20CB /* ActivityViewController.swift */,
 				851A1031233209A700DB20CB /* ProfileViewController.swift */,
 			);

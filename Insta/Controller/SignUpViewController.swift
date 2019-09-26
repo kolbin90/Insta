@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 
 class SignUpViewController: UIViewController {
 
@@ -16,8 +17,12 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var signUpBtn: UIButton!
+    var selectedImage: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        signUpBtn.isEnabled = false
         
         usernameTextField.backgroundColor = .clear
         usernameTextField.tintColor = .white
@@ -48,7 +53,36 @@ class SignUpViewController: UIViewController {
         
         imageView.layer.cornerRadius = 50
         imageView.clipsToBounds = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.handleSelectProfileImageView))
+        imageView.addGestureRecognizer(tapGesture)
+        imageView.isUserInteractionEnabled = true
+        
+        handleTextField()
     }
+    
+    
+    func handleTextField() {
+        usernameTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
+        emailTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
+        passwordTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
+    }
+    
+    @objc func textFieldDidChange() {
+        guard let userName = usernameTextField.text, !userName.isEmpty, let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty else {
+            signUpBtn.setTitleColor(.lightGray, for: .normal)
+            signUpBtn.isEnabled = false
+            return
+        }
+        signUpBtn.setTitleColor(.white, for: .normal)
+        signUpBtn.isEnabled = true
+    }
+    @objc func handleSelectProfileImageView() {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        present(pickerController, animated: true, completion: nil)
+    }
+    
     
     @IBAction func dismissByClick(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -60,12 +94,39 @@ class SignUpViewController: UIViewController {
             if error != nil {
                 print(error!.localizedDescription)
             }
-            let ref = Database.database().reference()
-            let usersRef = ref.child("users").child((user?.user.uid)!)
-            usersRef.setValue(["username":self.usernameTextField.text!,"email":self.emailTextField.text!])
+            let uID = (user?.user.uid)!
+            let storageRef = Storage.storage().reference().child("profileImages").child(uID)
+            if let profileImg = self.selectedImage, let profileImgData = profileImg.jpegData(compressionQuality: 0.3) {
+                var profileImgMetadata = StorageMetadata()
+                profileImgMetadata.contentType = "image/jpg"
+                storageRef.putData(profileImgData, metadata: profileImgMetadata, completion: { (metadata, error) in
+                    if error != nil {
+                        return
+                    }
+                    storageRef.downloadURL(completion: { (profileImgUrl, error) in
+                        guard let profileImgUrlString = profileImgUrl?.absoluteString
+                            else {
+                                return
+                        }
+                        let ref = Database.database().reference()
+                        let usersRef = ref.child("users").child(uID)
+                        usersRef.setValue(["username":self.usernameTextField.text!,"email":self.emailTextField.text!,"profileImageUrl":profileImgUrlString])
+                    })
+                })
+            }
         }
         
         
     }
     
+}
+
+extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imageView.image = image
+            selectedImage = image
+        }
+        dismiss(animated: true, completion: nil)
+    }
 }
