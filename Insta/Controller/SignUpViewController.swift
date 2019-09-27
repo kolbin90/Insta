@@ -108,9 +108,7 @@ class SignUpViewController: UIViewController {
                             else {
                                 return
                         }
-                        let ref = Database.database().reference()
-                        let usersRef = ref.child("users").child(uID)
-                        usersRef.setValue(["username":self.usernameTextField.text!,"email":self.emailTextField.text!,"profileImageUrl":profileImgUrlString])
+                        self.setUserInformation(profileImgUrl: profileImgUrlString, email: self.emailTextField.text!, username: self.usernameTextField.text!, uID: uID)
                     })
                 })
             }
@@ -119,6 +117,11 @@ class SignUpViewController: UIViewController {
         
     }
     
+    func setUserInformation(profileImgUrl: String, email: String, username:String, uID:String) {
+        let ref = Database.database().reference()
+        let usersRef = ref.child("users").child(uID)
+        usersRef.setValue(["username":usernamec,"email":email,"profileImageUrl":profileImgUrl])
+    }
 }
 
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
