@@ -37,6 +37,11 @@ class SignInViewController: UIViewController {
         handleTextField()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if Auth.auth().currentUser != nil {
+            self.performSegue(withIdentifier: "signInToTabBar", sender: nil)
+        }
+    }
 
     func handleTextField() {
         emailTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
@@ -62,4 +67,6 @@ class SignInViewController: UIViewController {
             self.performSegue(withIdentifier: "signInToTabBar", sender: nil)
         }
     }
+    
+
 }
