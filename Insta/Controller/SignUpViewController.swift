@@ -120,7 +120,8 @@ class SignUpViewController: UIViewController {
     func setUserInformation(profileImgUrl: String, email: String, username:String, uID:String) {
         let ref = Database.database().reference()
         let usersRef = ref.child("users").child(uID)
-        usersRef.setValue(["username":usernamec,"email":email,"profileImageUrl":profileImgUrl])
+        usersRef.setValue(["username":username,"email":email,"profileImageUrl":profileImgUrl])
+        self.performSegue(withIdentifier: "signUnToTabBar", sender: nil)
     }
 }
 

@@ -46,11 +46,10 @@
                                             <constraint firstAttribute="height" constant="44" id="yVY-tK-h1s"/>
                                         </constraints>
                                         <state key="normal" title="Sign In">
-                                            <color key="titleColor" white="1" alpha="0.78848481514084512" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="signInBtn_TchUpIns:" destination="mJr-6Y-Q8M" eventType="touchUpInside" id="sah-uQ-dEe"/>
-                                            <segue destination="oCq-3c-v2K" kind="presentation" id="ESk-zr-4eQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -91,6 +90,8 @@
                     <connections>
                         <outlet property="emailTextField" destination="JgP-k6-vpe" id="2Ka-rW-Tjv"/>
                         <outlet property="passwordTextField" destination="EXA-pw-S3r" id="3GT-iV-RGh"/>
+                        <outlet property="signInBtn" destination="JrB-sJ-uDK" id="8Fs-KU-4Or"/>
+                        <segue destination="oCq-3c-v2K" kind="presentation" identifier="signInToTabBar" id="yF3-rr-h8u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tKH-59-wDJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -142,10 +143,11 @@
                                             <constraint firstAttribute="height" constant="44" id="dC8-MB-z0Q"/>
                                         </constraints>
                                         <state key="normal" title="Sign Up">
-                                            <color key="titleColor" white="1" alpha="0.78848481510000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="signUpBtn_TchUpIns:" destination="abm-YZ-Mx7" eventType="touchUpInside" id="ofr-8H-y6w"/>
+                                            <segue destination="oCq-3c-v2K" kind="presentation" identifier="signUpToTabBar" id="HTs-BP-DAy"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -194,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dwr-wT-uA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="351" y="382"/>
+            <point key="canvasLocation" x="-551" y="737"/>
         </scene>
         <!--TabBarID-->
         <scene sceneID="fOM-NH-KPh">
@@ -202,10 +204,13 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="TabBarID" id="oCq-3c-v2K" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wMc-CM-74v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1142" y="-71"/>
+            <point key="canvasLocation" x="178" y="291"/>
         </scene>
     </scenes>
     <resources>
         <image name="avatar-1577909_960_720" width="720" height="720"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="HTs-BP-DAy"/>
+    </inferredMetricsTieBreakers>
 </document>
