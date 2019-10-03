@@ -35,6 +35,7 @@ class SignInViewController: UIViewController {
         bottomLayerPassword.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 25/255, alpha: 1).cgColor
         passwordTextField.layer.addSublayer(bottomLayerPassword)
         handleTextField()
+        signInBtn.isEnabled = false
     }
     
     override func viewDidAppear(_ animated: Bool) {

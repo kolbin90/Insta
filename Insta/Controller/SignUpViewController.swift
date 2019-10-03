@@ -59,6 +59,7 @@ class SignUpViewController: UIViewController {
         imageView.isUserInteractionEnabled = true
         
         handleTextField()
+        signUpBtn.isEnabled = false
     }
     
     
