@@ -31,22 +31,22 @@ class AuthService {
             let uID = (user?.user.uid)!
             let storageRef = Storage.storage().reference().child("profileImages").child(uID)
             let profileImgMetadata = StorageMetadata()
-                profileImgMetadata.contentType = "image/jpg"
-                storageRef.putData(imageData, metadata: profileImgMetadata, completion: { (metadata, error) in
-                    if error != nil {
-                        return
+            profileImgMetadata.contentType = "image/jpg"
+            storageRef.putData(imageData, metadata: profileImgMetadata, completion: { (metadata, error) in
+                if error != nil {
+                    return
+                }
+                storageRef.downloadURL(completion: { (profileImgUrl, error) in
+                    guard let profileImgUrlString = profileImgUrl?.absoluteString
+                        else {
+                            return
                     }
-                    storageRef.downloadURL(completion: { (profileImgUrl, error) in
-                        guard let profileImgUrlString = profileImgUrl?.absoluteString
-                            else {
-                                return
-                        }
-                        self.setUserInformation(profileImgUrl: profileImgUrlString, email: email, username: username, uID: uID, onSuccess: onSuccess)
-                    })
+                    self.setUserInformation(profileImgUrl: profileImgUrlString, email: email, username: username, uID: uID, onSuccess: onSuccess)
                 })
+            })
         }
     }
-
+    
     static func setUserInformation(profileImgUrl: String, email: String, username:String, uID:String, onSuccess: @escaping() -> Void) {
         let ref = Database.database().reference()
         let usersRef = ref.child("users").child(uID)

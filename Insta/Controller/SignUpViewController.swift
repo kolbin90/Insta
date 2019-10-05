@@ -94,14 +94,20 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signUpBtn_TchUpIns(_ sender: Any) {
         view.endEditing(true)
+        ProgressHUD.show("Signing up")
         if let profileImg = self.selectedImage, let profileImgData = profileImg.jpegData(compressionQuality: 0.3) {
-            AuthService.signOn(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, imageData: profileImgData, onSuccess: {
-                self.performSegue(withIdentifier: "signUnToTabBar", sender: nil)
-            }) { (errorString) in
-                print(errorString!)
+            if passwordTextField.text!.count >= 6 {
+                AuthService.signOn(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, imageData: profileImgData, onSuccess: {
+                    ProgressHUD.showSuccess("Success")
+                    self.performSegue(withIdentifier: "signUnToTabBar", sender: nil)
+                }) { (errorString) in
+                    ProgressHUD.showError(errorString!)
+                }
+            } else {
+                ProgressHUD.showError("The password must contain at least 6 character")
             }
         } else {
-            print("Profile image can't be empty" )
+            ProgressHUD.showError("Profile image can't be empty" )
         }
     }
 }

@@ -153,8 +153,8 @@
 		851A10402333164A00DB20CB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				851A10272331ED7B00DB20CB /* SignUpViewController.swift */,
 				851A10252331E7F200DB20CB /* SignInViewController.swift */,
+				851A10272331ED7B00DB20CB /* SignUpViewController.swift */,
 				851A10292332095D00DB20CB /* HomeViewController.swift */,
 				851A102B2332096A00DB20CB /* DiscoverViewController.swift */,
 				851A102D2332097F00DB20CB /* CameraViewController.swift */,

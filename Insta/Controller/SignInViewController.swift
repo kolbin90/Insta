@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 
 class SignInViewController: UIViewController {
-
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInBtn: UIButton!
@@ -39,6 +39,7 @@ class SignInViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         view.endEditing(true)
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -46,7 +47,7 @@ class SignInViewController: UIViewController {
             self.performSegue(withIdentifier: "signInToTabBar", sender: nil)
         }
     }
-
+    
     func handleTextField() {
         emailTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
         passwordTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
@@ -63,13 +64,15 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func signInBtn_TchUpIns(_ sender: Any) {
-        view.endEditing(true) 
+        view.endEditing(true)
+        ProgressHUD.show("Signing in")
         AuthService.signIn(email: emailTextField.text!, password: passwordTextField.text!, OnSuccess: {
+            ProgressHUD.showSuccess("Success")
             self.performSegue(withIdentifier: "signInToTabBar", sender: nil)
         }) { (errorString) in
-            print(errorString!)
+            ProgressHUD.showError(errorString!)
         }
     }
     
-
+    
 }
