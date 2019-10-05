@@ -322,7 +322,7 @@
 			heightKeyboard = keyboard.size.height;
 		}
 	}
-	else heightKeyboard = [self keyboardHeight];
+    else heightKeyboard = 0;//[self keyboardHeight];
 	//---------------------------------------------------------------------------------------------------------------------------------------------
 	CGRect screen = [UIScreen mainScreen].bounds;
 	CGPoint center = CGPointMake(screen.size.width/2, (screen.size.height-heightKeyboard)/2);
