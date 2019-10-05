@@ -62,6 +62,9 @@ class SignUpViewController: UIViewController {
         signUpBtn.isEnabled = false
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     
     func handleTextField() {
         usernameTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
@@ -90,7 +93,7 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUpBtn_TchUpIns(_ sender: Any) {
-        
+        view.endEditing(true)
         if let profileImg = self.selectedImage, let profileImgData = profileImg.jpegData(compressionQuality: 0.3) {
             AuthService.signOn(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, imageData: profileImgData, onSuccess: {
                 self.performSegue(withIdentifier: "signUnToTabBar", sender: nil)

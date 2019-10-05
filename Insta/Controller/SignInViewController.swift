@@ -38,6 +38,9 @@ class SignInViewController: UIViewController {
         signInBtn.isEnabled = false
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     override func viewDidAppear(_ animated: Bool) {
         if Auth.auth().currentUser != nil {
             self.performSegue(withIdentifier: "signInToTabBar", sender: nil)
@@ -60,7 +63,7 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func signInBtn_TchUpIns(_ sender: Any) {
-        self.performSegue(withIdentifier: "signInToTabBar", sender: nil)
+        view.endEditing(true) 
         AuthService.signIn(email: emailTextField.text!, password: passwordTextField.text!, OnSuccess: {
             self.performSegue(withIdentifier: "signInToTabBar", sender: nil)
         }) { (errorString) in
