@@ -60,12 +60,11 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func signInBtn_TchUpIns(_ sender: Any) {
-        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-            if error != nil {
-                print(error!.localizedDescription)
-                return
-            }
+        self.performSegue(withIdentifier: "signInToTabBar", sender: nil)
+        AuthService.signIn(email: emailTextField.text!, password: passwordTextField.text!, OnSuccess: {
             self.performSegue(withIdentifier: "signInToTabBar", sender: nil)
+        }) { (errorString) in
+            print(errorString!)
         }
     }
     

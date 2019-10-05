@@ -147,7 +147,6 @@
                                         </state>
                                         <connections>
                                             <action selector="signUpBtn_TchUpIns:" destination="abm-YZ-Mx7" eventType="touchUpInside" id="ofr-8H-y6w"/>
-                                            <segue destination="oCq-3c-v2K" kind="presentation" identifier="signUpToTabBar" id="HTs-BP-DAy"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -192,6 +191,7 @@
                         <outlet property="passwordTextField" destination="Zlj-J0-Ivx" id="Pkx-pp-J8b"/>
                         <outlet property="signUpBtn" destination="MJ2-ha-Zcg" id="pHC-36-Dzl"/>
                         <outlet property="usernameTextField" destination="20O-Of-lfb" id="l55-xo-fgx"/>
+                        <segue destination="oCq-3c-v2K" kind="presentation" identifier="signUnToTabBar" id="vYx-xJ-ect"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dwr-wT-uA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -211,6 +211,6 @@
         <image name="avatar-1577909_960_720" width="720" height="720"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yF3-rr-h8u"/>
+        <segue reference="vYx-xJ-ect"/>
     </inferredMetricsTieBreakers>
 </document>

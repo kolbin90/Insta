@@ -12,7 +12,7 @@ import FirebaseDatabase
 import FirebaseStorage
 
 class SignUpViewController: UIViewController {
-
+    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -90,39 +90,16 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUpBtn_TchUpIns(_ sender: Any) {
-
-        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-            if error != nil {
-                print(error!.localizedDescription)
+        
+        if let profileImg = self.selectedImage, let profileImgData = profileImg.jpegData(compressionQuality: 0.3) {
+            AuthService.signOn(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, imageData: profileImgData, onSuccess: {
+                self.performSegue(withIdentifier: "signUnToTabBar", sender: nil)
+            }) { (errorString) in
+                print(errorString!)
             }
-            let uID = (user?.user.uid)!
-            let storageRef = Storage.storage().reference().child("profileImages").child(uID)
-            if let profileImg = self.selectedImage, let profileImgData = profileImg.jpegData(compressionQuality: 0.3) {
-                var profileImgMetadata = StorageMetadata()
-                profileImgMetadata.contentType = "image/jpg"
-                storageRef.putData(profileImgData, metadata: profileImgMetadata, completion: { (metadata, error) in
-                    if error != nil {
-                        return
-                    }
-                    storageRef.downloadURL(completion: { (profileImgUrl, error) in
-                        guard let profileImgUrlString = profileImgUrl?.absoluteString
-                            else {
-                                return
-                        }
-                        self.setUserInformation(profileImgUrl: profileImgUrlString, email: self.emailTextField.text!, username: self.usernameTextField.text!, uID: uID)
-                    })
-                })
-            }
+        } else {
+            print("Profile image can't be empty" )
         }
-        
-        
-    }
-    
-    func setUserInformation(profileImgUrl: String, email: String, username:String, uID:String) {
-        let ref = Database.database().reference()
-        let usersRef = ref.child("users").child(uID)
-        usersRef.setValue(["username":username,"email":email,"profileImageUrl":profileImgUrl])
-        self.performSegue(withIdentifier: "signUnToTabBar", sender: nil)
     }
 }
 
