@@ -13,6 +13,8 @@ import FirebaseDatabase
 class CameraViewController: UIViewController {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet weak var clearButton: UIBarButtonItem!
     
     var selectedImage: UIImage?
 
@@ -22,15 +24,50 @@ class CameraViewController: UIViewController {
         photoImageView.addGestureRecognizer(tapGesture)
         photoImageView.isUserInteractionEnabled = true
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        handlePost()
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     
+    func handlePost(){
+        if selectedImage != nil {
+            clearButton.isEnabled = true
+            postButton.isEnabled = true
+            postButton.backgroundColor = .black
+        } else {
+            clearButton.isEnabled = false
+            postButton.isEnabled = false
+            postButton.backgroundColor = .lightGray
+        }
+    }
     @objc func handleSelectPhoto() {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         present(pickerController, animated: true, completion: nil)
+    }
+    
+    func clear() {
+        textView.text = ""
+        photoImageView.image = UIImage(named: "avatar-1577909_960_720")
+        selectedImage = nil
+        handlePost()
+    }
+    
+    func sendPostInfoToDatabase(photoUrlString: String){
+        let ref = Database.database().reference()
+        let postsRef = ref.child("posts")//.child(uID)
+        let newPostRef = postsRef.childByAutoId()
+        newPostRef.setValue(["photoUrlString":photoUrlString,"text":textView.text!]) { (error, ref) in
+            if error != nil {
+                ProgressHUD.showError(error!.localizedDescription)
+                return
+            }
+            ProgressHUD.showSuccess("Success ")
+            self.clear()
+            self.tabBarController?.selectedIndex = 0
+        }
     }
     
     @IBAction func postBtn_TchUpIns(_ sender: Any) {
@@ -59,20 +96,10 @@ class CameraViewController: UIViewController {
         }
     }
     
-    func sendPostInfoToDatabase(photoUrlString: String){
-        let ref = Database.database().reference()
-        let postsRef = ref.child("posts")//.child(uID)
-        let newPostRef = postsRef.childByAutoId()
-        newPostRef.setValue(["photoUrlString":photoUrlString])
-        newPostRef.setValue(["photoUrlString":photoUrlString]) { (error, ref) in
-            if error != nil {
-                ProgressHUD.showError(error!.localizedDescription)
-                return
-            }
-            ProgressHUD.showSuccess("Success ")
-        }
+    @IBAction func clearBtn_TouchUpInside(_ sender: Any) {
+        clear()
     }
-    
+ 
 }
 
 extension CameraViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
