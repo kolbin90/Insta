@@ -21,7 +21,8 @@
                         <viewLayoutGuide key="safeArea" id="aSU-9T-PDa"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="XfF-sC-f9O">
-                        <barButtonItem key="leftBarButtonItem" title="LogOut" id="HqO-zb-7du">
+                        <barButtonItem key="leftBarButtonItem" title=" Log out" id="HqO-zb-7du">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="logoutBtn_TchUpIns:" destination="CXU-kn-96J" id="Ob3-VO-Kei"/>
                             </connections>
