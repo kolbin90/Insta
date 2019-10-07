@@ -10,8 +10,11 @@ import UIKit
 import FirebaseAuth
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
     }
     @IBAction func logoutBtn_TchUpIns(_ sender: Any) {
         do {
@@ -22,5 +25,18 @@ class HomeViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Start", bundle: nil)
         let signInViewController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
         present(signInViewController, animated: true, completion: nil)
+    }
+}
+
+extension HomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "postCelll", for: indexPath)
+        cell.textLabel?.text = "\(indexPath.row)"
+        cell.backgroundColor = .red
+        return cell 
     }
 }
