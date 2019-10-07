@@ -21,9 +21,10 @@ class HomeViewController: UIViewController {
     }
     
     func loadPosts() {
-        Database.database().reference().child("posts").observe(.childAdded, with: dataSnapshot) {
-            
+        Database.database().reference().child("posts").observe(.childAdded) { (dataSnapsot) in
+            print(dataSnapsot.value)
         }
+        
     }
     
     @IBAction func logoutBtn_TchUpIns(_ sender: Any) {
