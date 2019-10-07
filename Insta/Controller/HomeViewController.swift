@@ -8,6 +8,9 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
+
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -16,6 +19,13 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
     }
+    
+    func loadPosts() {
+        Database.database().reference().child("posts").observe(.childAdded, with: dataSnapshot) {
+            
+        }
+    }
+    
     @IBAction func logoutBtn_TchUpIns(_ sender: Any) {
         do {
             try Auth.auth().signOut()
