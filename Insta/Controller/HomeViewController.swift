@@ -20,6 +20,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         loadPosts()
+        tableView.estimatedRowHeight = 521
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     
@@ -53,8 +55,7 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostCell
-        cell.textLabel?.text = posts[indexPath.row].captionText
-        cell.backgroundColor = .red
+        cell.captionLabel.text = "posts[indexPath.row].captionTextposts[indexPath.row].captionTextposts[indexPath.row].captionTextposts[indexPath.row].captionTextposts[indexPath.row].captionTextposts[indexPath.row].captionTextposts[indexPath.row].captionTextposts[indexPath.row].captionTextposts[indexPath.row].captionTextposts[indexPath.row].captionTextposts[indexPath.row].captionTextposts[indexPath.row].captionTextposts[indexPath.row].captionTextposts[indexPath.row].captionText"
         return cell 
     }
 }
