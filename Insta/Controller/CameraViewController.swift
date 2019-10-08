@@ -50,7 +50,7 @@ class CameraViewController: UIViewController {
     
     func clear() {
         textView.text = ""
-        photoImageView.image = UIImage(named: "avatar-1577909_960_720")
+        photoImageView.image = UIImage(named: "placeholder-photo")
         selectedImage = nil
         handlePost()
     }

@@ -24,7 +24,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="bOs-Zv-38Z">
                                         <rect key="frame" x="10" y="10" width="394" height="108"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar-1577909_960_720" translatesAutoresizingMaskIntoConstraints="NO" id="9bn-4M-AYk">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-photo" translatesAutoresizingMaskIntoConstraints="NO" id="9bn-4M-AYk">
                                                 <rect key="frame" x="0.0" y="0.0" width="108" height="108"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="9bn-4M-AYk" secondAttribute="height" multiplier="1:1" id="MO7-tp-igJ"/>
@@ -116,6 +116,6 @@
     </scenes>
     <resources>
         <image name="Photo" width="22" height="23"/>
-        <image name="avatar-1577909_960_720" width="720" height="720"/>
+        <image name="placeholder-photo" width="840" height="600"/>
     </resources>
 </document>
