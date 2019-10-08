@@ -14,15 +14,27 @@ import FirebaseStorage
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var posts = [Post]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        loadPosts()
+    }
+    
     func loadPosts() {
         Database.database().reference().child("posts").observe(.childAdded) { (dataSnapsot) in
-            print(dataSnapsot.value)
+            if let dict = dataSnapsot.value as? [String:Any] {
+                let captionText = dict["captionText"] as! String
+                let photoUrlString = dict["photoUrlString"] as! String
+                let post = Post(captionText: captionText, photoUrlStringText: photoUrlString)
+                self.posts.append(post)
+                print(self.posts)
+                self.tableView.reloadData()
+            }
         }
         
     }
@@ -41,12 +53,11 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return posts.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = UITableViewCell()
-        let cell = tableView.dequeueReusableCell(withIdentifier: "postCelll", for: indexPath)
-        cell.textLabel?.text = "\(indexPath.row)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath)
+        cell.textLabel?.text = posts[indexPath.row].caption
         cell.backgroundColor = .red
         return cell 
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class post {
+class Post {
     var caption: String
     var photoUrlString: String
     init(captionText: String, photoUrlStringText: String) {
