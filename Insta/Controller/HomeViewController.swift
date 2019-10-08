@@ -19,20 +19,15 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         loadPosts()
     }
+    
     
     func loadPosts() {
         Database.database().reference().child("posts").observe(.childAdded) { (dataSnapsot) in
             if let dict = dataSnapsot.value as? [String:Any] {
-                let captionText = dict["captionText"] as! String
-                let photoUrlString = dict["photoUrlString"] as! String
-                let post = Post(captionText: captionText, photoUrlStringText: photoUrlString)
+                let post = Post.transformToImagePost(dict: dict) //Post(captionText: captionText, photoUrlStringText: photoUrlString)
                 self.posts.append(post)
-                print(self.posts)
                 self.tableView.reloadData()
             }
         }
@@ -43,7 +38,7 @@ class HomeViewController: UIViewController {
         do {
             try Auth.auth().signOut()
         } catch let logoutError{
-            print(logoutError)
+            ProgressHUD.showError(logoutError.localizedDescription)
         }
         let storyboard = UIStoryboard(name: "Start", bundle: nil)
         let signInViewController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
@@ -56,9 +51,11 @@ extension HomeViewController: UITableViewDataSource {
         return posts.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath)
-        cell.textLabel?.text = posts[indexPath.row].caption
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostCell
+        cell.textLabel?.text = posts[indexPath.row].captionText
         cell.backgroundColor = .red
         return cell 
     }
 }
+

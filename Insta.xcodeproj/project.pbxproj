@@ -31,6 +31,7 @@
 		85449F2D2348332B00B1D34D /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 85449F2A2348332B00B1D34D /* ProgressHUD.bundle */; };
 		85449F2E2348332B00B1D34D /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 85449F2C2348332B00B1D34D /* ProgressHUD.m */; };
 		85449F31234BE46200B1D34D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85449F30234BE46200B1D34D /* Post.swift */; };
+		85449F34234C3D7300B1D34D /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85449F33234C3D7300B1D34D /* PostCell.swift */; };
 		85DBE8312346948400B84854 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DBE8302346948400B84854 /* AuthService.swift */; };
 		CFEAA33E05F0688F2B09029F /* Pods_Insta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C439D027CAA046BF2DF2B56 /* Pods_Insta.framework */; };
 		DB0C75D830244C94CC45DE5A /* Pods_InstaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71850CCA3B7E01584829ED17 /* Pods_InstaTests.framework */; };
@@ -91,6 +92,7 @@
 		85449F2B2348332B00B1D34D /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		85449F2C2348332B00B1D34D /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		85449F30234BE46200B1D34D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		85449F33234C3D7300B1D34D /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		85DBE8302346948400B84854 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		BAE5A59040942CE91C1ACCD7 /* Pods-Insta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Insta.release.xcconfig"; path = "Target Support Files/Pods-Insta/Pods-Insta.release.xcconfig"; sourceTree = "<group>"; };
 		CFCCC9C392857514058B0AFD /* Pods-InstaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaTests.debug.xcconfig"; path = "Target Support Files/Pods-InstaTests/Pods-InstaTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			children = (
 				851A10412333193200DB20CB /* GoogleService-Info.plist */,
 				851FC9352331D9B6009ADC13 /* AppDelegate.swift */,
+				85449F32234C3D5700B1D34D /* View */,
 				85449F2F234BE44700B1D34D /* Model */,
 				851A10402333164A00DB20CB /* Controller */,
 				851FC93C2331D9B8009ADC13 /* Assets.xcassets */,
@@ -232,6 +235,14 @@
 				85449F30234BE46200B1D34D /* Post.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		85449F32234C3D5700B1D34D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				85449F33234C3D7300B1D34D /* PostCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		F847CEF338115C965AD08F9A /* Frameworks */ = {
@@ -485,6 +496,7 @@
 				851A102C2332096A00DB20CB /* DiscoverViewController.swift in Sources */,
 				851A1032233209A700DB20CB /* ProfileViewController.swift in Sources */,
 				851A102E2332097F00DB20CB /* CameraViewController.swift in Sources */,
+				85449F34234C3D7300B1D34D /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
