@@ -19,7 +19,19 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var likeCountButton: UIButton!
     @IBOutlet weak var captionLabel: UILabel!
     
-    
+    var post: Post? {
+        didSet {
+            updateView()
+        }
+    }
     override func prepareForReuse() {
+    }
+    
+    func updateView() {
+        if let photoUrlString = post?.photoUrlString {
+            let photoUrl = URL(string: photoUrlString)
+            postImageView.sd_setImage(with: photoUrl)
+        }
+        captionLabel.text = post?.captionText
     }
 }
