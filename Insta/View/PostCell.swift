@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SDWebImage
 
 class PostCell: UITableViewCell {
     
@@ -24,14 +25,37 @@ class PostCell: UITableViewCell {
             updateView()
         }
     }
+    var user: User? {
+        didSet {
+            setupUserInfo()
+        }
+    }
     override func prepareForReuse() {
+        super.prepareForReuse()
+        profileImageView.image = UIImage(named: "placeholderImg")
+        postImageView.image = UIImage(named: "placeholder-photo")
+        usernameLabel.text = ""
+        captionLabel.text = ""
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        usernameLabel.text = ""
+        captionLabel.text = ""
+    }
     func updateView() {
         if let photoUrlString = post?.photoUrlString {
             let photoUrl = URL(string: photoUrlString)
-            postImageView.sd_setImage(with: photoUrl)
+            postImageView.sd_setImage(with: photoUrl, placeholderImage: UIImage(named: "placeholder-photo"), options: [], completed: nil)
         }
         captionLabel.text = post?.captionText
+    }
+    
+    func setupUserInfo() {
+        if let profileUrlString = user?.profileImageUrl {
+            let profileUrl = URL(string: profileUrlString)
+            profileImageView.sd_setImage(with: profileUrl, placeholderImage: UIImage(named: "placeholderImg"), options: [], completed: nil)
+        }
+        usernameLabel.text = user?.username
     }
 }

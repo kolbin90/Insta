@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseStorage
 import FirebaseDatabase
+import FirebaseAuth
 
 class CameraViewController: UIViewController {
     @IBOutlet weak var photoImageView: UIImageView!
@@ -59,7 +60,10 @@ class CameraViewController: UIViewController {
         let ref = Database.database().reference()
         let postsRef = ref.child("posts")//.child(uID)
         let newPostRef = postsRef.childByAutoId()
-        newPostRef.setValue(["photoUrlString":photoUrlString,"captionText":textView.text!]) { (error, ref) in
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+        newPostRef.setValue(["photoUrlString":photoUrlString,"captionText":textView.text!,"uid":uid]) { (error, ref) in
             if error != nil {
                 ProgressHUD.showError(error!.localizedDescription)
                 return

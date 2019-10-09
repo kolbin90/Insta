@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var posts = [Post]()
+    var users = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +30,26 @@ class HomeViewController: UIViewController {
     func loadPosts() {
         Database.database().reference().child("posts").observe(.childAdded) { (dataSnapsot) in
             if let dict = dataSnapsot.value as? [String:Any] {
-                let post = Post.transformToImagePost(dict: dict) //Post(captionText: captionText, photoUrlStringText: photoUrlString)
-                self.posts.append(post)
-                self.tableView.reloadData()
+                let post = Post.transformToImagePost(dict: dict)
+                self.fetchUser(uid: post.uid!,completed: {
+                    self.posts.append(post)
+                    self.tableView.reloadData()
+                })
             }
         }
         
     }
-    
+    func fetchUser(uid: String, completed: @escaping () -> Void) {
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            if let dict = snapshot.value as? [String: Any] {
+                let user = User.transformToUser(dict: dict)
+                self.users.append(user)
+                completed()
+            }
+        }
+    }
+
+
     @IBAction func logoutBtn_TchUpIns(_ sender: Any) {
         do {
             try Auth.auth().signOut()
@@ -55,8 +68,10 @@ extension HomeViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = posts[indexPath.row]
+        let user = users[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostCell
         cell.post = post
+        cell.user = user
         return cell
     }
 }
