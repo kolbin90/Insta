@@ -1,0 +1,28 @@
+//
+//  CommentCell.swift
+//  Insta
+//
+//  Created by Apple User on 10/9/19.
+//  Copyright © 2019 Apple User. All rights reserved.
+//
+
+import UIKit
+
+class CommentCell: UITableViewCell {
+
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
+}
