@@ -86,6 +86,15 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="aTn-Bh-lM7">
                                                     <rect key="frame" x="103" y="488" width="25" height="25"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7PM-bu-Iax">
+                                                    <rect key="frame" x="103" y="196" width="199" height="120"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <segue destination="odt-RQ-4OD" kind="show" id="28R-js-38A"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="xuu-Vc-NXh" firstAttribute="top" secondItem="xzK-zI-EGs" secondAttribute="bottom" constant="8" id="2rC-zH-0c4"/>
@@ -172,7 +181,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EtV-fE-Qoa">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="728"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" rowHeight="83" id="a6o-lk-yJ5" customClass="CommentCell" customModule="Insta" customModuleProvider="target">
@@ -222,12 +231,45 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fh3-DW-Law">
+                                <rect key="frame" x="0.0" y="816" width="414" height="46"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f8e-PF-xdv">
+                                        <rect key="frame" x="8" y="8" width="345" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1u-sa-BvM">
+                                        <rect key="frame" x="361" y="8" width="45" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="BCa-eB-BBh"/>
+                                        </constraints>
+                                        <state key="normal" title="Send">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="f8e-PF-xdv" firstAttribute="top" secondItem="fh3-DW-Law" secondAttribute="top" constant="8" id="HeB-ls-shw"/>
+                                    <constraint firstItem="m1u-sa-BvM" firstAttribute="top" secondItem="fh3-DW-Law" secondAttribute="top" constant="8" id="YQV-CW-CXe"/>
+                                    <constraint firstItem="m1u-sa-BvM" firstAttribute="leading" secondItem="f8e-PF-xdv" secondAttribute="trailing" constant="8" id="ai4-wa-lVg"/>
+                                    <constraint firstAttribute="bottom" secondItem="f8e-PF-xdv" secondAttribute="bottom" constant="8" id="frl-rx-sRi"/>
+                                    <constraint firstItem="f8e-PF-xdv" firstAttribute="leading" secondItem="fh3-DW-Law" secondAttribute="leading" constant="8" id="iqX-SH-CPf"/>
+                                    <constraint firstAttribute="bottom" secondItem="m1u-sa-BvM" secondAttribute="bottom" constant="8" id="o8f-Ot-s8d"/>
+                                    <constraint firstAttribute="trailing" secondItem="m1u-sa-BvM" secondAttribute="trailing" constant="8" id="owm-lj-IaC"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="0Gg-GA-piB" firstAttribute="trailing" secondItem="fh3-DW-Law" secondAttribute="trailing" id="9fD-I1-KqG"/>
                             <constraint firstItem="0Gg-GA-piB" firstAttribute="trailing" secondItem="EtV-fE-Qoa" secondAttribute="trailing" id="Brp-BQ-J72"/>
-                            <constraint firstItem="EtV-fE-Qoa" firstAttribute="bottom" secondItem="0Gg-GA-piB" secondAttribute="bottom" id="CsI-Sd-GIU"/>
                             <constraint firstItem="EtV-fE-Qoa" firstAttribute="top" secondItem="0Gg-GA-piB" secondAttribute="top" id="Nl2-US-UsH"/>
+                            <constraint firstItem="fh3-DW-Law" firstAttribute="top" secondItem="EtV-fE-Qoa" secondAttribute="bottom" id="Pzn-nD-BQd"/>
+                            <constraint firstItem="fh3-DW-Law" firstAttribute="bottom" secondItem="0Gg-GA-piB" secondAttribute="bottom" id="ZJ9-QT-f3E"/>
+                            <constraint firstItem="fh3-DW-Law" firstAttribute="leading" secondItem="0Gg-GA-piB" secondAttribute="leading" id="jq7-Ea-TWI"/>
                             <constraint firstItem="EtV-fE-Qoa" firstAttribute="leading" secondItem="nVm-MN-YTM" secondAttribute="leading" id="kb9-Di-TUv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Gg-GA-piB"/>
@@ -267,4 +309,7 @@
         <image name="placeholderImg" width="225" height="225"/>
         <image name="share" width="37" height="41"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="g6M-5d-CCY"/>
+    </inferredMetricsTieBreakers>
 </document>

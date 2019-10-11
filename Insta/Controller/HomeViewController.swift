@@ -27,6 +27,10 @@ class HomeViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     
     func loadPosts() {
         activityIndicator.startAnimating()
