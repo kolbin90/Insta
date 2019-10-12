@@ -248,6 +248,9 @@
                                         <state key="normal" title="Send">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="sendBtn_TchUpIns:" destination="odt-RQ-4OD" eventType="touchUpInside" id="gfX-0c-egi"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -274,6 +277,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Gg-GA-piB"/>
                     </view>
+                    <connections>
+                        <outlet property="commentTextField" destination="f8e-PF-xdv" id="j8W-Q3-1go"/>
+                        <outlet property="sendButton" destination="m1u-sa-BvM" id="sf9-Nh-iAc"/>
+                        <outlet property="tableView" destination="EtV-fE-Qoa" id="gTV-43-xlH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CHM-Ty-X7h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -310,6 +318,6 @@
         <image name="share" width="37" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="g6M-5d-CCY"/>
+        <segue reference="28R-js-38A"/>
     </inferredMetricsTieBreakers>
 </document>
