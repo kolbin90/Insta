@@ -15,10 +15,13 @@ class CommentsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
+    
+    let postId = "-Lqj-9vmMg5MdkslU7MO"
     override func viewDidLoad() {
         super.viewDidLoad()
         sendButton.isEnabled = false
         handleTextField()
+        loadComments()
         tableView.keyboardDismissMode = .onDrag
     }
     
@@ -30,7 +33,14 @@ class CommentsViewController: UIViewController {
         tableView.endEditing(true)
     }
     
-    
+    func loadComments() {
+        Database.database().reference().child("post-comments").child(postId).observe(.childAdded) { (snapshot) in
+            let commentKey = snapshot.key
+            Database.database().reference().child("comments").child(commentKey).observeSingleEvent(of: .value, with: { (commentSnapshot) in
+                print(commentSnapshot.value)
+            })
+        }
+    }
     func handleTextField() {
         commentTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControl.Event.editingChanged)
     }
@@ -50,7 +60,10 @@ class CommentsViewController: UIViewController {
     func sendCommentInfoToDatabase(){
         let ref = Database.database().reference()
         let commentsRef = ref.child("comments")
-        let newCommentRef = commentsRef.childByAutoId()
+        guard let newCommentId = commentsRef.childByAutoId().key else {
+            return
+        }
+        let newCommentRef = commentsRef.child(newCommentId)
         guard let uid = Auth.auth().currentUser?.uid else {
             return
         }
@@ -59,6 +72,11 @@ class CommentsViewController: UIViewController {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
             }
+            Database.database().reference().child("post-comments").child(self.postId).child(newCommentId).setValue(true, withCompletionBlock: { (error, ref) in
+                if let error = error {
+                    ProgressHUD.showError(error.localizedDescription)
+                }
+            })
             self.commentTextField.text = ""
             self.sendButton.setTitleColor(.lightGray, for: .normal)
             self.sendButton.isEnabled = false
