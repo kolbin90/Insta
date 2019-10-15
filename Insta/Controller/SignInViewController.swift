@@ -44,7 +44,7 @@ class SignInViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         if Auth.auth().currentUser != nil {
-            self.performSegue(withIdentifier: "signInToTabBar", sender: nil)
+            self.performSegue(withIdentifier: "SignInToTabBar", sender: nil)
         }
     }
     
@@ -68,7 +68,7 @@ class SignInViewController: UIViewController {
         ProgressHUD.show("Signing in")
         AuthService.signIn(email: emailTextField.text!, password: passwordTextField.text!, OnSuccess: {
             ProgressHUD.showSuccess("Success")
-            self.performSegue(withIdentifier: "signInToTabBar", sender: nil)
+            self.performSegue(withIdentifier: "SignInToTabBar", sender: nil)
         }) { (errorString) in
             ProgressHUD.showError(errorString!)
         }

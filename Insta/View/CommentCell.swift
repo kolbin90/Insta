@@ -14,15 +14,45 @@ class CommentCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     
+    var comment: Comment? {
+        didSet {
+            updateView()
+        }
+    }
+    var user: User? {
+        didSet {
+            setupUserInfo()
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        profileImageView.image = UIImage(named: "placeholderImg")
+        usernameLabel.text = ""
+        commentLabel.text = ""
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        usernameLabel.text = ""
+        commentLabel.text = ""
     }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
 
+    func updateView() {
+        commentLabel.text = comment?.commentText
+    }
+    
+    func setupUserInfo() {
+        if let profileUrlString = user?.profileImageUrl {
+            let profileUrl = URL(string: profileUrlString)
+            profileImageView.sd_setImage(with: profileUrl, placeholderImage: UIImage(named: "placeholderImg"), options: [], completed: nil)
+        }
+        usernameLabel.text = user?.username
+    }
+    
 }

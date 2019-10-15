@@ -99,7 +99,7 @@ class SignUpViewController: UIViewController {
             if passwordTextField.text!.count >= 6 {
                 AuthService.signOn(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, imageData: profileImgData, onSuccess: {
                     ProgressHUD.showSuccess("Success")
-                    self.performSegue(withIdentifier: "signUnToTabBar", sender: nil)
+                    self.performSegue(withIdentifier: "SignUnToTabBar", sender: nil)
                 }) { (errorString) in
                     ProgressHUD.showError(errorString!)
                 }

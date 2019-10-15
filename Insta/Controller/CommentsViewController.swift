@@ -17,8 +17,14 @@ class CommentsViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     
     let postId = "-Lqj-9vmMg5MdkslU7MO"
+    var users = [User]()
+    var comments = [Comment]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 77
+        tableView.rowHeight = UITableView.automaticDimension
         sendButton.isEnabled = false
         handleTextField()
         loadComments()
@@ -37,10 +43,26 @@ class CommentsViewController: UIViewController {
         Database.database().reference().child("post-comments").child(postId).observe(.childAdded) { (snapshot) in
             let commentKey = snapshot.key
             Database.database().reference().child("comments").child(commentKey).observeSingleEvent(of: .value, with: { (commentSnapshot) in
-                print(commentSnapshot.value)
+                if let dict = commentSnapshot.value as? [String:Any] {
+                    let comment = Comment.transformToImagePost(dict: dict)
+                    self.fetchUser(uid: comment.uid!,completed: {
+                        self.comments.append(comment)
+                       // self.activityIndicator.stopAnimating()
+                        self.tableView.reloadData()
+                    })
+                }
             })
         }
     }
+            func fetchUser(uid: String, completed: @escaping () -> Void) {
+                Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+                    if let dict = snapshot.value as? [String: Any] {
+                        let user = User.transformToUser(dict: dict)
+                        self.users.append(user)
+                        completed()
+                    }
+                }
+            }
     func handleTextField() {
         commentTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControl.Event.editingChanged)
     }
@@ -85,5 +107,19 @@ class CommentsViewController: UIViewController {
     
     @IBAction func sendBtn_TchUpIns(_ sender: Any) {
         sendCommentInfoToDatabase()
+    }
+}
+
+extension CommentsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return comments.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let comment = comments[indexPath.row]
+        let user = users[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
+        cell.comment = comment
+        cell.user = user
+        return cell
     }
 }
