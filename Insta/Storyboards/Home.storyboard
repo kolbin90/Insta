@@ -249,7 +249,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fh3-DW-Law">
                                 <rect key="frame" x="0.0" y="816" width="414" height="46"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f8e-PF-xdv">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f8e-PF-xdv">
                                         <rect key="frame" x="8" y="8" width="345" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -286,7 +286,7 @@
                             <constraint firstItem="0Gg-GA-piB" firstAttribute="trailing" secondItem="EtV-fE-Qoa" secondAttribute="trailing" id="Brp-BQ-J72"/>
                             <constraint firstItem="EtV-fE-Qoa" firstAttribute="top" secondItem="0Gg-GA-piB" secondAttribute="top" id="Nl2-US-UsH"/>
                             <constraint firstItem="fh3-DW-Law" firstAttribute="top" secondItem="EtV-fE-Qoa" secondAttribute="bottom" id="Pzn-nD-BQd"/>
-                            <constraint firstItem="fh3-DW-Law" firstAttribute="bottom" secondItem="0Gg-GA-piB" secondAttribute="bottom" id="ZJ9-QT-f3E"/>
+                            <constraint firstItem="0Gg-GA-piB" firstAttribute="bottom" secondItem="fh3-DW-Law" secondAttribute="bottom" id="ZJ9-QT-f3E"/>
                             <constraint firstItem="fh3-DW-Law" firstAttribute="leading" secondItem="0Gg-GA-piB" secondAttribute="leading" id="jq7-Ea-TWI"/>
                             <constraint firstItem="EtV-fE-Qoa" firstAttribute="leading" secondItem="nVm-MN-YTM" secondAttribute="leading" id="kb9-Di-TUv"/>
                         </constraints>
@@ -294,6 +294,7 @@
                     </view>
                     <connections>
                         <outlet property="commentTextField" destination="f8e-PF-xdv" id="j8W-Q3-1go"/>
+                        <outlet property="constrainToButtom" destination="ZJ9-QT-f3E" id="AqU-wL-N92"/>
                         <outlet property="sendButton" destination="m1u-sa-BvM" id="sf9-Nh-iAc"/>
                         <outlet property="tableView" destination="EtV-fE-Qoa" id="gTV-43-xlH"/>
                     </connections>
