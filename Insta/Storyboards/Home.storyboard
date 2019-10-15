@@ -86,15 +86,6 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="aTn-Bh-lM7">
                                                     <rect key="frame" x="103" y="488" width="25" height="25"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7PM-bu-Iax">
-                                                    <rect key="frame" x="103" y="196" width="199" height="120"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <connections>
-                                                        <segue destination="odt-RQ-4OD" kind="show" id="28R-js-38A"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="xuu-Vc-NXh" firstAttribute="top" secondItem="xzK-zI-EGs" secondAttribute="bottom" constant="8" id="2rC-zH-0c4"/>
@@ -172,10 +163,10 @@
             </objects>
             <point key="canvasLocation" x="2985.507246376812" y="-1245.5357142857142"/>
         </scene>
-        <!--Comments View Controller-->
+        <!--Comments-->
         <scene sceneID="Szr-9g-EBd">
             <objects>
-                <viewController id="odt-RQ-4OD" customClass="CommentsViewController" customModule="Insta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Comments" id="odt-RQ-4OD" customClass="CommentsViewController" customModule="Insta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nVm-MN-YTM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -333,7 +324,4 @@
         <image name="placeholderImg" width="225" height="225"/>
         <image name="share" width="37" height="41"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="g6M-5d-CCY"/>
-    </inferredMetricsTieBreakers>
 </document>

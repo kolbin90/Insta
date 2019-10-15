@@ -17,7 +17,7 @@ class CommentsViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var constrainToButtom: NSLayoutConstraint!
     
-    let postId = "-Lqj-9vmMg5MdkslU7MO"
+    var postId: String!
     var users = [User]()
     var comments = [Comment]()
     
@@ -42,7 +42,9 @@ class CommentsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = true
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
 
     @objc func hideKeyboard() {
         view.endEditing(true)

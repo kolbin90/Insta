@@ -12,13 +12,15 @@ class Post {
     var captionText: String?
     var photoUrlString: String?
     var uid: String?
+    var id: String?
 }
 extension Post {
-    static func transformToImagePost(dict: [String:Any]) -> Post {
+    static func transformToImagePost(dict: [String:Any], id: String) -> Post {
         let post = Post()
         post.captionText = dict["captionText"] as? String
         post.photoUrlString = dict["photoUrlString"] as? String
         post.uid = dict["uid"] as? String
+        post.id = id
         return post
     }
 }

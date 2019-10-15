@@ -27,16 +27,18 @@ class HomeViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        tabBarController?.tabBar.isHidden = false
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CommentsSegue" {
+            let commentVC = segue.destination as! CommentsViewController
+            let postId = sender as! String
+            commentVC.postId = postId
+        }
     }
-    
-    
     func loadPosts() {
         activityIndicator.startAnimating()
         Database.database().reference().child("posts").observe(.childAdded) { (dataSnapsot) in
             if let dict = dataSnapsot.value as? [String:Any] {
-                let post = Post.transformToImagePost(dict: dict)
+                let post = Post.transformToImagePost(dict: dict, id: dataSnapsot.key)
                 self.fetchUser(uid: post.uid!,completed: {
                     self.posts.append(post)
                     self.activityIndicator.stopAnimating()
@@ -79,6 +81,7 @@ extension HomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         cell.post = post
         cell.user = user
+        cell.homeVC = self
         return cell
     }
 }

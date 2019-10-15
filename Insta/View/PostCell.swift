@@ -20,6 +20,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var likeCountButton: UIButton!
     @IBOutlet weak var captionLabel: UILabel!
     
+    var homeVC: HomeViewController?
     var post: Post? {
         didSet {
             updateView()
@@ -42,7 +43,16 @@ class PostCell: UITableViewCell {
         super.awakeFromNib()
         usernameLabel.text = ""
         captionLabel.text = ""
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.commentImageView_TchUpIns))
+        commentImageView.addGestureRecognizer(tapGesture)
+        commentImageView.isUserInteractionEnabled = true
     }
+    @objc func commentImageView_TchUpIns() {
+        if let id = post?.id {
+            homeVC?.performSegue(withIdentifier: "CommentsSegue", sender: id)
+        }
+    }
+    
     func updateView() {
         if let photoUrlString = post?.photoUrlString {
             let photoUrl = URL(string: photoUrlString)
