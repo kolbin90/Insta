@@ -13,6 +13,8 @@ class Post {
     var photoUrlString: String?
     var uid: String?
     var id: String?
+    var likeCount: Int?
+    var likes: Dictionary<String, Any>?
 }
 extension Post {
     static func transformToImagePost(dict: [String:Any], id: String) -> Post {
@@ -21,6 +23,8 @@ extension Post {
         post.photoUrlString = dict["photoUrlString"] as? String
         post.uid = dict["uid"] as? String
         post.id = id
+        post.likeCount = dict["likeCount"] as? Int
+        post.likes = dict["likes"] as? Dictionary<String, Any>
         return post
     }
 }
