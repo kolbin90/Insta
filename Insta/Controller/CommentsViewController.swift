@@ -29,7 +29,6 @@ class CommentsViewController: UIViewController {
         sendButton.isEnabled = false
         handleTextField()
         loadComments()
-        //tableView.keyboardDismissMode = .onDrag
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = true
@@ -52,9 +51,7 @@ class CommentsViewController: UIViewController {
     @objc func keyboardWillShow(_ notification : NSNotification) {
         if let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue {
             UIView.animate(withDuration: 0.3) {
-                print(keyboardFrame)
                 self.constrainToButtom.constant = keyboardFrame.height - self.view.safeAreaInsets.bottom
-                print(self.constrainToButtom.constant)
                 self.view.layoutIfNeeded()
             }
         }
@@ -67,29 +64,22 @@ class CommentsViewController: UIViewController {
     }
     
     func loadComments() {
-        Database.database().reference().child("post-comments").child(postId).observe(.childAdded) { (snapshot) in
-            let commentKey = snapshot.key
-            Database.database().reference().child("comments").child(commentKey).observeSingleEvent(of: .value, with: { (commentSnapshot) in
-                if let dict = commentSnapshot.value as? [String:Any] {
-                    let comment = Comment.transformToImagePost(dict: dict)
-                    self.fetchUser(uid: comment.uid!,completed: {
-                        self.comments.append(comment)
-                       // self.activityIndicator.stopAnimating()
-                        self.tableView.reloadData()
-                    })
-                }
+        Api.post_comments.observePost_Comments(withPostId: postId) { (commentId) in
+            Api.comment.observeComment(withCommentId: commentId, completion: { (comment) in
+                self.fetchUser(uid: comment.uid!,completed: {
+                    self.comments.append(comment)
+                    // self.activityIndicator.stopAnimating()
+                    self.tableView.reloadData()
+                })
             })
         }
     }
-            func fetchUser(uid: String, completed: @escaping () -> Void) {
-                Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
-                    if let dict = snapshot.value as? [String: Any] {
-                        let user = User.transformToUser(dict: dict)
-                        self.users.append(user)
-                        completed()
-                    }
-                }
-            }
+    
+    func fetchUser(uid: String, completed: @escaping () -> Void) {Api.user.observeUser(withUid: uid) { (user) in
+        self.users.append(user)
+        completed()
+        }
+    }
     func handleTextField() {
         commentTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControl.Event.editingChanged)
     }
@@ -107,12 +97,11 @@ class CommentsViewController: UIViewController {
 
     
     func sendCommentInfoToDatabase(){
-        let ref = Database.database().reference()
-        let commentsRef = ref.child("comments")
-        guard let newCommentId = commentsRef.childByAutoId().key else {
+
+        guard let newCommentId = Api.comment.REF_COMMENT.childByAutoId().key else {
             return
         }
-        let newCommentRef = commentsRef.child(newCommentId)
+        let newCommentRef = Api.comment.REF_COMMENT.child(newCommentId)
         guard let uid = Auth.auth().currentUser?.uid else {
             return
         }
@@ -121,7 +110,7 @@ class CommentsViewController: UIViewController {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
             }
-            Database.database().reference().child("post-comments").child(self.postId).child(newCommentId).setValue(true, withCompletionBlock: { (error, ref) in
+    Api.post_comments.REF_POST_COMMENTS.child(self.postId).child(newCommentId).setValue(true, withCompletionBlock: { (error, ref) in
                 if let error = error {
                     ProgressHUD.showError(error.localizedDescription)
                 }

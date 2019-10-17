@@ -57,9 +57,7 @@ class CameraViewController: UIViewController {
     }
     
     func sendPostInfoToDatabase(photoUrlString: String){
-        let ref = Database.database().reference()
-        let postsRef = ref.child("posts")//.child(uID)
-        let newPostRef = postsRef.childByAutoId()
+        let newPostRef = Api.post.REF_POSTS.childByAutoId()
         guard let uid = Auth.auth().currentUser?.uid else {
             return
         }
