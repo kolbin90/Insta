@@ -34,6 +34,7 @@ class PostCell: UITableViewCell {
             setupUserInfo()
         }
     }
+
     override func prepareForReuse() {
         super.prepareForReuse()
         profileImageView.image = UIImage(named: "placeholderImg")
@@ -41,6 +42,8 @@ class PostCell: UITableViewCell {
         usernameLabel.text = ""
         captionLabel.text = ""
         //updateLikes(forPost: post!)
+        Api.post.REF_POSTS.child(post!.id!).removeAllObservers()
+
     }
     
     override func awakeFromNib() {
@@ -117,7 +120,7 @@ class PostCell: UITableViewCell {
                 if likeCount != 0 {
                     self.likeCountButton.setTitle("\(likeCount) likes", for: .normal)
                 } else {
-                    self.likeCountButton.setTitle("Be the first to like", for: .normal)
+                   self.likeCountButton.setTitle("Be the first to like", for: .normal)
                 }
             }
         }
