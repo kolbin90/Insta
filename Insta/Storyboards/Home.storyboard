@@ -70,10 +70,10 @@
                                                         <constraint firstAttribute="height" constant="1" id="rjn-Bb-ZbX"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ylO-eh-jVA">
-                                                    <rect key="frame" x="15" y="537" width="108" height="58.5"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
-                                                    <state key="normal" title="Be the first to loke">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ylO-eh-jVA">
+                                                    <rect key="frame" x="15" y="537" width="384" height="58.5"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="13"/>
+                                                    <state key="normal" title="Be the first to like">
                                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.90681668130000004" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                 </button>
@@ -113,6 +113,7 @@
                                                 <constraint firstItem="m46-JP-62Z" firstAttribute="top" secondItem="pHB-4j-BDP" secondAttribute="bottom" constant="15" id="jwS-d3-jRT"/>
                                                 <constraint firstItem="xzK-zI-EGs" firstAttribute="top" secondItem="JFn-4c-8RC" secondAttribute="top" constant="15" id="kge-mF-ONX"/>
                                                 <constraint firstItem="P85-Q4-PUw" firstAttribute="width" secondItem="pHB-4j-BDP" secondAttribute="width" id="lP9-MD-Rws"/>
+                                                <constraint firstAttribute="trailing" secondItem="ylO-eh-jVA" secondAttribute="trailing" constant="15" id="swZ-Xc-GZT"/>
                                                 <constraint firstAttribute="trailing" secondItem="6Tf-5S-jQs" secondAttribute="trailing" constant="15" id="wI9-Ll-enF"/>
                                             </constraints>
                                         </tableViewCellContentView>

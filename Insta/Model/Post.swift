@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class Post {
     var captionText: String?
@@ -15,6 +16,7 @@ class Post {
     var id: String?
     var likeCount: Int?
     var likes: Dictionary<String, Any>?
+    var isLiked: Bool?
 }
 extension Post {
     static func transformToImagePost(dict: [String:Any], id: String) -> Post {
@@ -25,6 +27,11 @@ extension Post {
         post.id = id
         post.likeCount = dict["likeCount"] as? Int
         post.likes = dict["likes"] as? Dictionary<String, Any>
+        if post.likes != nil {
+            if let currentUserId = Auth.auth().currentUser?.uid {
+                post.isLiked = post.likes![currentUserId] != nil
+            }
+        }
         return post
     }
 }

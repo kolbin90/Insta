@@ -110,7 +110,7 @@ class CommentsViewController: UIViewController {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
             }
-    Api.post_comments.REF_POST_COMMENTS.child(self.postId).child(newCommentId).setValue(true, withCompletionBlock: { (error, ref) in
+            Api.post_comments.REF_POST_COMMENTS.child(self.postId).child(newCommentId).setValue(true, withCompletionBlock: { (error, ref) in
                 if let error = error {
                     ProgressHUD.showError(error.localizedDescription)
                 }
@@ -119,7 +119,7 @@ class CommentsViewController: UIViewController {
             self.sendButton.setTitleColor(.lightGray, for: .normal)
             self.sendButton.isEnabled = false
             self.view.endEditing(true)
-
+            
         }
     }
     
