@@ -28,6 +28,7 @@
 		851C60C22357FA6000743CC9 /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851C60C12357FA6000743CC9 /* UserApi.swift */; };
 		851C60C42357FC0E00743CC9 /* CommentApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851C60C32357FC0E00743CC9 /* CommentApi.swift */; };
 		851C60C6235811D900743CC9 /* Post_CommentApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851C60C5235811D900743CC9 /* Post_CommentApi.swift */; };
+		851C60C8235D23C300743CC9 /* HeaderProfileCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851C60C7235D23C300743CC9 /* HeaderProfileCollectionReusableView.swift */; };
 		851FC9362331D9B6009ADC13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851FC9352331D9B6009ADC13 /* AppDelegate.swift */; };
 		851FC93D2331D9B8009ADC13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 851FC93C2331D9B8009ADC13 /* Assets.xcassets */; };
 		851FC9402331D9B8009ADC13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 851FC93E2331D9B8009ADC13 /* LaunchScreen.storyboard */; };
@@ -90,6 +91,7 @@
 		851C60C12357FA6000743CC9 /* UserApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
 		851C60C32357FC0E00743CC9 /* CommentApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentApi.swift; sourceTree = "<group>"; };
 		851C60C5235811D900743CC9 /* Post_CommentApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post_CommentApi.swift; sourceTree = "<group>"; };
+		851C60C7235D23C300743CC9 /* HeaderProfileCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderProfileCollectionReusableView.swift; sourceTree = "<group>"; };
 		851FC9322331D9B6009ADC13 /* Insta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Insta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		851FC9352331D9B6009ADC13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		851FC93C2331D9B8009ADC13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				85449F33234C3D7300B1D34D /* PostCell.swift */,
+				851C60C7235D23C300743CC9 /* HeaderProfileCollectionReusableView.swift */,
 				85449F3C234EB1DD00B1D34D /* CommentCell.swift */,
 			);
 			path = View;
@@ -514,6 +517,7 @@
 			files = (
 				851C60C02357F7BA00743CC9 /* Api.swift in Sources */,
 				85449F36234D9CE700B1D34D /* User.swift in Sources */,
+				851C60C8235D23C300743CC9 /* HeaderProfileCollectionReusableView.swift in Sources */,
 				851A10282331ED7B00DB20CB /* SignUpViewController.swift in Sources */,
 				85449F39234EB1AB00B1D34D /* CommentsViewController.swift in Sources */,
 				85449F31234BE46200B1D34D /* Post.swift in Sources */,
