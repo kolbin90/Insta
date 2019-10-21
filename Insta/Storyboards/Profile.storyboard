@@ -58,7 +58,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hG2-2W-v91">
-                                                    <rect key="frame" x="140" y="15" width="259" height="100"/>
+                                                    <rect key="frame" x="140" y="15" width="259" height="110"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="pbV-3x-QHk">
                                                             <rect key="frame" x="0.0" y="15" width="259" height="36"/>
@@ -117,7 +117,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfV-d5-Ea0">
-                                                            <rect key="frame" x="0.0" y="62" width="259" height="30"/>
+                                                            <rect key="frame" x="0.0" y="72" width="259" height="30"/>
                                                             <color key="backgroundColor" red="0.89416600903558341" green="0.8927332631010001" blue="0.91775976582538865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                             <state key="normal" title="Edit Profile">
@@ -134,7 +134,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="kfV-d5-Ea0" secondAttribute="bottom" constant="8" id="36h-hg-Ygp"/>
                                                         <constraint firstItem="pbV-3x-QHk" firstAttribute="leading" secondItem="hG2-2W-v91" secondAttribute="leading" id="3GG-fz-U4z"/>
-                                                        <constraint firstAttribute="height" constant="100" id="ARl-7g-vpH"/>
+                                                        <constraint firstAttribute="height" constant="110" id="ARl-7g-vpH"/>
                                                         <constraint firstAttribute="trailing" secondItem="kfV-d5-Ea0" secondAttribute="trailing" id="Sx8-2h-91D"/>
                                                         <constraint firstItem="kfV-d5-Ea0" firstAttribute="leading" secondItem="hG2-2W-v91" secondAttribute="leading" id="jz1-en-Xzz"/>
                                                         <constraint firstAttribute="trailing" secondItem="pbV-3x-QHk" secondAttribute="trailing" id="xT1-HO-nIH"/>
