@@ -15,17 +15,18 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var followersCountLabel: UILabel!
     @IBOutlet weak var followingCountButton: UILabel!
     
+    var user: User? {
+        didSet {
+            updateView()
+        }
+    }
+    
     func updateView() {
-        Api.user.REF_CURRNT_USER?.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let dict = snapshot.value as? [String:Any] {
-                let user = User.transformToUser(dict: dict)
-                if let profileUrlString = user.profileImageUrl {
-                    let profileUrl = URL(string: profileUrlString)
-                    self.profileImageView.sd_setImage(with: profileUrl, placeholderImage: UIImage(named: "placeholderImg"), options: [], completed: nil)
-                }
-                self.usernameLabel.text = user.username
-            }
-        })
+        self.usernameLabel.text = user!.username
+        if let profileUrlString = user!.profileImageUrl {
+            let profileUrl = URL(string: profileUrlString)
+            self.profileImageView.sd_setImage(with: profileUrl, placeholderImage: UIImage(named: "placeholderImg"), options: [], completed: nil)
+        }
     }
 }
 

@@ -19,6 +19,14 @@ class UserApi {
         return REF_USERS.child(currentUser.uid) 
     }
     
+    func observeCurrentUser(completion: @escaping (User) -> Void) {
+        guard let currentUser = Auth.auth().currentUser else {
+            return
+        }
+        observeUser(withUid: currentUser.uid) { (user) in
+            completion(user)
+        }
+    }
     
     func observeUser(withUid uid: String, completion: @escaping (User) -> Void) {
         REF_USERS.child(uid).observeSingleEvent(of: .value) { (snapshot) in
