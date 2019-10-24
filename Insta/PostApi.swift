@@ -20,4 +20,13 @@ class PostApi {
             }
         }
     }
+    
+    func observePost(withId id: String, completion: @escaping (Post) -> Void) {
+        Api.post.REF_POSTS.child(id).observeSingleEvent(of: .value) { (snapshot) in
+            if let dict = snapshot.value as? [String: Any] {
+                let post = Post.transformToImagePost(dict: dict, id: id)
+                completion(post)
+            }
+        }
+    }
 }

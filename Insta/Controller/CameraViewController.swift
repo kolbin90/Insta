@@ -57,7 +57,10 @@ class CameraViewController: UIViewController {
     }
     
     func sendPostInfoToDatabase(photoUrlString: String){
-        let newPostRef = Api.post.REF_POSTS.childByAutoId()
+        guard let newPostId = Api.post.REF_POSTS.childByAutoId().key else {
+            return
+        }
+        let newPostRef = Api.post.REF_POSTS.child(newPostId)
         guard let uid = Auth.auth().currentUser?.uid else {
             return
         }
@@ -66,9 +69,16 @@ class CameraViewController: UIViewController {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
             }
-            ProgressHUD.showSuccess("Success ")
-            self.clear()
-            self.tabBarController?.selectedIndex = 0
+            Api.user_posts.REF_USER_POSTS.child(uid).child(newPostId).setValue(true, withCompletionBlock: { (error, ref) in
+                if let error = error {
+                    ProgressHUD.showError(error.localizedDescription)
+                    return
+                }
+                
+                ProgressHUD.showSuccess("Success ")
+                self.clear()
+                self.tabBarController?.selectedIndex = 0
+            })
         }
     }
     

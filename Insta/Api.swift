@@ -12,4 +12,5 @@ struct Api {
     static let user = UserApi()
     static let comment = CommentApi()
     static let post_comments = Post_CommentsApi()
+    static let user_posts = User_PostsApi()
 }
