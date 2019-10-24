@@ -52,6 +52,7 @@ class PostCell: UITableViewCell {
         captionLabel.text = ""
         let tapGestureForComments = UITapGestureRecognizer(target: self, action: #selector(self.commentImageView_TchUpIns))
         commentImageView.addGestureRecognizer(tapGestureForComments)
+        commentImageView.isUserInteractionEnabled = true
         let tapGestureForLike = UITapGestureRecognizer(target: self, action: #selector(self.likeImageView_TchUpIns))
         likeImageView.addGestureRecognizer(tapGestureForLike)
         likeImageView.isUserInteractionEnabled = true
