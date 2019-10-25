@@ -21,6 +21,7 @@ class CommentsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor = .black
         tableView.dataSource = self
         tableView.estimatedRowHeight = 77
         tableView.rowHeight = UITableView.automaticDimension

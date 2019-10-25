@@ -15,6 +15,7 @@ class PeopleViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor = .black
         tableView.dataSource = self
         loadUsers()
         
