@@ -48,13 +48,11 @@ class PeopleCell: UITableViewCell {
     }
     
     @objc func followAction() {
-        Api.follow.REF_FOLLOWERS.child(user!.id!).child(Api.user.CURRENT_USER!.uid).setValue(true)
-        Api.follow.REF_FOLLOWING.child(Api.user.CURRENT_USER!.uid).child(user!.id!).setValue(true)
+        Api.follow.followAction(withUserId: user!.id!)
     }
     
     @objc func unfollowAction() {
-        Api.follow.REF_FOLLOWERS.child(user!.id!).child(Api.user.CURRENT_USER!.uid).setValue(NSNull())
-        Api.follow.REF_FOLLOWING.child(Api.user.CURRENT_USER!.uid).child(user!.id!).setValue(NSNull())
+        Api.follow.unfollowAction(withUserId: user!.id!)
     }
 
 }
