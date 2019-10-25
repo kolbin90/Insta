@@ -13,6 +13,7 @@ class UserModel {
     var profileImageUrl: String?
     var username: String?
     var id: String?
+    var isFollowing: Bool?
 }
 extension UserModel {
     static func transformToUser(dict: [String:Any], key: String) -> UserModel {

@@ -23,19 +23,17 @@ class PeopleViewController: UIViewController {
     
     func loadUsers() {
         Api.user.observeUsers { (user) in
-            self.users.append(user)
-            self.tableView.reloadData()
+            self.isFollowing(withUserId: user.id!, completed: { (value) in
+                user.isFollowing = value
+                self.users.append(user)
+                self.tableView.reloadData()
+            })
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func isFollowing(withUserId id: String, completed: @escaping (Bool) -> Void) {
+        Api.follow.isFollowing(withUserId: id, completed: completed)
     }
-    */
 
 }
 extension PeopleViewController: UITableViewDataSource {
