@@ -23,6 +23,7 @@
 		851A103C2332E94800DB20CB /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 851A103B2332E94800DB20CB /* Activity.storyboard */; };
 		851A103E2332E97D00DB20CB /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 851A103D2332E97D00DB20CB /* Profile.storyboard */; };
 		851A10422333193200DB20CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 851A10412333193200DB20CB /* GoogleService-Info.plist */; };
+		851BF6072362910200C07377 /* HelperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851BF6062362910200C07377 /* HelperService.swift */; };
 		851C60BE2357C96A00743CC9 /* PostApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851C60BD2357C96A00743CC9 /* PostApi.swift */; };
 		851C60C02357F7BA00743CC9 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851C60BF2357F7BA00743CC9 /* Api.swift */; };
 		851C60C22357FA6000743CC9 /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851C60C12357FA6000743CC9 /* UserApi.swift */; };
@@ -88,6 +89,7 @@
 		851A103B2332E94800DB20CB /* Activity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
 		851A103D2332E97D00DB20CB /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		851A10412333193200DB20CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		851BF6062362910200C07377 /* HelperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperService.swift; sourceTree = "<group>"; };
 		851C60BD2357C96A00743CC9 /* PostApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostApi.swift; sourceTree = "<group>"; };
 		851C60BF2357F7BA00743CC9 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		851C60C12357FA6000743CC9 /* UserApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
@@ -184,11 +186,11 @@
 				851A10252331E7F200DB20CB /* SignInViewController.swift */,
 				851A10272331ED7B00DB20CB /* SignUpViewController.swift */,
 				851A10292332095D00DB20CB /* HomeViewController.swift */,
+				85449F38234EB1AB00B1D34D /* CommentsViewController.swift */,
 				851A102B2332096A00DB20CB /* DiscoverViewController.swift */,
 				851A102D2332097F00DB20CB /* CameraViewController.swift */,
 				851A102F2332099100DB20CB /* ActivityViewController.swift */,
 				851A1031233209A700DB20CB /* ProfileViewController.swift */,
-				85449F38234EB1AB00B1D34D /* CommentsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -238,6 +240,7 @@
 				85449F2A2348332B00B1D34D /* ProgressHUD.bundle */,
 				85449F2B2348332B00B1D34D /* ProgressHUD.h */,
 				85449F2C2348332B00B1D34D /* ProgressHUD.m */,
+				851BF6062362910200C07377 /* HelperService.swift */,
 			);
 			path = Insta;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				851A1032233209A700DB20CB /* ProfileViewController.swift in Sources */,
 				851A102E2332097F00DB20CB /* CameraViewController.swift in Sources */,
 				85449F34234C3D7300B1D34D /* PostCell.swift in Sources */,
+				851BF6072362910200C07377 /* HelperService.swift in Sources */,
 				857AF9A823613DC700790362 /* User_PostsApi.swift in Sources */,
 				851C60BE2357C96A00743CC9 /* PostApi.swift in Sources */,
 				851C60C22357FA6000743CC9 /* UserApi.swift in Sources */,

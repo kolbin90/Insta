@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
 
 class CommentsViewController: UIViewController {
 
@@ -102,7 +100,7 @@ class CommentsViewController: UIViewController {
             return
         }
         let newCommentRef = Api.comment.REF_COMMENT.child(newCommentId)
-        guard let uid = Auth.auth().currentUser?.uid else {
+        guard let uid = Api.user.CURRENT_USER?.uid else {
             return
         }
         newCommentRef.setValue(["commentText":commentTextField.text!,"uid":uid]) { (error, ref) in

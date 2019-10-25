@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import FirebaseStorage
-import FirebaseDatabase
-import FirebaseAuth
 
 class CameraViewController: UIViewController {
     @IBOutlet weak var photoImageView: UIImageView!
@@ -61,7 +58,7 @@ class CameraViewController: UIViewController {
             return
         }
         let newPostRef = Api.post.REF_POSTS.child(newPostId)
-        guard let uid = Auth.auth().currentUser?.uid else {
+        guard let uid = Api.user.CURRENT_USER?.uid else {
             return
         }
         newPostRef.setValue(["photoUrlString":photoUrlString,"captionText":textView.text!,"uid":uid]) { (error, ref) in
@@ -83,26 +80,11 @@ class CameraViewController: UIViewController {
     }
     
     @IBAction func postBtn_TchUpIns(_ sender: Any) {
-        if let profileImg = self.selectedImage, let profileImgData = profileImg.jpegData(compressionQuality: 0.3) {
-            ProgressHUD.show("Posting")
-            let photoID = NSUUID().uuidString
-            let storageRef = Storage.storage().reference().child("posts").child(photoID)
-            let profileImgMetadata = StorageMetadata()
-            profileImgMetadata.contentType = "image/jpg"
-            storageRef.putData(profileImgData, metadata: profileImgMetadata, completion: { (metadata, error) in
-                if error != nil {
-                    return
-                }
-                storageRef.downloadURL(completion: { (profileImgUrl, error) in
-                    guard let profileImgUrlString = profileImgUrl?.absoluteString
-                        else
-                    {
-                        return
-                    }
-                    self.sendPostInfoToDatabase(photoUrlString: profileImgUrlString)
-                    //self.setPostInformation(profileImgUrl: profileImgUrlString, email: email, username: username, uID: uID, onSuccess: onSuccess)
-                })
-            })
+        if let postImg = self.selectedImage, let postImgData = postImg.jpegData(compressionQuality: 0.3) {
+            HelperService.updloadDataToServer(data: postImgData, caption: textView.text) {
+                self.clear()
+                self.tabBarController?.selectedIndex = 0
+            }
         } else {
             ProgressHUD.showError("Profile image can't be empty" )
         }
