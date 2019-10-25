@@ -12,13 +12,15 @@ class UserModel {
     var email: String?
     var profileImageUrl: String?
     var username: String?
+    var id: String?
 }
 extension UserModel {
-    static func transformToUser(dict: [String:Any]) -> UserModel {
+    static func transformToUser(dict: [String:Any], key: String) -> UserModel {
         let user = UserModel()
         user.email = dict["email"] as? String
         user.profileImageUrl = dict["profileImageUrl"] as? String
         user.username = dict["username"] as? String
+        user.id = key
         return user
     }
 }
