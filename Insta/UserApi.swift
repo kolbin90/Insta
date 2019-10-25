@@ -33,6 +33,15 @@ class UserApi {
         }
     }
     
+    func observeUsers(completion: @escaping (UserModel) -> Void) {
+        REF_USERS.observe(.childAdded) { (snapshot) in
+            if let dict = snapshot.value as? [String: Any] {
+                let user = UserModel.transformToUser(dict: dict)
+                completion(user)
+            }
+        }
+    }
+    
     func observeUser(withUid uid: String, completion: @escaping (UserModel) -> Void) {
         REF_USERS.child(uid).observeSingleEvent(of: .value) { (snapshot) in
             if let dict = snapshot.value as? [String: Any] {
