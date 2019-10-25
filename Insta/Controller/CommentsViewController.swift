@@ -18,7 +18,7 @@ class CommentsViewController: UIViewController {
     @IBOutlet weak var constrainToButtom: NSLayoutConstraint!
     
     var postId: String!
-    var users = [User]()
+    var users = [UserModel]()
     var comments = [Comment]()
     
     override func viewDidLoad() {

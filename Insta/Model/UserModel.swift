@@ -8,14 +8,14 @@
 
 import Foundation
 
-class User {
+class UserModel {
     var email: String?
     var profileImageUrl: String?
     var username: String?
 }
-extension User {
-    static func transformToUser(dict: [String:Any]) -> User {
-        let user = User()
+extension UserModel {
+    static func transformToUser(dict: [String:Any]) -> UserModel {
+        let user = UserModel()
         user.email = dict["email"] as? String
         user.profileImageUrl = dict["profileImageUrl"] as? String
         user.username = dict["username"] as? String

@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
-import FirebaseStorage
 import SDWebImage
 
 class HomeViewController: UIViewController {
@@ -17,7 +14,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     var posts = [Post]()
-    var users = [User]()
+    var users = [UserModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,14 +51,15 @@ class HomeViewController: UIViewController {
 
 
     @IBAction func logoutBtn_TchUpIns(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-        } catch let logoutError{
-            ProgressHUD.showError(logoutError.localizedDescription)
+        
+        AuthService.logout(onSuccess: {
+            let storyboard = UIStoryboard(name: "Start", bundle: nil)
+            let signInViewController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
+            self.present(signInViewController, animated: true, completion: nil)
+        }) { (errorString) in
+            ProgressHUD.showError(errorString)
         }
-        let storyboard = UIStoryboard(name: "Start", bundle: nil)
-        let signInViewController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
-        present(signInViewController, animated: true, completion: nil)
+        
     }
 }
 

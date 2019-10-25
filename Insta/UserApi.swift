@@ -18,8 +18,13 @@ class UserApi {
         }
         return REF_USERS.child(currentUser.uid) 
     }
-    
-    func observeCurrentUser(completion: @escaping (User) -> Void) {
+    var CURRENT_USER: User? {
+        if let currentUser = Auth.auth().currentUser {
+            return currentUser
+        }
+        return nil
+    }
+    func observeCurrentUser(completion: @escaping (UserModel) -> Void) {
         guard let currentUser = Auth.auth().currentUser else {
             return
         }
@@ -28,10 +33,10 @@ class UserApi {
         }
     }
     
-    func observeUser(withUid uid: String, completion: @escaping (User) -> Void) {
+    func observeUser(withUid uid: String, completion: @escaping (UserModel) -> Void) {
         REF_USERS.child(uid).observeSingleEvent(of: .value) { (snapshot) in
             if let dict = snapshot.value as? [String: Any] {
-                let user = User.transformToUser(dict: dict)
+                let user = UserModel.transformToUser(dict: dict)
                 completion(user)
             }
         }

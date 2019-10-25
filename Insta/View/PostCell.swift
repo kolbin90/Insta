@@ -29,7 +29,7 @@ class PostCell: UITableViewCell {
             updateView()
         }
     }
-    var user: User? {
+    var user: UserModel? {
         didSet {
             setupUserInfo()
         }

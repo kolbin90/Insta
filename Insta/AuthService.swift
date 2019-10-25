@@ -47,6 +47,15 @@ class AuthService {
         }
     }
     
+    static func logout(onSuccess: @escaping() -> Void, onError: @escaping(_ errorString: String?) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            onSuccess()
+        } catch let logoutError{
+            onError(logoutError.localizedDescription)
+        }
+    }
+    
     static func setUserInformation(profileImgUrl: String, email: String, username:String, uID:String, onSuccess: @escaping() -> Void) {
         let ref = Database.database().reference()
         let usersRef = ref.child("users").child(uID)

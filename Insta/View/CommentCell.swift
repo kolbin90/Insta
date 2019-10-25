@@ -19,7 +19,7 @@ class CommentCell: UITableViewCell {
             updateView()
         }
     }
-    var user: User? {
+    var user: UserModel? {
         didSet {
             setupUserInfo()
         }

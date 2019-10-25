@@ -38,7 +38,7 @@
 		85449F2E2348332B00B1D34D /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 85449F2C2348332B00B1D34D /* ProgressHUD.m */; };
 		85449F31234BE46200B1D34D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85449F30234BE46200B1D34D /* Post.swift */; };
 		85449F34234C3D7300B1D34D /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85449F33234C3D7300B1D34D /* PostCell.swift */; };
-		85449F36234D9CE700B1D34D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85449F35234D9CE700B1D34D /* User.swift */; };
+		85449F36234D9CE700B1D34D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85449F35234D9CE700B1D34D /* UserModel.swift */; };
 		85449F39234EB1AB00B1D34D /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85449F38234EB1AB00B1D34D /* CommentsViewController.swift */; };
 		85449F3D234EB1DD00B1D34D /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85449F3C234EB1DD00B1D34D /* CommentCell.swift */; };
 		85449F3F2353DDF000B1D34D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85449F3E2353DDF000B1D34D /* Comment.swift */; };
@@ -111,7 +111,7 @@
 		85449F2C2348332B00B1D34D /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		85449F30234BE46200B1D34D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		85449F33234C3D7300B1D34D /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
-		85449F35234D9CE700B1D34D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		85449F35234D9CE700B1D34D /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		85449F38234EB1AB00B1D34D /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		85449F3C234EB1DD00B1D34D /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		85449F3E2353DDF000B1D34D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -188,7 +188,6 @@
 				851A102D2332097F00DB20CB /* CameraViewController.swift */,
 				851A102F2332099100DB20CB /* ActivityViewController.swift */,
 				851A1031233209A700DB20CB /* ProfileViewController.swift */,
-				85DBE8302346948400B84854 /* AuthService.swift */,
 				85449F38234EB1AB00B1D34D /* CommentsViewController.swift */,
 			);
 			path = Controller;
@@ -221,6 +220,7 @@
 			children = (
 				851A10412333193200DB20CB /* GoogleService-Info.plist */,
 				851FC9352331D9B6009ADC13 /* AppDelegate.swift */,
+				85DBE8302346948400B84854 /* AuthService.swift */,
 				851C60BD2357C96A00743CC9 /* PostApi.swift */,
 				851C60C12357FA6000743CC9 /* UserApi.swift */,
 				851C60C32357FC0E00743CC9 /* CommentApi.swift */,
@@ -264,7 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				85449F30234BE46200B1D34D /* Post.swift */,
-				85449F35234D9CE700B1D34D /* User.swift */,
+				85449F35234D9CE700B1D34D /* UserModel.swift */,
 				85449F3E2353DDF000B1D34D /* Comment.swift */,
 			);
 			path = Model;
@@ -522,7 +522,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				851C60C02357F7BA00743CC9 /* Api.swift in Sources */,
-				85449F36234D9CE700B1D34D /* User.swift in Sources */,
+				85449F36234D9CE700B1D34D /* UserModel.swift in Sources */,
 				851C60C8235D23C300743CC9 /* HeaderProfileCollectionReusableView.swift in Sources */,
 				851A10282331ED7B00DB20CB /* SignUpViewController.swift in Sources */,
 				85449F39234EB1AB00B1D34D /* CommentsViewController.swift in Sources */,

@@ -15,7 +15,7 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var followersCountLabel: UILabel!
     @IBOutlet weak var followingCountButton: UILabel!
     
-    var user: User? {
+    var user: UserModel? {
         didSet {
             updateView()
         }

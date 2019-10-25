@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 class ProfileViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
-    var user: User!
+    var user: UserModel!
     var posts: [Post] = []
     
     override func viewDidLoad() {
