@@ -29,4 +29,48 @@ class PostApi {
             }
         }
     }
+    
+    func observeLikesCount(withPostId id: String, completion: @escaping (Int) -> Void) {
+        Api.post.REF_POSTS.child(id).observe(.childChanged) { (snapshot) in
+            if let likeCount = snapshot.value as? Int {
+                completion(likeCount)
+            }
+        }
+    }
+    
+    func incrementLikes(forPostId id: String, onSuccess: @escaping (Post) -> Void, onError: @escaping (String) -> Void) {
+        let ref = Api.post.REF_POSTS.child(id)
+        ref.runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
+            if var post = currentData.value as? [String : AnyObject], let uid = Api.user.CURRENT_USER?.uid {
+                var likes: Dictionary<String, Bool>
+                likes = post["likes"] as? [String : Bool] ?? [:]
+                var likeCount = post["likeCount"] as? Int ?? 0
+                if let _ = likes[uid] {
+                    // Unstar the post and remove self from stars
+                    likeCount -= 1
+                    likes.removeValue(forKey: uid)
+                } else {
+                    // Star the post and add self to stars
+                    likeCount += 1
+                    likes[uid] = true
+                }
+                post["likeCount"] = likeCount as AnyObject?
+                post["likes"] = likes as AnyObject?
+                
+                // Set value and report transaction success
+                currentData.value = post
+                
+                return TransactionResult.success(withValue: currentData)
+            }
+            return TransactionResult.success(withValue: currentData)
+        }) { (error, committed, snapshot) in
+            if let error = error {
+                onError(error.localizedDescription)
+            }
+            if let dict = snapshot?.value as? [String: Any] {
+                let post = Post.transformToImagePost(dict: dict, id: snapshot!.key)
+                onSuccess(post)
+            }
+        }
+    }
 }

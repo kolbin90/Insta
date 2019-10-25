@@ -6,10 +6,8 @@
 //  Copyright © 2019 Apple User. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import SDWebImage
-import FirebaseDatabase
-import FirebaseAuth
 
 class PostCell: UITableViewCell {
     
@@ -23,8 +21,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var captionLabel: UILabel!
     
     var homeVC: HomeViewController?
-    var postRef: DatabaseReference!
-    var post: Post? {
+    var post: Post! {
         didSet {
             updateView()
         }
@@ -64,44 +61,14 @@ class PostCell: UITableViewCell {
     }
     
     @objc func likeImageView_TchUpIns() {
-        postRef = Api.post.REF_POSTS.child(post!.id!)
-        incrementLikes(forRef: postRef)
-    }
-    
-    func incrementLikes(forRef ref: DatabaseReference) {
-        ref.runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
-            if var post = currentData.value as? [String : AnyObject], let uid = Auth.auth().currentUser?.uid {
-                var likes: Dictionary<String, Bool>
-                likes = post["likes"] as? [String : Bool] ?? [:]
-                var likeCount = post["likeCount"] as? Int ?? 0
-                if let _ = likes[uid] {
-                    // Unstar the post and remove self from stars
-                    likeCount -= 1
-                    likes.removeValue(forKey: uid)
-                } else {
-                    // Star the post and add self to stars
-                    likeCount += 1
-                    likes[uid] = true
-                }
-                post["likeCount"] = likeCount as AnyObject?
-                post["likes"] = likes as AnyObject?
-                
-                // Set value and report transaction success
-                currentData.value = post
-                
-                return TransactionResult.success(withValue: currentData)
-            }
-            return TransactionResult.success(withValue: currentData)
-        }) { (error, committed, snapshot) in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            if let dict = snapshot?.value as? [String: Any] {
-                let post = Post.transformToImagePost(dict: dict, id: snapshot!.key)
-                self.updateLikes(forPost: post)
-            }
+        Api.post.incrementLikes(forPostId: post.id!, onSuccess: { (post) in
+            self.updateLikes(forPost: post)
+        }) { (error) in
+            ProgressHUD.showError(error)
         }
     }
+    
+    
     
     func updateView() {
         if let photoUrlString = post?.photoUrlString {
@@ -110,19 +77,14 @@ class PostCell: UITableViewCell {
         }
         captionLabel.text = post?.captionText
         
-        Api.post.REF_POSTS.child(post!.id!).observeSingleEvent(of: .value) { (snapshot) in
-            if let dict = snapshot.value as? [String: Any] {
-                let post = Post.transformToImagePost(dict: dict, id: snapshot.key)
-                self.updateLikes(forPost: post)
-            }
+        Api.post.observePost(withId: post.id!) { (post) in
+            self.updateLikes(forPost: post)
         }
-        Api.post.REF_POSTS.child(post!.id!).observe(.childChanged) { (snapshot) in
-            if let likeCount = snapshot.value as? Int {
-                if likeCount != 0 {
-                    self.likeCountButton.setTitle("\(likeCount) likes", for: .normal)
-                } else {
-                   self.likeCountButton.setTitle("Be the first to like", for: .normal)
-                }
+        Api.post.observeLikesCount(withPostId: post.id!) { (likeCount) in
+            if likeCount != 0 {
+                self.likeCountButton.setTitle("\(likeCount) likes", for: .normal)
+            } else {
+                self.likeCountButton.setTitle("Be the first to like", for: .normal)
             }
         }
     }
