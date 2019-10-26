@@ -228,11 +228,11 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PeopleCell" rowHeight="100" id="MoS-m4-5en" customClass="PeopleCell" customModule="Insta" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PeopleCell" rowHeight="240" id="MoS-m4-5en" customClass="PeopleCell" customModule="Insta" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MoS-m4-5en" id="bvG-E1-JYD">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QGN-K8-jue">
@@ -266,7 +266,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="09T-19-KJq" secondAttribute="trailing" constant="15" id="jG5-Df-T32"/>
                                                 <constraint firstItem="7VA-gJ-IBb" firstAttribute="centerY" secondItem="QGN-K8-jue" secondAttribute="centerY" id="kAn-je-SwM"/>
-                                                <constraint firstAttribute="bottom" secondItem="QGN-K8-jue" secondAttribute="bottom" constant="8" id="mOD-vT-yUc"/>
+                                                <constraint firstAttribute="bottom" secondItem="QGN-K8-jue" secondAttribute="bottom" constant="100" id="mOD-vT-yUc"/>
                                                 <constraint firstItem="7VA-gJ-IBb" firstAttribute="leading" secondItem="QGN-K8-jue" secondAttribute="trailing" constant="15" id="n62-5d-qt1"/>
                                                 <constraint firstItem="QGN-K8-jue" firstAttribute="top" secondItem="bvG-E1-JYD" secondAttribute="top" constant="8" id="oSF-sA-j4s"/>
                                                 <constraint firstItem="09T-19-KJq" firstAttribute="centerY" secondItem="QGN-K8-jue" secondAttribute="centerY" id="qbe-eG-f6o"/>

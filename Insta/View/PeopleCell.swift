@@ -43,10 +43,12 @@ class PeopleCell: UITableViewCell {
         }
         usernameLabel.text = user?.username
         
-        if user!.isFollowing! {
-            configureUnfollowButton()
-        } else {
-            configureFollowButton()
+        Api.follow.isFollowing(withUserId: user!.id!) { (value) in
+            if value {
+                self.configureUnfollowButton()
+            } else {
+                self.configureFollowButton()
+            }
         }
     }
     
