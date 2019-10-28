@@ -43,12 +43,11 @@ class PeopleCell: UITableViewCell {
         }
         usernameLabel.text = user?.username
         
-        Api.follow.isFollowing(withUserId: user!.id!) { (value) in
-            if value {
-                self.configureUnfollowButton()
-            } else {
-                self.configureFollowButton()
-            }
+        
+        if user!.isFollowing! {
+            configureUnfollowButton()
+        } else {
+            configureFollowButton()
         }
     }
     
@@ -81,12 +80,14 @@ class PeopleCell: UITableViewCell {
         followButton.removeTarget(self, action:#selector(self.unfollowAction), for: UIControl.Event.touchUpInside)
         Api.follow.followAction(withUserId: user!.id!)
         configureUnfollowButton()
+        user!.isFollowing = true
     }
     
     @objc func unfollowAction() {
         followButton.removeTarget(self, action: #selector(self.followAction), for: UIControl.Event.touchUpInside)
         Api.follow.unfollowAction(withUserId: user!.id!)
         configureFollowButton()
+        user!.isFollowing = false
     }
 
 }
