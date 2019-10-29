@@ -63,6 +63,9 @@ class PostCell: UITableViewCell {
     @objc func likeImageView_TchUpIns() {
         Api.post.incrementLikes(forPostId: post.id!, onSuccess: { (post) in
             self.updateLikes(forPost: post)
+            self.post.likes = post.likes
+            self.post.isLiked = post.isLiked
+            self.post.likeCount = post.likeCount
         }) { (error) in
             ProgressHUD.showError(error)
         }
@@ -77,16 +80,7 @@ class PostCell: UITableViewCell {
         }
         captionLabel.text = post?.captionText
         
-        Api.post.observePost(withId: post.id!) { (post) in
-            self.updateLikes(forPost: post)
-        }
-        Api.post.observeLikesCount(withPostId: post.id!) { (likeCount) in
-            if likeCount != 0 {
-                self.likeCountButton.setTitle("\(likeCount) likes", for: .normal)
-            } else {
-                self.likeCountButton.setTitle("Be the first to like", for: .normal)
-            }
-        }
+        self.updateLikes(forPost: post)
     }
     
     func updateLikes(forPost post: Post) {
