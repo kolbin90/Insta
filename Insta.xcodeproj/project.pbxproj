@@ -237,6 +237,7 @@
 				857AF9A723613DC700790362 /* User_PostsApi.swift */,
 				851C60BF2357F7BA00743CC9 /* Api.swift */,
 				851BF60C2363A33F00C07377 /* FollowApi.swift */,
+				851BF6062362910200C07377 /* HelperService.swift */,
 				85449F32234C3D5700B1D34D /* View */,
 				85449F2F234BE44700B1D34D /* Model */,
 				851A10402333164A00DB20CB /* Controller */,
@@ -248,7 +249,6 @@
 				85449F2A2348332B00B1D34D /* ProgressHUD.bundle */,
 				85449F2B2348332B00B1D34D /* ProgressHUD.h */,
 				85449F2C2348332B00B1D34D /* ProgressHUD.m */,
-				851BF6062362910200C07377 /* HelperService.swift */,
 			);
 			path = Insta;
 			sourceTree = "<group>";

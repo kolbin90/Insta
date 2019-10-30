@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseStorage
+import FirebaseDatabase
 class HelperService {
     static func updloadDataToServer(data: Data, caption: String, onSucces: @escaping () -> Void) {
         ProgressHUD.show("Posting")
@@ -36,6 +37,9 @@ class HelperService {
         guard let newPostId = Api.post.REF_POSTS.childByAutoId().key else {
             return
         }
+        
+        Database.database().reference().child("feed").child(Api.user.CURRENT_USER!.uid).child(newPostId).setValue(true)
+
         let newPostRef = Api.post.REF_POSTS.child(newPostId)
         guard let uid = Api.user.CURRENT_USER?.uid else {
             return
