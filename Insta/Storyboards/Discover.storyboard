@@ -22,6 +22,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Discover" id="wjP-xR-lV0">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="bFP-cG-uvP">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="RFf-Ro-r9X" kind="show" id="9eK-mu-NQj"/>
                             </connections>
@@ -102,6 +103,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Otc-Vo-i6x"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Fx6-8w-Xct" id="jrX-Gd-hva"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qEr-Jj-rhg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
