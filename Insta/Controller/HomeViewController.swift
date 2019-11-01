@@ -33,7 +33,7 @@ class HomeViewController: UIViewController {
     }
     func loadPosts() {
         activityIndicator.startAnimating()
-        Api.post.observePosts { post in
+        Api.feed.observeFeed(forUid: Api.user.CURRENT_USER!.uid) { (post) in
             self.fetchUser(uid: post.uid!,completed: {
                 self.posts.append(post)
                 self.activityIndicator.stopAnimating()
