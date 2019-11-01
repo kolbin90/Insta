@@ -40,7 +40,19 @@ class HomeViewController: UIViewController {
                 self.tableView.reloadData()
             })
         }
+        
+        Api.feed.observeRemovedFeedPost(forUid: Api.user.CURRENT_USER!.uid) { (key) in
+            for (index, post) in self.posts.enumerated() {
+                if post.id! == key {
+                    self.posts.remove(at: index)
+                    self.users.remove(at: index)
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
+    
+    
     
     func fetchUser(uid: String, completed: @escaping () -> Void) {
         Api.user.observeUser(withUid: uid) { (user) in
