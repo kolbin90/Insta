@@ -13,6 +13,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var searchBar = UISearchBar()
+    var users: [UserModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,31 +32,53 @@ class SearchViewController: UIViewController {
         tapGesture.cancelsTouchesInView = true
         tableView.addGestureRecognizer(tapGesture)
         tableView.dataSource = self
+        
+        doSearch()
     }
     
     @objc func hideKeyboard() {
         searchBar.endEditing(true)
     }
+    
+    func doSearch() {
+        if let searchText = searchBar.text?.lowercased() {
+            users.removeAll()
+            tableView.reloadData()
+            Api.user.queryUsers(withText: searchText) { (user) in
+                self.isFollowing(withUserId: user.id!, completed: { (value) in
+                    user.isFollowing = value
+                    self.users.append(user)
+                    self.tableView.reloadData()
+                })
+            }
+        }
+    }
+    
+    func isFollowing(withUserId id: String, completed: @escaping (Bool) -> Void) {
+        Api.follow.isFollowing(withUserId: id, completed: completed)
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print(searchBar.text)
+        doSearch()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchBar.text)
+        doSearch()
     }
 }
 
 extension SearchViewController:  UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return users.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let user = users[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "PeopleCell", for: indexPath) as! PeopleCell
-
+        cell.user = user
+        
         return cell
     }
 }
