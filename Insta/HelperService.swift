@@ -38,7 +38,7 @@ class HelperService {
             return
         }
         
-        Database.database().reference().child("feed").child(Api.user.CURRENT_USER!.uid).child(newPostId).setValue(true)
+        Api.feed.REF_FEED.child(Api.user.CURRENT_USER!.uid).child(newPostId).setValue(true)
 
         let newPostRef = Api.post.REF_POSTS.child(newPostId)
         guard let uid = Api.user.CURRENT_USER?.uid else {
