@@ -14,6 +14,7 @@ class SearchViewController: UIViewController {
     
     var searchBar = UISearchBar()
     var users: [UserModel] = []
+    var doingSearch = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,11 +46,14 @@ class SearchViewController: UIViewController {
             users.removeAll()
             tableView.reloadData()
             Api.user.queryUsers(withText: searchText) { (user) in
-                self.isFollowing(withUserId: user.id!, completed: { (value) in
-                    user.isFollowing = value
-                    self.users.append(user)
-                    self.tableView.reloadData()
-                })
+                if !self.users.contains(where: { $0.id == user.id }) {
+                    self.isFollowing(withUserId: user.id!, completed: { (value) in
+                        user.isFollowing = value
+                        self.users.append(user)
+                        self.tableView.reloadData()
+                    })
+                }
+                
             }
         }
     }
