@@ -44,7 +44,7 @@ class HelperService {
         guard let uid = Api.user.CURRENT_USER?.uid else {
             return
         }
-        newPostRef.setValue(["photoUrlString":photoUrlString,"captionText":caption,"uid":uid]) { (error, ref) in
+        newPostRef.setValue(["photoUrlString":photoUrlString,"captionText":caption,"uid":uid,"likeCount":0]) { (error, ref) in
             if error != nil {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
