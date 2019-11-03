@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5827971053CDF30029E31EAA /* Pods_InstaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC09D4298D3BC617DE48E5A /* Pods_InstaUITests.framework */; };
 		850C551E236CD29800E5CC2F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850C551D236CD29800E5CC2F /* SearchViewController.swift */; };
+		850C5520236E6A5C00E5CC2F /* ProfileUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850C551F236E6A5C00E5CC2F /* ProfileUserViewController.swift */; };
 		851A10242331E3E500DB20CB /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 851A10232331E3E500DB20CB /* Start.storyboard */; };
 		851A10262331E7F200DB20CB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851A10252331E7F200DB20CB /* SignInViewController.swift */; };
 		851A10282331ED7B00DB20CB /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851A10272331ED7B00DB20CB /* SignUpViewController.swift */; };
@@ -80,6 +81,7 @@
 		71850CCA3B7E01584829ED17 /* Pods_InstaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F51C0B7153B43C473CDBB9 /* Pods-InstaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaTests.release.xcconfig"; path = "Target Support Files/Pods-InstaTests/Pods-InstaTests.release.xcconfig"; sourceTree = "<group>"; };
 		850C551D236CD29800E5CC2F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		850C551F236E6A5C00E5CC2F /* ProfileUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserViewController.swift; sourceTree = "<group>"; };
 		851A10232331E3E500DB20CB /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		851A10252331E7F200DB20CB /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		851A10272331ED7B00DB20CB /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				851A1031233209A700DB20CB /* ProfileViewController.swift */,
 				851BF60A23638D5000C07377 /* PeopleViewController.swift */,
 				850C551D236CD29800E5CC2F /* SearchViewController.swift */,
+				850C551F236E6A5C00E5CC2F /* ProfileUserViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				851BF60D2363A33F00C07377 /* FollowApi.swift in Sources */,
 				851A1032233209A700DB20CB /* ProfileViewController.swift in Sources */,
 				851A102E2332097F00DB20CB /* CameraViewController.swift in Sources */,
+				850C5520236E6A5C00E5CC2F /* ProfileUserViewController.swift in Sources */,
 				85449F34234C3D7300B1D34D /* PostCell.swift in Sources */,
 				851BF6072362910200C07377 /* HelperService.swift in Sources */,
 				851BF60B23638D5000C07377 /* PeopleViewController.swift in Sources */,
