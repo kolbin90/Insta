@@ -203,9 +203,9 @@
 				851A102D2332097F00DB20CB /* CameraViewController.swift */,
 				851A102F2332099100DB20CB /* ActivityViewController.swift */,
 				851A1031233209A700DB20CB /* ProfileViewController.swift */,
+				850C551F236E6A5C00E5CC2F /* ProfileUserViewController.swift */,
 				851BF60A23638D5000C07377 /* PeopleViewController.swift */,
 				850C551D236CD29800E5CC2F /* SearchViewController.swift */,
-				850C551F236E6A5C00E5CC2F /* ProfileUserViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
