@@ -14,7 +14,6 @@ class SearchViewController: UIViewController {
     
     var searchBar = UISearchBar()
     var users: [UserModel] = []
-    var doingSearch = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +34,14 @@ class SearchViewController: UIViewController {
         tableView.dataSource = self
         
         doSearch()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SearchToProfileUserSegue" {
+            let profileUserVC = segue.destination as! ProfileUserViewController
+            let user = sender as! UserModel
+            profileUserVC.user = user
+        }
     }
     
     @objc func hideKeyboard() {
@@ -82,7 +89,14 @@ extension SearchViewController:  UITableViewDataSource {
         let user = users[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "PeopleCell", for: indexPath) as! PeopleCell
         cell.user = user
+        cell.delegate = self
         
         return cell
+    }
+}
+
+extension SearchViewController: PeopleCellDelegate {
+    func goToProfileUserVC(withUser user: UserModel) {
+        performSegue(withIdentifier: "SearchToProfileUserSegue", sender: user)
     }
 }

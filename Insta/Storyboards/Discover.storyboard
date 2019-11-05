@@ -136,6 +136,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="cellView" destination="5Op-No-78J" id="BHh-jb-DqK"/>
                                             <outlet property="followButton" destination="hIR-Ud-qdn" id="cBu-ah-zS9"/>
                                             <outlet property="profileImageView" destination="sHA-In-tUZ" id="Up0-te-awq"/>
                                             <outlet property="usernameLabel" destination="mpp-ct-l1l" id="H17-Mj-z6a"/>
@@ -155,11 +156,20 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Fx6-8w-Xct" id="jrX-Gd-hva"/>
+                        <segue destination="tL2-n8-7dD" kind="show" identifier="SearchToProfileUserSegue" id="4CP-X5-de8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qEr-Jj-rhg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3689" y="-589"/>
+        </scene>
+        <!--ProfileUserViewController-->
+        <scene sceneID="Y3W-4m-4tx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="ProfileUserViewController" id="tL2-n8-7dD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4QR-AJ-4fV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4397" y="-589"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xar-6R-NqN">
