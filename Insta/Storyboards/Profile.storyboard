@@ -274,6 +274,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="cellView" destination="bvG-E1-JYD" id="XPk-nt-lum"/>
+                                            <outlet property="contentView" destination="bvG-E1-JYD" id="KzU-gm-k9b"/>
                                             <outlet property="followButton" destination="09T-19-KJq" id="vyX-dp-8kF"/>
                                             <outlet property="profileImageView" destination="QGN-K8-jue" id="bXU-Hg-gJt"/>
                                             <outlet property="usernameLabel" destination="7VA-gJ-IBb" id="ajI-sU-GY6"/>
@@ -293,7 +295,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="NVp-0e-9iq" id="xEk-9R-Jy8"/>
-                        <segue destination="wV5-gE-kZS" kind="show" id="YeP-wm-jmg"/>
+                        <segue destination="wV5-gE-kZS" kind="show" identifier="ProfileUserSegue" id="YeP-wm-jmg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p8X-1R-ZoA" userLabel="First Responder" sceneMemberID="firstResponder"/>

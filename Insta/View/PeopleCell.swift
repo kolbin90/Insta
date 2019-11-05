@@ -12,6 +12,9 @@ class PeopleCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var cellView: UIView!
+    
+    var peopleVC: PeopleViewController?
     var user: UserModel? {
         didSet {
             updateView()
@@ -22,8 +25,16 @@ class PeopleCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        let tapGestureForUsernameLabel = UITapGestureRecognizer(target: self, action: #selector(self.cellView_TchUpIns))
+        cellView.addGestureRecognizer(tapGestureForUsernameLabel)
+        cellView.isUserInteractionEnabled = true
     }
     
+    @objc func cellView_TchUpIns() {
+        if let user = user {
+            peopleVC?.performSegue(withIdentifier: "ProfileUserSegue", sender: user)
+        }
+    }
     override func prepareForReuse() {
         super.prepareForReuse()
         usernameLabel.text = ""

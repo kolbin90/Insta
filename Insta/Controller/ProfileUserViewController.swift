@@ -12,11 +12,32 @@ class ProfileUserViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var posts: [Post] = []
+    var user: UserModel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        fetchUserPosts()
+        navigationItem.title = user.username!
+        collectionView.reloadData()
         // Do any additional setup after loading the view.
     }
+    func fetchUser() {
+        Api.user.observeCurrentUser { (user) in
+            self.user = user
+            self.navigationItem.title = user.username!
+            self.collectionView.reloadData()
+        }
+    }
+    func fetchUserPosts() {
+        Api.user_posts.REF_USER_POSTS.child(user.id!).observe(.childAdded) { (snapshot) in
+            Api.post.observePost(withId: snapshot.key, completion: { (post) in
+                self.posts.append(post)
+                self.collectionView.reloadData()
+            })
+        }
+    }
+    
 }
 
 extension ProfileUserViewController: UICollectionViewDataSource {
