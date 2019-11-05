@@ -43,7 +43,15 @@ class CommentsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = false
     }
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "CommentsToProfileUserSegue" {
+            let profileUserVC = segue.destination as! ProfileUserViewController
+            let user = sender as! UserModel
+            profileUserVC.user = user
+        }
+    }
+    
     @objc func hideKeyboard() {
         view.endEditing(true)
     }
@@ -137,6 +145,13 @@ extension CommentsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
         cell.comment = comment
         cell.user = user
+        cell.delegate = self
         return cell
+    }
+}
+
+extension CommentsViewController: CommentCellDelegate {
+    func goToProfileUserVC(withUser user: UserModel) {
+        performSegue(withIdentifier: "CommentsToProfileUserSegue", sender: user)
     }
 }
