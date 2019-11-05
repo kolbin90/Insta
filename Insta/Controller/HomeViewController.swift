@@ -30,6 +30,11 @@ class HomeViewController: UIViewController {
             let postId = sender as! String
             commentVC.postId = postId
         }
+        if segue.identifier == "HomeToProfileUserSegue" {
+            let profileUserVC = segue.destination as! ProfileUserViewController
+            let user = sender as! UserModel
+            profileUserVC.user = user
+        }
     }
     func loadPosts() {
         activityIndicator.startAnimating()
@@ -94,4 +99,8 @@ extension HomeViewController: PostCellDelegate {
     func goToCommentsVC(withPostId id: String) {
         performSegue(withIdentifier: "CommentsSegue", sender: id)
     }
+    func goToProfileUserVC(withUser user: UserModel) {
+        performSegue(withIdentifier: "HomeToProfileUserSegue", sender: user)
+    }
 }
+

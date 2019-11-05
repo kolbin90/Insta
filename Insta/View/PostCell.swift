@@ -11,6 +11,7 @@ import SDWebImage
 
 protocol PostCellDelegate {
     func goToCommentsVC(withPostId id: String)
+    func goToProfileUserVC(withUser user: UserModel)
 }
 
 class PostCell: UITableViewCell {
@@ -23,6 +24,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var shareImageView: UIImageView!
     @IBOutlet weak var likeCountButton: UIButton!
     @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var headerView: UIView!
     
     var delegate: PostCellDelegate?
     var post: Post! {
@@ -57,6 +59,15 @@ class PostCell: UITableViewCell {
         let tapGestureForLike = UITapGestureRecognizer(target: self, action: #selector(self.likeImageView_TchUpIns))
         likeImageView.addGestureRecognizer(tapGestureForLike)
         likeImageView.isUserInteractionEnabled = true
+        let tapGestureForHeaderView = UITapGestureRecognizer(target: self, action: #selector(self.headerView_TchUpIns))
+        headerView.addGestureRecognizer(tapGestureForHeaderView)
+        headerView.isUserInteractionEnabled = true
+    }
+    
+    @objc func headerView_TchUpIns() {
+        if let user = user {
+            delegate?.goToProfileUserVC(withUser: user)
+        }
     }
     @objc func commentImageView_TchUpIns() {
         if let id = post?.id {
