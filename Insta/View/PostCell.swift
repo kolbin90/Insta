@@ -9,6 +9,10 @@
 import UIKit
 import SDWebImage
 
+protocol PostCellDelegate {
+    func goToCommentsVC(withPostId id: String)
+}
+
 class PostCell: UITableViewCell {
     
     @IBOutlet weak var profileImageView: UIImageView!
@@ -20,7 +24,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var likeCountButton: UIButton!
     @IBOutlet weak var captionLabel: UILabel!
     
-    var homeVC: HomeViewController?
+    var delegate: PostCellDelegate?
     var post: Post! {
         didSet {
             updateView()
@@ -56,7 +60,7 @@ class PostCell: UITableViewCell {
     }
     @objc func commentImageView_TchUpIns() {
         if let id = post?.id {
-            homeVC?.performSegue(withIdentifier: "CommentsSegue", sender: id)
+            delegate?.goToCommentsVC(withPostId: id)
         }
     }
     
