@@ -326,7 +326,7 @@
         <!--Profile User View Controller-->
         <scene sceneID="qAR-Fp-t1P">
             <objects>
-                <viewController id="wV5-gE-kZS" customClass="ProfileUserViewController" customModule="Insta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileUserViewController" id="wV5-gE-kZS" customClass="ProfileUserViewController" customModule="Insta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zC9-GM-EcA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
