@@ -12,7 +12,7 @@ class PeopleViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var users:[UserModel] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.tintColor = .black
@@ -42,7 +42,7 @@ class PeopleViewController: UIViewController {
     func isFollowing(withUserId id: String, completed: @escaping (Bool) -> Void) {
         Api.follow.isFollowing(withUserId: id, completed: completed)
     }
-
+    
 }
 extension PeopleViewController: UITableViewDataSource {
     
@@ -54,7 +54,13 @@ extension PeopleViewController: UITableViewDataSource {
         let user = users[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "PeopleCell", for: indexPath) as! PeopleCell
         cell.user = user
-        cell.peopleVC = self
+        cell.delegate = self
         return cell
+    }
+}
+
+extension PeopleViewController: PeopleCellDelegate {
+    func goToProfileUserVC(withUser user: UserModel) {
+        performSegue(withIdentifier: "ProfileUserSegue", sender: user)
     }
 }

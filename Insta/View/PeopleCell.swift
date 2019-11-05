@@ -7,6 +7,9 @@
 //
 
 import UIKit
+protocol PeopleCellDelegate {
+    func goToProfileUserVC(withUser user: UserModel)
+}
 
 class PeopleCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
@@ -14,7 +17,7 @@ class PeopleCell: UITableViewCell {
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var cellView: UIView!
     
-    var peopleVC: PeopleViewController?
+    var delegate: PeopleCellDelegate?
     var user: UserModel? {
         didSet {
             updateView()
@@ -32,7 +35,7 @@ class PeopleCell: UITableViewCell {
     
     @objc func cellView_TchUpIns() {
         if let user = user {
-            peopleVC?.performSegue(withIdentifier: "ProfileUserSegue", sender: user)
+            delegate?.goToProfileUserVC(withUser: user)
         }
     }
     override func prepareForReuse() {
