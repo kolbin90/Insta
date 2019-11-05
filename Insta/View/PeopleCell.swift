@@ -28,8 +28,8 @@ class PeopleCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        let tapGestureForUsernameLabel = UITapGestureRecognizer(target: self, action: #selector(self.cellView_TchUpIns))
-        cellView.addGestureRecognizer(tapGestureForUsernameLabel)
+        let tapGestureForCellView = UITapGestureRecognizer(target: self, action: #selector(self.cellView_TchUpIns))
+        cellView.addGestureRecognizer(tapGestureForCellView)
         cellView.isUserInteractionEnabled = true
     }
     
