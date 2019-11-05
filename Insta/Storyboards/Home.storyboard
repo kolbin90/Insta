@@ -184,7 +184,7 @@
                 <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="ProfileUserViewController" id="qgx-TB-gXP" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R78-nh-GEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3590" y="-1657"/>
+            <point key="canvasLocation" x="3590" y="-1715"/>
         </scene>
         <!--Comments-->
         <scene sceneID="Szr-9g-EBd">
@@ -311,11 +311,12 @@
                         <outlet property="constrainToButtom" destination="ZJ9-QT-f3E" id="AqU-wL-N92"/>
                         <outlet property="sendButton" destination="m1u-sa-BvM" id="sf9-Nh-iAc"/>
                         <outlet property="tableView" destination="EtV-fE-Qoa" id="gTV-43-xlH"/>
+                        <segue destination="qgx-TB-gXP" kind="show" identifier="CommentsToProfileUserSegue" id="nLa-Ll-Lb9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CHM-Ty-X7h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3753.6231884057975" y="-1246.2053571428571"/>
+            <point key="canvasLocation" x="3742" y="-1256"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BdX-Nq-Nfk">
@@ -347,4 +348,7 @@
         <image name="placeholderImg" width="225" height="225"/>
         <image name="share" width="37" height="41"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="nLa-Ll-Lb9"/>
+    </inferredMetricsTieBreakers>
 </document>
