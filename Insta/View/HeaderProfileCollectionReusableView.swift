@@ -35,7 +35,7 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
         }
         
         if user?.id == Api.user.CURRENT_USER?.uid {
-            
+            followButton.setTitle("Edit Profile", for: .normal)
         } else {
             updateFollowButton()
         }
