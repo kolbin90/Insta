@@ -17,7 +17,7 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var postsCountLabel: UILabel!
     @IBOutlet weak var followersCountLabel: UILabel!
-    @IBOutlet weak var followingCountButton: UILabel!
+    @IBOutlet weak var followingCountLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
     
     var user: UserModel? {
@@ -38,6 +38,16 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
             followButton.setTitle("Edit Profile", for: .normal)
         } else {
             updateFollowButton()
+        }
+        
+        Api.follow.fetchFollowersCount(withUserId: user!.id!, completion: { (count) in
+            self.followersCountLabel.text = "\(count)"
+        })
+        Api.follow.fetchFollowingCount(withUserId: user!.id!, completion: { (count) in
+            self.followingCountLabel.text = "\(count)"
+        })
+        Api.user_posts.fetchPostsCount(withUserId: user!.id!) { (count) in
+            self.postsCountLabel.text = "\(count)"
         }
     }
     
