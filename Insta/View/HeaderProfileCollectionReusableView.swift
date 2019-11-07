@@ -14,6 +14,7 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var postsCountLabel: UILabel!
     @IBOutlet weak var followersCountLabel: UILabel!
     @IBOutlet weak var followingCountButton: UILabel!
+    @IBOutlet weak var followButton: UIButton!
     
     var user: UserModel? {
         didSet {
@@ -26,6 +27,12 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
         if let profileUrlString = user!.profileImageUrl {
             let profileUrl = URL(string: profileUrlString)
             self.profileImageView.sd_setImage(with: profileUrl, placeholderImage: UIImage(named: "placeholderImg"), options: [], completed: nil)
+        }
+        
+        if user?.id == Api.user.CURRENT_USER?.uid {
+            
+        } else {
+            
         }
     }
 }

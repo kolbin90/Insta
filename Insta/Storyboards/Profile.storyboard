@@ -182,6 +182,7 @@
                                         <constraint firstAttribute="trailing" secondItem="WV1-SY-Z8a" secondAttribute="trailing" id="vnh-rr-8jZ"/>
                                     </constraints>
                                     <connections>
+                                        <outlet property="followButton" destination="kfV-d5-Ea0" id="d2K-rY-czx"/>
                                         <outlet property="followersCountLabel" destination="b4q-M6-V6M" id="7Id-R5-x8a"/>
                                         <outlet property="followingCountButton" destination="rhd-VJ-UiE" id="5s3-0N-DMD"/>
                                         <outlet property="postsCountLabel" destination="iEV-Ht-fR5" id="Jeh-RF-Wqp"/>
@@ -506,6 +507,7 @@
                                         <constraint firstItem="zkG-o8-595" firstAttribute="top" secondItem="Gje-fs-onn" secondAttribute="top" id="qKU-bu-Idb"/>
                                     </constraints>
                                     <connections>
+                                        <outlet property="followButton" destination="clF-id-iiz" id="RUi-Lo-Wnq"/>
                                         <outlet property="followersCountLabel" destination="0Bb-wz-L2b" id="Br9-6o-HJx"/>
                                         <outlet property="followingCountButton" destination="rrn-xw-u8b" id="cTY-0U-ivm"/>
                                         <outlet property="postsCountLabel" destination="jvG-qE-a6j" id="VYN-tp-Pph"/>
