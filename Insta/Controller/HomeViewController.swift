@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         loadPosts()
-        tableView.estimatedRowHeight = 521
+        tableView.estimatedRowHeight = 582
         tableView.rowHeight = UITableView.automaticDimension
     }
     
