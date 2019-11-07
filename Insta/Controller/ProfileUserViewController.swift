@@ -13,6 +13,8 @@ class ProfileUserViewController: UIViewController {
     
     var posts: [Post] = []
     var user: UserModel!
+    var delegate: HeaderProfileDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
@@ -63,6 +65,7 @@ extension ProfileUserViewController: UICollectionViewDataSource {
         let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderProfileCollectionReusableView", for: indexPath) as! HeaderProfileCollectionReusableView
         if let user = self.user {
             headerCell.user = user
+            headerCell.delegate = delegate
         }
         return headerCell
     }

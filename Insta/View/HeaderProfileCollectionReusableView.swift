@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol HeaderProfileDelegate {
+    func updateFollowButton(forUser user: UserModel)
+}
+
 class HeaderProfileCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -21,6 +25,7 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
             updateView()
         }
     }
+    var delegate: HeaderProfileDelegate?
     
     func updateView() {
         self.usernameLabel.text = user!.username
@@ -78,6 +83,7 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
         Api.follow.followAction(withUserId: user!.id!)
         configureUnfollowButton()
         user!.isFollowing = true
+        delegate?.updateFollowButton(forUser: user!)
     }
     
     @objc func unfollowAction() {
@@ -85,6 +91,7 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
         Api.follow.unfollowAction(withUserId: user!.id!)
         configureFollowButton()
         user!.isFollowing = false
+        delegate?.updateFollowButton(forUser: user!)
     }
 }
 
