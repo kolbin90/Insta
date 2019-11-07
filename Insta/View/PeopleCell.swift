@@ -75,6 +75,7 @@ class PeopleCell: UITableViewCell {
         followButton.setTitleColor(.white, for: .normal)
         
         followButton.setTitle("Follow", for: .normal)
+        followButton.removeTarget(self, action:#selector(self.unfollowAction), for: UIControl.Event.touchUpInside)
         followButton.addTarget(self, action: #selector(self.followAction), for: UIControl.Event.touchUpInside)
     }
     
@@ -87,18 +88,17 @@ class PeopleCell: UITableViewCell {
         followButton.backgroundColor = .clear
         followButton.setTitleColor(.black, for: .normal)
         followButton.setTitle("Unfollow", for: .normal)
+        followButton.removeTarget(self, action: #selector(self.followAction), for: UIControl.Event.touchUpInside)
         followButton.addTarget(self, action: #selector(self.unfollowAction), for: UIControl.Event.touchUpInside)
     }
     
     @objc func followAction() {
-        followButton.removeTarget(self, action:#selector(self.unfollowAction), for: UIControl.Event.touchUpInside)
         Api.follow.followAction(withUserId: user!.id!)
         configureUnfollowButton()
         user!.isFollowing = true
     }
     
     @objc func unfollowAction() {
-        followButton.removeTarget(self, action: #selector(self.followAction), for: UIControl.Event.touchUpInside)
         Api.follow.unfollowAction(withUserId: user!.id!)
         configureFollowButton()
         user!.isFollowing = false
