@@ -32,8 +32,59 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
         if user?.id == Api.user.CURRENT_USER?.uid {
             
         } else {
-            
+            updateFollowButton()
         }
+    }
+    
+    func updateFollowButton() {
+        guard let _ = user?.isFollowing else {
+            return
+        }
+        
+        if user!.isFollowing! {
+            configureUnfollowButton()
+        } else {
+            configureFollowButton()
+        }
+    }
+    
+    func configureFollowButton() {
+        followButton.layer.borderWidth = 1
+        followButton.layer.borderColor = UIColor(red: 226/255, green: 228/255, blue: 232/255, alpha: 1).cgColor
+        followButton.layer.cornerRadius = 5
+        followButton.clipsToBounds = true
+        
+        followButton.backgroundColor = UIColor(red: 69/255, green: 144/255, blue: 255/255, alpha: 1)
+        followButton.setTitleColor(.white, for: .normal)
+        
+        followButton.setTitle("Follow", for: .normal)
+        followButton.addTarget(self, action: #selector(self.followAction), for: UIControl.Event.touchUpInside)
+    }
+    
+    func configureUnfollowButton() {
+        followButton.layer.borderWidth = 1
+        followButton.layer.borderColor = UIColor(red: 226/255, green: 228/255, blue: 232/255, alpha: 1).cgColor
+        followButton.layer.cornerRadius = 5
+        followButton.clipsToBounds = true
+        
+        followButton.backgroundColor = .clear
+        followButton.setTitleColor(.black, for: .normal)
+        followButton.setTitle("Unfollow", for: .normal)
+        followButton.addTarget(self, action: #selector(self.unfollowAction), for: UIControl.Event.touchUpInside)
+    }
+    
+    @objc func followAction() {
+        followButton.removeTarget(self, action:#selector(self.unfollowAction), for: UIControl.Event.touchUpInside)
+        Api.follow.followAction(withUserId: user!.id!)
+        configureUnfollowButton()
+        user!.isFollowing = true
+    }
+    
+    @objc func unfollowAction() {
+        followButton.removeTarget(self, action: #selector(self.followAction), for: UIControl.Event.touchUpInside)
+        Api.follow.unfollowAction(withUserId: user!.id!)
+        configureFollowButton()
+        user!.isFollowing = false
     }
 }
 

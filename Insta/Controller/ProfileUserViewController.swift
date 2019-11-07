@@ -18,17 +18,11 @@ class ProfileUserViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         fetchUserPosts()
+        checkFollowingStatus()
         navigationItem.title = user.username!
         collectionView.reloadData()
-        // Do any additional setup after loading the view.
     }
-    func fetchUser() {
-        Api.user.observeCurrentUser { (user) in
-            self.user = user
-            self.navigationItem.title = user.username!
-            self.collectionView.reloadData()
-        }
-    }
+    
     func fetchUserPosts() {
         Api.user_posts.REF_USER_POSTS.child(user.id!).observe(.childAdded) { (snapshot) in
             Api.post.observePost(withId: snapshot.key, completion: { (post) in
@@ -36,6 +30,18 @@ class ProfileUserViewController: UIViewController {
                 self.collectionView.reloadData()
             })
         }
+    }
+    func checkFollowingStatus() {
+        if user.isFollowing == nil {
+            self.isFollowing(withUserId: user.id!) { (value) in
+                self.user.isFollowing = value
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+    func isFollowing(withUserId id: String, completed: @escaping (Bool) -> Void) {
+        Api.follow.isFollowing(withUserId: id, completed: completed)
     }
     
 }
