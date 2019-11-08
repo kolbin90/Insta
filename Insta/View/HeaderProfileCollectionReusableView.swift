@@ -12,6 +12,10 @@ protocol HeaderProfileDelegate {
     func updateFollowButton(forUser user: UserModel)
 }
 
+protocol HeaderProfileSettingDelegate {
+    func goToSettingVC()
+}
+
 class HeaderProfileCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -26,6 +30,7 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
         }
     }
     var delegate: HeaderProfileDelegate?
+    var delegateSetting: HeaderProfileSettingDelegate?
     
     func updateView() {
         self.usernameLabel.text = user!.username
@@ -36,6 +41,7 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
         
         if user?.id == Api.user.CURRENT_USER?.uid {
             followButton.setTitle("Edit Profile", for: .normal)
+            followButton.addTarget(self, action: #selector(self.goToSettingVC), for: UIControl.Event.touchUpInside)
         } else {
             updateFollowButton()
         }
@@ -50,7 +56,9 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
             self.postsCountLabel.text = "\(count)"
         }
     }
-    
+    @objc func goToSettingVC() {
+        delegateSetting?.goToSettingVC()
+    }
     func updateFollowButton() {
         guard let _ = user?.isFollowing else {
             return

@@ -87,3 +87,9 @@ extension ProfileUserViewController: UICollectionViewDelegateFlowLayout {
         return 2
     }
 }
+
+extension ProfileUserViewController: HeaderProfileSettingDelegate {
+    func goToSettingVC() {
+        performSegue(withIdentifier: "ProfileUserToSettingSegue", sender: nil)
+    }
+}
