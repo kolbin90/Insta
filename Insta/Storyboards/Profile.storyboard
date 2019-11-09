@@ -330,7 +330,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="195"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderImg" translatesAutoresizingMaskIntoConstraints="NO" id="jGy-fs-Oa5">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderImg" translatesAutoresizingMaskIntoConstraints="NO" id="jGy-fs-Oa5">
                                     <rect key="frame" x="157" y="47.5" width="100" height="100"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="100" id="33x-EM-Yap"/>
@@ -348,6 +348,9 @@
                                     <state key="normal" title="Change Profile Image">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="changeImageBtn_TchUpIns:" destination="0Va-AV-hv9" eventType="touchUpInside" id="BT8-Ag-tCb"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -440,6 +443,9 @@
                                                     <state key="normal" title="Save">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="saveBtn_TchUpIns:" destination="0Va-AV-hv9" eventType="touchUpInside" id="0DG-df-abP"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -465,6 +471,9 @@
                                                     <state key="normal" title="Log Out">
                                                         <color key="titleColor" red="1" green="0.022732843415066539" blue="0.08013213239656336" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="logoutBtn_TchUpIns:" destination="0Va-AV-hv9" eventType="touchUpInside" id="vPx-Dm-0DO"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -481,6 +490,11 @@
                             <outlet property="delegate" destination="0Va-AV-hv9" id="Sqs-Jq-Af6"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="emailTextField" destination="d0D-FT-WYT" id="hH9-8Y-Cgm"/>
+                        <outlet property="profileImageView" destination="jGy-fs-Oa5" id="DAe-E9-gmS"/>
+                        <outlet property="usernameTextField" destination="bZx-GB-aci" id="r7T-cD-X43"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SbQ-0h-TJo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
