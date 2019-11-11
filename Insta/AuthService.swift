@@ -63,4 +63,86 @@ class AuthService {
         onSuccess()
     }
     
+    static func updateUserInformation(username:String?, email: String?, imageData: Data?, onSuccess: @escaping() -> Void, onError: @escaping(_ errorString: String?) -> Void) {
+        var newDataDict = [String:String]()
+        if let username = username {
+            newDataDict["username"] =  username
+            newDataDict["username_lowercase"] = username.lowercased()
+        }
+        if let email = email {
+            newDataDict["email"] = email
+            Api.user.CURRENT_USER?.updateEmail(to: email, completion: { (error) in
+                if let errorString = error?.localizedDescription {
+                    onError(errorString)
+                } else {
+                    if let imageData = imageData {
+                        let uID = (Api.user.CURRENT_USER?.uid)!
+                        let storageRef = Storage.storage().reference().child("profileImages").child(uID)
+                        let profileImgMetadata = StorageMetadata()
+                        profileImgMetadata.contentType = "image/jpg"
+                        storageRef.putData(imageData, metadata: profileImgMetadata, completion: { (metadata, error) in
+                            if error != nil {
+                                return
+                            }
+                            storageRef.downloadURL(completion: { (profileImgUrl, error) in
+                                guard let profileImgUrlString = profileImgUrl?.absoluteString else {
+                                    return
+                                }
+                                newDataDict["profileImageUrl"] = profileImgUrlString
+                                Api.user.REF_CURRNT_USER?.updateChildValues(newDataDict, withCompletionBlock: { (error, ref) in
+                                    if let errorString = error?.localizedDescription {
+                                        onError(errorString)
+                                    } else {
+                                        onSuccess()
+                                    }
+                                })
+                            })
+                        })
+                    } else {
+                        Api.user.REF_CURRNT_USER?.updateChildValues(newDataDict, withCompletionBlock: { (error, ref) in
+                            if let errorString = error?.localizedDescription {
+                                onError(errorString)
+                            } else {
+                                onSuccess()
+                            }
+                        })
+                    }
+                }
+            })
+        } else {
+            if let imageData = imageData {
+                let uID = (Api.user.CURRENT_USER?.uid)!
+                let storageRef = Storage.storage().reference().child("profileImages").child(uID)
+                let profileImgMetadata = StorageMetadata()
+                profileImgMetadata.contentType = "image/jpg"
+                storageRef.putData(imageData, metadata: profileImgMetadata, completion: { (metadata, error) in
+                    if error != nil {
+                        return
+                    }
+                    storageRef.downloadURL(completion: { (profileImgUrl, error) in
+                        guard let profileImgUrlString = profileImgUrl?.absoluteString else {
+                            return
+                        }
+                        newDataDict["profileImageUrl"] = profileImgUrlString
+                        Api.user.REF_CURRNT_USER?.updateChildValues(newDataDict, withCompletionBlock: { (error, ref) in
+                            if let errorString = error?.localizedDescription {
+                                onError(errorString)
+                            } else {
+                                onSuccess()
+                            }
+                        })
+                    })
+                })
+            } else {
+                Api.user.REF_CURRNT_USER?.updateChildValues(newDataDict, withCompletionBlock: { (error, ref) in
+                    if let errorString = error?.localizedDescription {
+                        onError(errorString)
+                    } else {
+                        onSuccess()
+                    }
+                })
+            }
+        }
+    }
+    
 }
