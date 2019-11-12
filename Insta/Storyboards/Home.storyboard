@@ -162,14 +162,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aSU-9T-PDa"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="XfF-sC-f9O">
-                        <barButtonItem key="leftBarButtonItem" title=" Log out" id="HqO-zb-7du">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="logoutBtn_TchUpIns:" destination="CXU-kn-96J" id="Ob3-VO-Kei"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Home" id="XfF-sC-f9O"/>
                     <connections>
                         <outlet property="activityIndicator" destination="wIg-4z-RZi" id="g7b-Pj-uAZ"/>
                         <outlet property="tableView" destination="Gq9-TA-kbR" id="h0E-Mo-gWO"/>

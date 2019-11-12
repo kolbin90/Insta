@@ -84,6 +84,11 @@ class SettingTableViewController: UITableViewController {
     }
     
     @IBAction func logoutBtn_TchUpIns(_ sender: Any) {
+        AuthService.logout(onSuccess: {
+            self.dismiss(animated: true, completion: nil)
+        }) { (errorString) in
+            ProgressHUD.showError(errorString)
+        }
     }
     
 }

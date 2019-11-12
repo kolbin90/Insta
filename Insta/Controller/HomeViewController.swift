@@ -65,19 +65,6 @@ class HomeViewController: UIViewController {
             completed()
         }
     }
-
-
-    @IBAction func logoutBtn_TchUpIns(_ sender: Any) {
-        
-        AuthService.logout(onSuccess: {
-            let storyboard = UIStoryboard(name: "Start", bundle: nil)
-            let signInViewController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
-            self.present(signInViewController, animated: true, completion: nil)
-        }) { (errorString) in
-            ProgressHUD.showError(errorString)
-        }
-        
-    }
 }
 
 extension HomeViewController: UITableViewDataSource {
