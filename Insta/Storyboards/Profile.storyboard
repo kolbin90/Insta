@@ -652,9 +652,6 @@
                                                                     <integer key="value" value="4"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
-                                                            <connections>
-                                                                <segue destination="0Va-AV-hv9" kind="show" identifier="ProfileUserToSettingSegue" id="KGH-6Z-xJ7"/>
-                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -717,6 +714,7 @@
                     <navigationItem key="navigationItem" id="v0m-2v-dDs"/>
                     <connections>
                         <outlet property="collectionView" destination="Ert-Vd-iYR" id="kqh-E4-FMU"/>
+                        <segue destination="0Va-AV-hv9" kind="show" identifier="ProfileUserToSettingSegue" id="6Xc-Nd-TTm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HWX-0k-wVy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -732,6 +730,6 @@
         <image name="placeholderImg" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KGH-6Z-xJ7"/>
+        <segue reference="6Xc-Nd-TTm"/>
     </inferredMetricsTieBreakers>
 </document>
