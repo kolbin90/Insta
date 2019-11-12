@@ -7,6 +7,9 @@
 //
 
 import UIKit
+protocol SettingTableViewControllerDelegate {
+    func updateUser()
+}
 
 class SettingTableViewController: UITableViewController {
     
@@ -17,6 +20,7 @@ class SettingTableViewController: UITableViewController {
     var newProfileImage:UIImage?
     var originalUsername: String!
     var oroginalEmail: String!
+    var delegate: SettingTableViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +77,7 @@ class SettingTableViewController: UITableViewController {
         ProgressHUD.show("Waiting...")
         prepareDataToSave(onSussess: {
             ProgressHUD.showSuccess("Success")
+            self.delegate?.updateUser()
         }) { (errorString) in
             ProgressHUD.showError(errorString)
         }
