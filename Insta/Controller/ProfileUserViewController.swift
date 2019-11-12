@@ -67,6 +67,7 @@ extension ProfileUserViewController: UICollectionViewDataSource {
         if let user = self.user {
             headerCell.user = user
             headerCell.delegate = delegate
+            headerCell.delegateSetting = self
         }
         return headerCell
     }

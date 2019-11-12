@@ -19,6 +19,12 @@ class ProfileViewController: UIViewController {
         fetchUser()
         fetchUserPosts()
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ProfileToSettingSegue" {
+            let settingVC = segue.destination as! SettingTableViewController
+            settingVC.delegate = self
+        }
+    }
     
     func fetchUser() {
         Api.user.observeCurrentUser { (user) in
@@ -82,5 +88,11 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
 extension ProfileViewController: HeaderProfileSettingDelegate {
     func goToSettingVC() {
         performSegue(withIdentifier: "ProfileToSettingSegue", sender: nil)
+    }
+}
+
+extension ProfileViewController: SettingTableViewControllerDelegate {
+    func updateUser() {
+        fetchUser()
     }
 }
