@@ -69,6 +69,15 @@ class SignUpViewController: UIViewController {
         passwordTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
     }
     
+    func clear() {
+        emailTextField.text = ""
+        usernameTextField.text = ""
+        passwordTextField.text = ""
+        selectedImage = nil
+        imageView.image = UIImage(named: "placeholderImg")
+        signUpBtn.setTitleColor(.lightGray, for: .normal)
+        signUpBtn.isEnabled = false
+    }
     @objc func textFieldDidChange() {
         guard let userName = usernameTextField.text, !userName.isEmpty, let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty else {
             signUpBtn.setTitleColor(.lightGray, for: .normal)
@@ -96,6 +105,7 @@ class SignUpViewController: UIViewController {
             if passwordTextField.text!.count >= 6 {
                 AuthService.signOn(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, imageData: profileImgData, onSuccess: {
                     ProgressHUD.showSuccess("Success")
+                    self.clear()
                     self.performSegue(withIdentifier: "SignUnToTabBar", sender: nil)
                 }) { (errorString) in
                     ProgressHUD.showError(errorString!)
