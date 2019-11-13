@@ -8,10 +8,14 @@
 
 import UIKit
 
+protocol PhotoCollectionViewCellDelegate {
+    func goToDetailVC(withPost post: Post)
+}
+
 class PhotoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var photoImageView: UIImageView!
-    
+    var delegate: PhotoCollectionViewCellDelegate?
     var post: Post? {
         didSet {
             updateView()
@@ -22,6 +26,13 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         if let photoUrlString = post?.photoUrlString {
             let photoUrl = URL(string: photoUrlString)
             photoImageView.sd_setImage(with: photoUrl, placeholderImage: UIImage(named: "placeholder-photo"), options: [], completed: nil)
+            let tapGestureForComments = UITapGestureRecognizer(target: self, action: #selector(self.PhotoView_TchUpIns))
+            photoImageView.addGestureRecognizer(tapGestureForComments)
+            photoImageView.isUserInteractionEnabled = true
         }
     }
+    @objc func PhotoView_TchUpIns() {
+        delegate?.goToDetailVC(withPost: post!)
+    }
+    
 }

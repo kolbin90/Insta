@@ -31,6 +31,14 @@ class DiscoverViewController: UIViewController {
         }
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetailSegue" {
+            let post = sender as! Post
+            let detailVC = segue.destination as! DetailViewController
+            detailVC.post = post
+        }
+    }
 }
 extension DiscoverViewController: UICollectionViewDataSource {
     
@@ -41,6 +49,7 @@ extension DiscoverViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiscoverCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
         let currentPost = posts[indexPath.row]
         cell.post = currentPost
+        cell.delegate = self
         
         return cell
     }
@@ -59,5 +68,11 @@ extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 2
+    }
+}
+
+extension DiscoverViewController: PhotoCollectionViewCellDelegate {
+    func goToDetailVC(withPost post: Post) {
+        performSegue(withIdentifier: "showDetailSegue", sender: post)
     }
 }
