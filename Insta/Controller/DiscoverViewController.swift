@@ -17,17 +17,18 @@ class DiscoverViewController: UIViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         observeTopPosts()
+
     }
-    
+
     func observeTopPosts() {
+        ProgressHUD.show("Loading...", interaction: false)
         posts.removeAll()
+        self.collectionView.reloadData()
         Api.post.queryTopPosts { (post) in
             self.posts.append(post)
             self.collectionView.reloadData()
+            ProgressHUD.dismiss()
         }
         
     }
@@ -39,6 +40,11 @@ class DiscoverViewController: UIViewController {
             detailVC.post = post
         }
     }
+    
+    @IBAction func refreshBtn_TchUpIns(_ sender: Any) {
+        observeTopPosts()
+    }
+    
 }
 extension DiscoverViewController: UICollectionViewDataSource {
     

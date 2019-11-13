@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor = .black
         tableView.dataSource = self
         fetchUser(uid: post!.uid!) {
             self.tableView.reloadData()
