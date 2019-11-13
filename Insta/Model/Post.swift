@@ -17,6 +17,7 @@ class Post {
     var likeCount: Int?
     var likes: Dictionary<String, Any>?
     var isLiked: Bool?
+    var ratio: CGFloat?
 }
 extension Post {
     static func transformToImagePost(dict: [String:Any], id: String) -> Post {
@@ -27,6 +28,11 @@ extension Post {
         post.id = id
         post.likeCount = dict["likeCount"] as? Int
         post.likes = dict["likes"] as? Dictionary<String, Any>
+        if let imageRatio = dict["ratio"] as? CGFloat {
+            post.ratio = imageRatio
+        } else {
+            post.ratio = 1
+        }
         if post.likes != nil {
             if let currentUserId = Auth.auth().currentUser?.uid {
                 post.isLiked = post.likes![currentUserId] != nil
