@@ -53,32 +53,6 @@ class CameraViewController: UIViewController {
         handlePost()
     }
     
-    func sendPostInfoToDatabase(photoUrlString: String){
-        guard let newPostId = Api.post.REF_POSTS.childByAutoId().key else {
-            return
-        }
-        let newPostRef = Api.post.REF_POSTS.child(newPostId)
-        guard let uid = Api.user.CURRENT_USER?.uid else {
-            return
-        }
-        newPostRef.setValue(["photoUrlString":photoUrlString,"captionText":textView.text!,"uid":uid]) { (error, ref) in
-            if error != nil {
-                ProgressHUD.showError(error!.localizedDescription)
-                return
-            }
-            Api.user_posts.REF_USER_POSTS.child(uid).child(newPostId).setValue(true, withCompletionBlock: { (error, ref) in
-                if let error = error {
-                    ProgressHUD.showError(error.localizedDescription)
-                    return
-                }
-                
-                ProgressHUD.showSuccess("Success ")
-                self.clear()
-                self.tabBarController?.selectedIndex = 0
-            })
-        }
-    }
-    
     @IBAction func postBtn_TchUpIns(_ sender: Any) {
         if let postImg = self.selectedImage, let postImgData = postImg.jpegData(compressionQuality: 0.3) {
             HelperService.updloadDataToServer(data: postImgData, caption: textView.text) {
