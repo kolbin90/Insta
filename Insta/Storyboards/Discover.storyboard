@@ -88,7 +88,7 @@
         <!--Detail View Controller-->
         <scene sceneID="yda-fm-QuK">
             <objects>
-                <viewController id="iQW-52-K53" customClass="DetailViewController" customModule="Insta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="iQW-52-K53" customClass="DetailViewController" customModule="Insta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EgB-bk-KGN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -252,11 +252,21 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="w8W-9c-V84" id="hEX-qL-XTT"/>
+                        <segue destination="jrB-LR-qNZ" kind="show" identifier="DetailToCommentsVCSegue" id="d7r-wF-62i"/>
+                        <segue destination="C0K-z4-CT7" kind="show" identifier="DetailToProfileUserVCSegue" id="QQb-pR-AsD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WGm-Tx-JCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2984" y="127"/>
+        </scene>
+        <!--CommentsViewController-->
+        <scene sceneID="grN-G7-X42">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="CommentsViewController" id="jrB-LR-qNZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J3a-fe-wm3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3593" y="-165"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="eYo-Td-VUr">
@@ -371,6 +381,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eAo-vp-mkG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2094" y="-587"/>
+        </scene>
+        <!--ProfileUserViewController-->
+        <scene sceneID="HvF-qi-SCd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="ProfileUserViewController" id="C0K-z4-CT7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JJZ-4F-5vb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3591" y="4"/>
         </scene>
     </scenes>
     <resources>

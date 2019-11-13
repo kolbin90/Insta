@@ -180,12 +180,12 @@
                 <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="ProfileUserViewController" id="qgx-TB-gXP" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R78-nh-GEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3590" y="-1715"/>
+            <point key="canvasLocation" x="3348" y="-827"/>
         </scene>
         <!--Comments-->
         <scene sceneID="Szr-9g-EBd">
             <objects>
-                <viewController title="Comments" id="odt-RQ-4OD" customClass="CommentsViewController" customModule="Insta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CommentsViewController" title="Comments" id="odt-RQ-4OD" customClass="CommentsViewController" customModule="Insta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nVm-MN-YTM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -312,7 +312,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CHM-Ty-X7h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3742" y="-1256"/>
+            <point key="canvasLocation" x="3741" y="-1246"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BdX-Nq-Nfk">
@@ -345,6 +345,6 @@
         <image name="share" width="37" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mIA-s4-fIL"/>
+        <segue reference="nLa-Ll-Lb9"/>
     </inferredMetricsTieBreakers>
 </document>

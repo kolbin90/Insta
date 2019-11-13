@@ -24,6 +24,19 @@ class DetailViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DetailToCommentsVCSegue" {
+            let commentVC = segue.destination as! CommentsViewController
+            let postId = sender as! String
+            commentVC.postId = postId
+        }
+        if segue.identifier == "DetailToProfileUserVCSegue" {
+            let profileUserVC = segue.destination as! ProfileUserViewController
+            let user = sender as! UserModel
+            profileUserVC.user = user
+        }
+    }
+    
     func fetchUser(uid: String, completed: @escaping () -> Void) {
         Api.user.observeUser(withUid: uid) { (user) in
             self.user = user
@@ -41,6 +54,16 @@ extension DetailViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         cell.post = post
         cell.user = user
+        cell.delegate = self
         return cell
+    }
+}
+
+extension DetailViewController: PostCellDelegate {
+    func goToCommentsVC(withPostId id: String) {
+        performSegue(withIdentifier: "DetailToCommentsVCSegue", sender: id)
+    }
+    func goToProfileUserVC(withUser user: UserModel) {
+        performSegue(withIdentifier: "DetailToProfileUserVCSegue", sender: user)
     }
 }
