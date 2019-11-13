@@ -56,6 +56,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
         let currentPost = posts[indexPath.row]
         cell.post = currentPost
+        cell.delegate = self
     
         return cell
     }
@@ -94,5 +95,14 @@ extension ProfileViewController: HeaderProfileSettingDelegate {
 extension ProfileViewController: SettingTableViewControllerDelegate {
     func updateUser() {
         fetchUser()
+    }
+}
+
+extension ProfileViewController: PhotoCollectionViewCellDelegate {
+    func goToDetailVC(withPost post: Post) {
+        let discoveryStoryboard = UIStoryboard(name: "Discover", bundle: nil)
+        let detailVC = discoveryStoryboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        detailVC.post = post
+        show(detailVC, sender: nil)
     }
 }
