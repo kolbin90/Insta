@@ -10,7 +10,7 @@ import Foundation
 import FirebaseStorage
 import FirebaseDatabase
 class HelperService {
-    static func updloadDataToServer(data: Data, caption: String, onSucces: @escaping () -> Void) {
+    static func updloadDataToServer(data: Data, ratio: CGFloat, caption: String, onSucces: @escaping () -> Void) {
         ProgressHUD.show("Posting")
         let photoID = NSUUID().uuidString
         let storageRef = Storage.storage().reference().child("posts").child(photoID)
@@ -26,14 +26,14 @@ class HelperService {
                 {
                     return
                 }
-                self.sendPostInfoToDatabase(photoUrlString: profileImgUrlString, caption: caption) {
+                self.sendPostInfoToDatabase(photoUrlString: profileImgUrlString, ratio: ratio, caption: caption) {
                     onSucces()
                 }
             })
         })
     }
     
-    static func sendPostInfoToDatabase(photoUrlString: String, caption: String, onSucces: @escaping () -> Void){
+    static func sendPostInfoToDatabase(photoUrlString: String, ratio: CGFloat, caption: String, onSucces: @escaping () -> Void){
         guard let newPostId = Api.post.REF_POSTS.childByAutoId().key else {
             return
         }
@@ -44,7 +44,7 @@ class HelperService {
         guard let uid = Api.user.CURRENT_USER?.uid else {
             return
         }
-        newPostRef.setValue(["photoUrlString":photoUrlString,"captionText":caption,"uid":uid,"likeCount":0]) { (error, ref) in
+        newPostRef.setValue(["photoUrlString":photoUrlString, "ratio": ratio,"captionText":caption,"uid":uid,"likeCount":0]) { (error, ref) in
             if error != nil {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
