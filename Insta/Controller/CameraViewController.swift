@@ -60,7 +60,7 @@ class CameraViewController: UIViewController {
                 self.tabBarController?.selectedIndex = 0
             }
         } else {
-            ProgressHUD.showError("Profile image can't be empty" )
+            ProgressHUD.showError("Post image can't be empty" )
         }
     }
     
