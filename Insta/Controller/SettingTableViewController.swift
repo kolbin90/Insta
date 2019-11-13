@@ -28,7 +28,15 @@ class SettingTableViewController: UITableViewController {
         navigationController?.navigationBar.tintColor = .black
         navigationItem.title = "Edit Profile"
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = true
+        tableView.addGestureRecognizer(tapGesture)
+        
         fetchCurrentUser()
+    }
+    
+    @objc func hideKeyboard() {
+        view.endEditing(true)
     }
     
     func fetchCurrentUser() {
