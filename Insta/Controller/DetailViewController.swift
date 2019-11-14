@@ -22,6 +22,8 @@ class DetailViewController: UIViewController {
         fetchUser(uid: post!.uid!) {
             self.tableView.reloadData()
         }
+        tableView.estimatedRowHeight = 582
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
