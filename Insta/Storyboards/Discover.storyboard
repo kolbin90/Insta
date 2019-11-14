@@ -214,6 +214,7 @@
                                                     <outlet property="captionLabel" destination="BEZ-fe-rYK" id="KGd-FW-2fZ"/>
                                                     <outlet property="commentImageView" destination="lf4-Lw-AN5" id="nLy-mc-1K4"/>
                                                     <outlet property="headerView" destination="swm-Pi-fS3" id="pLM-E5-ZYM"/>
+                                                    <outlet property="imageViewHeightConstraint" destination="Tsi-1G-J6Q" id="fOz-fk-i5k"/>
                                                     <outlet property="likeCountButton" destination="jKg-1c-9S2" id="Hf5-uq-I3s"/>
                                                     <outlet property="likeImageView" destination="aTu-FI-Vlw" id="0py-nu-rNu"/>
                                                     <outlet property="postImageView" destination="l6W-9I-zl8" id="09g-eW-4rD"/>
