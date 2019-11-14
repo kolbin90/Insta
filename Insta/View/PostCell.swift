@@ -16,6 +16,7 @@ protocol PostCellDelegate {
 
 class PostCell: UITableViewCell {
     
+    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var postImageView: UIImageView!
@@ -95,7 +96,8 @@ class PostCell: UITableViewCell {
         }
         captionLabel.text = post?.captionText
         
-        self.updateLikes(forPost: post)
+        imageViewHeightConstraint.constant = UIScreen.main.bounds.width / post.ratio!
+        updateLikes(forPost: post)
     }
     
     func updateLikes(forPost post: Post) {

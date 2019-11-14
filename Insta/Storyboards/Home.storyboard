@@ -136,6 +136,7 @@
                                             <outlet property="captionLabel" destination="6Tf-5S-jQs" id="5Ev-Eo-0Bd"/>
                                             <outlet property="commentImageView" destination="P85-Q4-PUw" id="YXl-le-bRF"/>
                                             <outlet property="headerView" destination="zP5-6r-mfn" id="bKG-OQ-E0v"/>
+                                            <outlet property="imageViewHeightConstraint" destination="rZ3-IG-MxR" id="4B8-qA-Sjq"/>
                                             <outlet property="likeCountButton" destination="ylO-eh-jVA" id="DZS-y9-gR0"/>
                                             <outlet property="likeImageView" destination="pHB-4j-BDP" id="4JE-OI-Fir"/>
                                             <outlet property="postImageView" destination="xuu-Vc-NXh" id="LSu-o5-CM6"/>
@@ -345,6 +346,6 @@
         <image name="share" width="37" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nLa-Ll-Lb9"/>
+        <segue reference="mIA-s4-fIL"/>
     </inferredMetricsTieBreakers>
 </document>
