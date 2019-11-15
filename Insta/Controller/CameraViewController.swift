@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class CameraViewController: UIViewController {
     @IBOutlet weak var photoImageView: UIImageView!
@@ -15,6 +16,7 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var clearButton: UIBarButtonItem!
     
     var selectedImage: UIImage?
+    var videoUrl: URL?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +44,7 @@ class CameraViewController: UIViewController {
     }
     @objc func handleSelectPhoto() {
         let pickerController = UIImagePickerController()
+        pickerController.mediaTypes = ["public.photo", "public.movie"]
         pickerController.delegate = self
         present(pickerController, animated: true, completion: nil)
     }
@@ -73,10 +76,31 @@ class CameraViewController: UIViewController {
 
 extension CameraViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let videoUrl = info[UIImagePickerController.InfoKey.mediaURL] as? URL {
+            if let thumbnailImage = createThumbnailImage(forVideoUrl: videoUrl) {
+                selectedImage = thumbnailImage
+                photoImageView.image = thumbnailImage
+                self.videoUrl = videoUrl
+            }
+        }
+        
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             photoImageView.image = image
             selectedImage = image
         }
         dismiss(animated: true, completion: nil)
+    }
+    
+    func createThumbnailImage(forVideoUrl videoUrl: URL) -> UIImage? {
+        let asset = AVAsset(url: videoUrl)
+        let imageGenerator = AVAssetImageGenerator(asset: asset)
+        imageGenerator.appliesPreferredTrackTransform = true
+        do {
+            let thumbnailCGImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 1, timescale: 10), actualTime: nil)
+            return UIImage(cgImage: thumbnailCGImage)
+        } catch let error{
+            print(error)
+        }
+        return nil
     }
 }
