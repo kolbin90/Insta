@@ -10,13 +10,34 @@ import Foundation
 import FirebaseStorage
 import FirebaseDatabase
 class HelperService {
-    static func updloadDataToServer(data: Data, ratio: CGFloat, caption: String, onSucces: @escaping () -> Void) {
+    static func updloadDataToServer(imageData: Data, videoUrl: URL?, ratio: CGFloat, caption: String, onSuccess: @escaping () -> Void) {
+        ProgressHUD.show("Posting")
+        if let videoUrl = videoUrl {
+            uploadVideoToServer(videoUrl: videoUrl) { (videoUrlString) in
+                uploadImageToServer(imageData: imageData, onSuccess: { (imageUrlString) in
+                    sendPostInfoToDatabase(photoUrlString: imageUrlString, videoUrlString: videoUrlString, ratio: ratio, caption: caption, onSuccess: {
+                        ProgressHUD.showSuccess("Success ")
+                        onSuccess()
+                    })
+                })
+            }
+        } else {
+            uploadImageToServer(imageData: imageData) { (imageUrlString) in
+                sendPostInfoToDatabase(photoUrlString: imageUrlString, ratio: ratio, caption: caption, onSuccess: {
+                    ProgressHUD.showSuccess("Success ")
+                    onSuccess()
+                })
+            }
+        }
+    }
+    
+    static func uploadImageToServer(imageData: Data, onSuccess: @escaping (String) -> Void) {
         ProgressHUD.show("Posting")
         let photoID = NSUUID().uuidString
         let storageRef = Storage.storage().reference().child("posts").child(photoID)
         let profileImgMetadata = StorageMetadata()
         profileImgMetadata.contentType = "image/jpg"
-        storageRef.putData(data, metadata: profileImgMetadata, completion: { (metadata, error) in
+        storageRef.putData(imageData, metadata: profileImgMetadata, completion: { (metadata, error) in
             if error != nil {
                 return
             }
@@ -26,14 +47,32 @@ class HelperService {
                 {
                     return
                 }
-                self.sendPostInfoToDatabase(photoUrlString: profileImgUrlString, ratio: ratio, caption: caption) {
-                    onSucces()
-                }
+                onSuccess(profileImgUrlString)
+                
             })
         })
     }
     
-    static func sendPostInfoToDatabase(photoUrlString: String, ratio: CGFloat, caption: String, onSucces: @escaping () -> Void){
+    static func uploadVideoToServer(videoUrl: URL, onSuccess: @escaping (String) -> Void) {
+        let videoID = NSUUID().uuidString
+        let storageRef = Storage.storage().reference().child("posts").child(videoID)
+        storageRef.putFile(from: videoUrl, metadata: nil) { (metadata, error) in
+            if error != nil {
+                return
+            }
+            storageRef.downloadURL(completion: { (videoUrl, error) in
+                guard let videoUrlString = videoUrl?.absoluteString
+                    else
+                {
+                    return
+                }
+                onSuccess(videoUrlString)
+            })
+        }
+    }
+    
+    
+    static func sendPostInfoToDatabase(photoUrlString: String, videoUrlString: String? = nil, ratio: CGFloat, caption: String, onSuccess: @escaping () -> Void){
         guard let newPostId = Api.post.REF_POSTS.childByAutoId().key else {
             return
         }
@@ -44,7 +83,11 @@ class HelperService {
         guard let uid = Api.user.CURRENT_USER?.uid else {
             return
         }
-        newPostRef.setValue(["photoUrlString":photoUrlString, "ratio": ratio,"captionText":caption,"uid":uid,"likeCount":0]) { (error, ref) in
+        var dict = ["photoUrlString":photoUrlString, "ratio": ratio,"captionText":caption,"uid":uid,"likeCount":0] as [String : Any]
+        if let videoUrlString = videoUrlString {
+            dict["videoUrlString"] = videoUrlString
+        }
+        newPostRef.setValue(dict) { (error, ref) in
             if error != nil {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
@@ -54,8 +97,7 @@ class HelperService {
                     ProgressHUD.showError(error.localizedDescription)
                     return
                 }
-                ProgressHUD.showSuccess("Success ")
-                onSucces()
+                onSuccess()
             })
         }
     }

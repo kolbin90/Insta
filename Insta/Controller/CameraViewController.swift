@@ -59,7 +59,7 @@ class CameraViewController: UIViewController {
     @IBAction func postBtn_TchUpIns(_ sender: Any) {
         if let postImg = self.selectedImage, let postImgData = postImg.jpegData(compressionQuality: 0.3) {
             let ratio = postImg.size.width / postImg.size.height
-            HelperService.updloadDataToServer(data: postImgData, ratio: ratio, caption: textView.text) {
+            HelperService.updloadDataToServer(imageData: postImgData, videoUrl: videoUrl, ratio: ratio, caption: textView.text) {
                 self.clear()
                 self.tabBarController?.selectedIndex = 0
             }
