@@ -22,7 +22,6 @@ class DiscoverViewController: UIViewController {
     }
 
     func observeTopPosts() {
-        ProgressHUD.show("Loading...", interaction: false)
         posts.removeAll()
         self.collectionView.reloadData()
         Api.post.queryTopPosts { (post) in
@@ -42,6 +41,7 @@ class DiscoverViewController: UIViewController {
     }
     
     @IBAction func refreshBtn_TchUpIns(_ sender: Any) {
+        ProgressHUD.show("Loading...", interaction: false)
         observeTopPosts()
     }
     
