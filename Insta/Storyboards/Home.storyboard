@@ -42,7 +42,7 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xuu-Vc-NXh">
                                                     <rect key="frame" x="0.0" y="66" width="414" height="414"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="414" id="rZ3-IG-MxR"/>
+                                                        <constraint firstAttribute="height" priority="999" constant="414" id="rZ3-IG-MxR"/>
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ylO-eh-jVA">

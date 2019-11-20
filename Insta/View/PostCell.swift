@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import AVFoundation
 
 protocol PostCellDelegate {
     func goToCommentsVC(withPostId id: String)
@@ -28,6 +29,9 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var headerView: UIView!
     
     var delegate: PostCellDelegate?
+    var player: AVPlayer?
+    var playerLayer: AVPlayerLayer?
+    
     var post: Post! {
         didSet {
             updateView()
@@ -45,9 +49,9 @@ class PostCell: UITableViewCell {
         postImageView.image = UIImage(named: "placeholder-photo")
         usernameLabel.text = ""
         captionLabel.text = ""
-        //updateLikes(forPost: post!)
         Api.post.REF_POSTS.child(post!.id!).removeAllObservers()
-
+        playerLayer?.removeFromSuperlayer()
+        player?.pause()
     }
     
     override func awakeFromNib() {
@@ -90,14 +94,25 @@ class PostCell: UITableViewCell {
     
     
     func updateView() {
+        imageViewHeightConstraint.constant = UIScreen.main.bounds.width / post.ratio!
+        layoutIfNeeded()
+        captionLabel.text = post?.captionText
+        updateLikes(forPost: post)
         if let photoUrlString = post?.photoUrlString {
             let photoUrl = URL(string: photoUrlString)
             postImageView.sd_setImage(with: photoUrl, placeholderImage: UIImage(named: "placeholder-photo"), options: [], completed: nil)
         }
-        captionLabel.text = post?.captionText
         
-        imageViewHeightConstraint.constant = UIScreen.main.bounds.width / post.ratio!
-        updateLikes(forPost: post)
+        if let videoUrlString = post?.videoUrlString, let videoUrl = URL(string: videoUrlString) {
+            player = AVPlayer(url: videoUrl)
+            playerLayer = AVPlayerLayer(player: player)
+            playerLayer?.frame = postImageView.frame
+            playerLayer?.frame.size.width = UIScreen.main.bounds.width
+            playerLayer?.frame.size.height = UIScreen.main.bounds.width / post!.ratio!
+            self.contentView.layer.addSublayer(playerLayer!)
+            player?.play()
+        }
+        
     }
     
     func updateLikes(forPost post: Post) {

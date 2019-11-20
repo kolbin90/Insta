@@ -12,6 +12,7 @@ import FirebaseAuth
 class Post {
     var captionText: String?
     var photoUrlString: String?
+    var videoUrlString: String?
     var uid: String?
     var id: String?
     var likeCount: Int?
@@ -28,11 +29,15 @@ extension Post {
         post.id = id
         post.likeCount = dict["likeCount"] as? Int
         post.likes = dict["likes"] as? Dictionary<String, Any>
+        if let videoUrlString = dict["videoUrlString"] as? String {
+            post.videoUrlString = videoUrlString
+        }
         if let imageRatio = dict["ratio"] as? CGFloat {
             post.ratio = imageRatio
         } else {
             post.ratio = 1
         }
+        
         if post.likes != nil {
             if let currentUserId = Auth.auth().currentUser?.uid {
                 post.isLiked = post.likes![currentUserId] != nil
