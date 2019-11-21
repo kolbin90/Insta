@@ -180,8 +180,31 @@
                                                                 <constraint firstAttribute="height" constant="1" id="E4N-tQ-gnO"/>
                                                             </constraints>
                                                         </view>
+                                                        <view alpha="0.64999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f64-uI-HDU">
+                                                            <rect key="frame" x="15" y="435" width="30" height="30"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_Mute" translatesAutoresizingMaskIntoConstraints="NO" id="M29-D4-YIT">
+                                                                    <rect key="frame" x="6" y="6" width="18" height="18"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="IQj-Sg-wFd"/>
+                                                                <constraint firstAttribute="width" constant="30" id="Ih0-JG-DIk"/>
+                                                                <constraint firstAttribute="bottom" secondItem="M29-D4-YIT" secondAttribute="bottom" constant="6" id="W9c-LA-L38"/>
+                                                                <constraint firstItem="M29-D4-YIT" firstAttribute="top" secondItem="f64-uI-HDU" secondAttribute="top" constant="6" id="fMw-Zd-tFo"/>
+                                                                <constraint firstItem="M29-D4-YIT" firstAttribute="leading" secondItem="f64-uI-HDU" secondAttribute="leading" constant="6" id="pPr-WP-Y6y"/>
+                                                                <constraint firstAttribute="trailing" secondItem="M29-D4-YIT" secondAttribute="trailing" constant="6" id="pif-of-9az"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="15"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="aTu-FI-Vlw" firstAttribute="top" secondItem="f64-uI-HDU" secondAttribute="bottom" constant="30" id="2qk-6A-R2r"/>
                                                         <constraint firstItem="BEZ-fe-rYK" firstAttribute="leading" secondItem="3e7-Wt-ohm" secondAttribute="leading" constant="15" id="53j-KL-YYh"/>
                                                         <constraint firstItem="BEZ-fe-rYK" firstAttribute="top" secondItem="jKg-1c-9S2" secondAttribute="bottom" constant="8" id="9LM-54-8xR"/>
                                                         <constraint firstItem="fZi-tk-qi0" firstAttribute="height" secondItem="aTu-FI-Vlw" secondAttribute="height" id="9Tq-1W-EhD"/>
@@ -206,6 +229,7 @@
                                                         <constraint firstItem="aTu-FI-Vlw" firstAttribute="top" secondItem="l6W-9I-zl8" secondAttribute="bottom" constant="15" id="mxB-14-zOg"/>
                                                         <constraint firstItem="fCW-lx-GX6" firstAttribute="leading" secondItem="3e7-Wt-ohm" secondAttribute="leading" constant="15" id="o12-Bf-m7T"/>
                                                         <constraint firstAttribute="trailing" secondItem="BEZ-fe-rYK" secondAttribute="trailing" constant="15" id="qIO-4z-CqK"/>
+                                                        <constraint firstItem="f64-uI-HDU" firstAttribute="leading" secondItem="3e7-Wt-ohm" secondAttribute="leading" constant="15" id="rEb-Ah-OYg"/>
                                                         <constraint firstItem="jKg-1c-9S2" firstAttribute="leading" secondItem="3e7-Wt-ohm" secondAttribute="leading" constant="15" id="v6t-qf-F4o"/>
                                                         <constraint firstAttribute="trailing" secondItem="jKg-1c-9S2" secondAttribute="trailing" constant="15" id="zxA-U9-6QB"/>
                                                     </constraints>
@@ -221,6 +245,8 @@
                                                     <outlet property="profileImageView" destination="s00-ji-k0O" id="tTL-FI-HIL"/>
                                                     <outlet property="shareImageView" destination="fZi-tk-qi0" id="aRy-AF-LIY"/>
                                                     <outlet property="usernameLabel" destination="k7V-AH-95o" id="Ycm-5t-bMv"/>
+                                                    <outlet property="volumeImageView" destination="M29-D4-YIT" id="I0s-zD-zGD"/>
+                                                    <outlet property="volumeView" destination="f64-uI-HDU" id="7xQ-8b-WTO"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -394,6 +420,7 @@
     </scenes>
     <resources>
         <image name="Comment" width="43" height="41"/>
+        <image name="Icon_Mute" width="25" height="25"/>
         <image name="Search" width="23" height="22"/>
         <image name="Search_Selected" width="23" height="22"/>
         <image name="like" width="46" height="41"/>

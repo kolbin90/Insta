@@ -28,6 +28,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var volumeView: UIView!
+    @IBOutlet weak var volumeImageView: UIImageView!
     
     var delegate: PostCellDelegate?
     var player: AVPlayer?
@@ -103,17 +104,51 @@ class PostCell: UITableViewCell {
             let photoUrl = URL(string: photoUrlString)
             postImageView.sd_setImage(with: photoUrl, placeholderImage: UIImage(named: "placeholder-photo"), options: [], completed: nil)
         }
+        volumeView.isHidden = true
         
         if let videoUrlString = post?.videoUrlString, let videoUrl = URL(string: videoUrlString) {
+            NotificationCenter.default.addObserver(self, selector: #selector(stopVideo), name: NSNotification.Name.init("stopVideo"), object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(playVideo), name: NSNotification.Name.init("playVideo"), object: nil)
             player = AVPlayer(url: videoUrl)
             playerLayer = AVPlayerLayer(player: player)
             playerLayer?.frame = postImageView.frame
             playerLayer?.frame.size.width = UIScreen.main.bounds.width
             playerLayer?.frame.size.height = UIScreen.main.bounds.width / post!.ratio!
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(PostCell.changeVolume))
+            tapGesture.numberOfTapsRequired = 1
+            volumeView.addGestureRecognizer(tapGesture)
             self.contentView.layer.addSublayer(playerLayer!)
+            volumeImageView.image = UIImage(named: "Icon_Volume")
+            volumeView.isHidden = false
+            volumeView.layer.zPosition = 1
+            player?.isMuted = false
             player?.play()
         }
         
+    }
+    
+    @objc func changeVolume() {
+        guard let player = player else {
+            return
+        }
+        if player.isMuted {
+            player.isMuted = false
+            volumeImageView.image = UIImage(named: "Icon_Volume")
+        } else {
+            player.isMuted = true
+            volumeImageView.image = UIImage(named: "Icon_Mute")
+        }
+    }
+    @objc func stopVideo() {
+        if player?.rate != 0 {
+            player?.pause()
+        }
+    }
+    
+    @objc func playVideo() {
+        if player?.rate == 0 {
+            player?.play()
+        }
     }
     
     func updateLikes(forPost post: Post) {

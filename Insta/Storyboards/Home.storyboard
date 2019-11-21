@@ -167,6 +167,7 @@
                                             <outlet property="profileImageView" destination="xzK-zI-EGs" id="KCM-uQ-tEs"/>
                                             <outlet property="shareImageView" destination="aTn-Bh-lM7" id="E2P-YL-Gyh"/>
                                             <outlet property="usernameLabel" destination="Cqp-w7-nKd" id="N1m-dc-LOQ"/>
+                                            <outlet property="volumeImageView" destination="yqp-rU-wG6" id="YCz-I1-Klj"/>
                                             <outlet property="volumeView" destination="H3V-QA-qeZ" id="sag-9Y-5dx"/>
                                         </connections>
                                     </tableViewCell>

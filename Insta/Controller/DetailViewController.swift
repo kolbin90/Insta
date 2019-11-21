@@ -26,6 +26,12 @@ class DetailViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.post(name: NSNotification.Name.init("stopVideo"), object: nil)
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailToCommentsVCSegue" {
             let commentVC = segue.destination as! CommentsViewController

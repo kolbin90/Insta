@@ -23,6 +23,15 @@ class HomeViewController: UIViewController {
         tableView.estimatedRowHeight = 582
         tableView.rowHeight = UITableView.automaticDimension
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.post(name: NSNotification.Name.init("stopVideo"), object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.post(name: NSNotification.Name.init("playVideo"), object: nil)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CommentsSegue" {
