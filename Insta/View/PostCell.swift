@@ -27,6 +27,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var likeCountButton: UIButton!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var volumeView: UIView!
     
     var delegate: PostCellDelegate?
     var player: AVPlayer?

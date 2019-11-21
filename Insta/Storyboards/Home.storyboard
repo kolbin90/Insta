@@ -102,6 +102,28 @@
                                                         <constraint firstAttribute="height" constant="1" id="rjn-Bb-ZbX"/>
                                                     </constraints>
                                                 </view>
+                                                <view alpha="0.65000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H3V-QA-qeZ">
+                                                    <rect key="frame" x="15" y="435" width="30" height="30"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_Mute" translatesAutoresizingMaskIntoConstraints="NO" id="yqp-rU-wG6">
+                                                            <rect key="frame" x="6" y="6" width="18" height="18"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="yqp-rU-wG6" secondAttribute="bottom" constant="6" id="DJ2-Qf-SAh"/>
+                                                        <constraint firstItem="yqp-rU-wG6" firstAttribute="top" secondItem="H3V-QA-qeZ" secondAttribute="top" constant="6" id="QB9-Ej-JSn"/>
+                                                        <constraint firstItem="yqp-rU-wG6" firstAttribute="leading" secondItem="H3V-QA-qeZ" secondAttribute="leading" constant="6" id="WMd-EO-vs2"/>
+                                                        <constraint firstAttribute="trailing" secondItem="yqp-rU-wG6" secondAttribute="trailing" constant="6" id="jnj-3x-euC"/>
+                                                        <constraint firstAttribute="width" constant="30" id="oBe-I9-wtG"/>
+                                                        <constraint firstAttribute="height" constant="30" id="oK3-d8-mvm"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="aTn-Bh-lM7" firstAttribute="centerY" secondItem="pHB-4j-BDP" secondAttribute="centerY" id="96D-wj-xCx"/>
@@ -114,12 +136,14 @@
                                                 <constraint firstItem="xuu-Vc-NXh" firstAttribute="top" secondItem="zP5-6r-mfn" secondAttribute="bottom" id="GO2-Fy-k5a"/>
                                                 <constraint firstItem="m46-JP-62Z" firstAttribute="leading" secondItem="JFn-4c-8RC" secondAttribute="leading" constant="15" id="Hgx-Pi-INd"/>
                                                 <constraint firstItem="xuu-Vc-NXh" firstAttribute="leading" secondItem="JFn-4c-8RC" secondAttribute="leading" id="JYi-Gk-VHA"/>
+                                                <constraint firstItem="H3V-QA-qeZ" firstAttribute="leading" secondItem="JFn-4c-8RC" secondAttribute="leading" constant="15" id="MND-tc-aj9"/>
                                                 <constraint firstItem="aTn-Bh-lM7" firstAttribute="height" secondItem="pHB-4j-BDP" secondAttribute="height" id="NIN-GZ-XZ5"/>
                                                 <constraint firstItem="6Tf-5S-jQs" firstAttribute="top" secondItem="ylO-eh-jVA" secondAttribute="bottom" constant="8" id="O15-HA-pVv"/>
                                                 <constraint firstItem="ylO-eh-jVA" firstAttribute="leading" secondItem="JFn-4c-8RC" secondAttribute="leading" constant="15" id="PA4-E9-kPH"/>
                                                 <constraint firstItem="pHB-4j-BDP" firstAttribute="leading" secondItem="JFn-4c-8RC" secondAttribute="leading" constant="15" id="Qou-Bz-qmk"/>
                                                 <constraint firstItem="zP5-6r-mfn" firstAttribute="leading" secondItem="JFn-4c-8RC" secondAttribute="leading" id="Sex-yE-D3p"/>
                                                 <constraint firstItem="aTn-Bh-lM7" firstAttribute="width" secondItem="pHB-4j-BDP" secondAttribute="width" id="Ww3-RW-trC"/>
+                                                <constraint firstItem="pHB-4j-BDP" firstAttribute="top" secondItem="H3V-QA-qeZ" secondAttribute="bottom" constant="30" id="Z9j-yF-A3P"/>
                                                 <constraint firstItem="ylO-eh-jVA" firstAttribute="top" secondItem="pHB-4j-BDP" secondAttribute="bottom" constant="12" id="b73-Ub-6uU"/>
                                                 <constraint firstAttribute="trailing" secondItem="xuu-Vc-NXh" secondAttribute="trailing" id="bfj-Sn-kqK"/>
                                                 <constraint firstItem="aTn-Bh-lM7" firstAttribute="leading" secondItem="P85-Q4-PUw" secondAttribute="trailing" constant="19" id="dDM-Hi-YTK"/>
@@ -143,6 +167,7 @@
                                             <outlet property="profileImageView" destination="xzK-zI-EGs" id="KCM-uQ-tEs"/>
                                             <outlet property="shareImageView" destination="aTn-Bh-lM7" id="E2P-YL-Gyh"/>
                                             <outlet property="usernameLabel" destination="Cqp-w7-nKd" id="N1m-dc-LOQ"/>
+                                            <outlet property="volumeView" destination="H3V-QA-qeZ" id="sag-9Y-5dx"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -341,6 +366,7 @@
         <image name="Comment" width="43" height="41"/>
         <image name="Home" width="21" height="23"/>
         <image name="Home_Selected" width="21" height="23"/>
+        <image name="Icon_Mute" width="25" height="25"/>
         <image name="like" width="46" height="41"/>
         <image name="placeholderImg" width="225" height="225"/>
         <image name="share" width="37" height="41"/>
