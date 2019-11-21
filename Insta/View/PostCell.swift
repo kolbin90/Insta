@@ -109,6 +109,7 @@ class PostCell: UITableViewCell {
         if let videoUrlString = post?.videoUrlString, let videoUrl = URL(string: videoUrlString) {
             NotificationCenter.default.addObserver(self, selector: #selector(stopVideo), name: NSNotification.Name.init("stopVideo"), object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(playVideo), name: NSNotification.Name.init("playVideo"), object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(scrollToStop(_:)), name: NSNotification.Name.init("scrollToStop"), object: nil)
             player = AVPlayer(url: videoUrl)
             playerLayer = AVPlayerLayer(player: player)
             playerLayer?.frame = postImageView.frame
@@ -148,6 +149,14 @@ class PostCell: UITableViewCell {
     @objc func playVideo() {
         if player?.rate == 0 {
             player?.play()
+        }
+    }
+    
+    @objc func scrollToStop(_ notification: NSNotification) {
+        if let sentPostId = notification.userInfo?["postId"] as? String {
+            if post.id == sentPostId {
+                player?.pause()
+            }
         }
     }
     

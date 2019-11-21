@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
         loadPosts()
         tableView.estimatedRowHeight = 582
         tableView.rowHeight = UITableView.automaticDimension
@@ -76,7 +77,7 @@ class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController: UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
@@ -89,6 +90,7 @@ extension HomeViewController: UITableViewDataSource {
         cell.delegate = self
         return cell
     }
+    
 }
 
 extension HomeViewController: PostCellDelegate {
@@ -97,6 +99,15 @@ extension HomeViewController: PostCellDelegate {
     }
     func goToProfileUserVC(withUser user: UserModel) {
         performSegue(withIdentifier: "HomeToProfileUserSegue", sender: user)
+    }
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let postCell = cell as? PostCell {
+            guard postCell.post.videoUrlString != nil else {
+                return
+            }
+            print("Its gonna work")
+            NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "scrollToStop"), object: nil, userInfo: ["postId" : postCell.post.id!])
+        }
     }
 }
 
