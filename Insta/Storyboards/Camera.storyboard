@@ -173,6 +173,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="wVR-86-tSP" id="dEz-lT-xeQ"/>
+                        <outlet property="postImageHeightConstraint" destination="wRA-bF-tZh" id="d7g-Ri-0K9"/>
                         <outlet property="postImageView" destination="W6J-Pb-9V7" id="TME-Ga-Chn"/>
                     </connections>
                 </viewController>

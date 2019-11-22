@@ -15,6 +15,7 @@ class FilterViewController: UIViewController {
 
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var postImageHeightConstraint: NSLayoutConstraint!
     
     var delegate: FilterViewControllerDelegate?
     
@@ -28,6 +29,8 @@ class FilterViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         // Do any additional setup after loading the view.
+        postImageHeightConstraint.constant = UIScreen.main.bounds.width / (postImage!.size.width / postImage!.size.height)
+        //layoutIfNeeded()
         postImageView.image = postImage
         filterImages()
     }
