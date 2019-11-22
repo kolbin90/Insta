@@ -86,12 +86,13 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
         }
         
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            photoImageView.image = image
-            selectedImage = image
+            //photoImageView.image = image
+            //selectedImage = image
             dismiss(animated: true) {
                 let cameraStoryboard = UIStoryboard(name: "Camera", bundle: nil)
                 let filterVC = cameraStoryboard.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
                 filterVC.postImage = image
+                filterVC.delegate = self
                 let navController = UINavigationController(rootViewController: filterVC)
                 self.present(navController, animated: true)
             }
@@ -109,5 +110,12 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
             print(error)
         }
         return nil
+    }
+}
+
+extension CameraViewController: FilterViewControllerDelegate {
+    func useFiltredImage(image: UIImage) {
+        selectedImage = image
+        photoImageView.image = image
     }
 }
