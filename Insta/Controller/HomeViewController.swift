@@ -105,7 +105,6 @@ extension HomeViewController: PostCellDelegate {
             guard postCell.post.videoUrlString != nil else {
                 return
             }
-            print("Its gonna work")
             NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "scrollToStop"), object: nil, userInfo: ["postId" : postCell.post.id!])
         }
     }
