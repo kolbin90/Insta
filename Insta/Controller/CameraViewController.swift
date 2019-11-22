@@ -89,12 +89,15 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
             //photoImageView.image = image
             //selectedImage = image
             dismiss(animated: true) {
+                ProgressHUD.show("Loading...")
                 let cameraStoryboard = UIStoryboard(name: "Camera", bundle: nil)
                 let filterVC = cameraStoryboard.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
                 filterVC.postImage = image
                 filterVC.delegate = self
                 let navController = UINavigationController(rootViewController: filterVC)
-                self.present(navController, animated: true)
+                self.present(navController, animated: true, completion: {
+                    ProgressHUD.dismiss()
+                })
             }
         }
     }
