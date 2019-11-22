@@ -21,6 +21,7 @@ class FilterViewController: UIViewController {
     var postImage: UIImage?
     let filterNames: [String] = ["CIPhotoEffectTonal","CIPhotoEffectNoir","CIMaximumComponent","CIMinimumComponent","CIDotScreen", "CISepiaTone", "CIFalseColor", "CIColorInvert", "CIColorPosterize", "CIPhotoEffectChrome", "CIPhotoEffectInstant"]
     var filtredImages = [UIImage]()
+    let ciContext = CIContext(options: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,6 @@ class FilterViewController: UIViewController {
         let filter = CIFilter(name: filterName)
         filter?.setValue(ciImage, forKey: kCIInputImageKey)
         if let filtredImage = filter?.value(forKey: kCIOutputImageKey) as? CIImage {
-            let ciContext = CIContext(options: nil)
             let cgImage = ciContext.createCGImage(filtredImage, from: filtredImage.extent)
             return UIImage(cgImage: cgImage!, scale: 1.0, orientation: originalOrientation)
         }
