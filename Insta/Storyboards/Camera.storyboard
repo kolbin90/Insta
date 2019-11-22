@@ -93,6 +93,92 @@
             </objects>
             <point key="canvasLocation" x="2984.057971014493" y="86.383928571428569"/>
         </scene>
+        <!--Filter View Controller-->
+        <scene sceneID="xSo-CF-3vN">
+            <objects>
+                <viewController storyboardIdentifier="FilterViewController" id="S9K-nq-Uqo" customClass="FilterViewController" customModule="Insta" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jw8-0S-cwL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W6J-Pb-9V7">
+                                <rect key="frame" x="0.0" y="88" width="414" height="414"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="414" id="wRA-bF-tZh"/>
+                                </constraints>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wVR-86-tSP">
+                                <rect key="frame" x="0.0" y="525" width="414" height="337"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="U0H-OY-edj">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilterCollectionViewCell" id="szE-e2-9qm" customClass="FilterCollectionViewCell" customModule="Insta" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="W6J-Pb-9V7" firstAttribute="leading" secondItem="e9u-Zn-ggj" secondAttribute="leading" id="5PK-Q2-qlk"/>
+                            <constraint firstItem="wVR-86-tSP" firstAttribute="leading" secondItem="e9u-Zn-ggj" secondAttribute="leading" id="5hD-ar-YHi"/>
+                            <constraint firstItem="W6J-Pb-9V7" firstAttribute="top" secondItem="e9u-Zn-ggj" secondAttribute="top" id="Ldv-Lj-MbR"/>
+                            <constraint firstItem="e9u-Zn-ggj" firstAttribute="trailing" secondItem="wVR-86-tSP" secondAttribute="trailing" id="ZZg-Me-eM4"/>
+                            <constraint firstItem="e9u-Zn-ggj" firstAttribute="bottom" secondItem="wVR-86-tSP" secondAttribute="bottom" id="c3h-1n-SzC"/>
+                            <constraint firstItem="W6J-Pb-9V7" firstAttribute="trailing" secondItem="e9u-Zn-ggj" secondAttribute="trailing" id="eQd-ac-IFI"/>
+                            <constraint firstItem="wVR-86-tSP" firstAttribute="top" secondItem="W6J-Pb-9V7" secondAttribute="bottom" constant="23" id="vnn-43-R5A"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="e9u-Zn-ggj"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7fy-L8-i8v">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="VWc-dq-qE9">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="closeBtn_TchUpIns:" destination="S9K-nq-Uqo" id="nxa-NT-iTK"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="TY6-hP-w0c">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="nextBtn_TchUpIns:" destination="S9K-nq-Uqo" id="gsy-LO-2Ki"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="wVR-86-tSP" id="dEz-lT-xeQ"/>
+                        <outlet property="postImageView" destination="W6J-Pb-9V7" id="TME-Ga-Chn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fuh-E3-TBJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3715.9420289855075" y="85.714285714285708"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3OK-pO-etP">
+            <objects>
+                <navigationController id="0MW-9E-xtN" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Q13-Ea-hnG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="S9K-nq-Uqo" kind="relationship" relationship="rootViewController" id="Sqb-1Z-KFC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w4l-7W-aMv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3716" y="-558"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="GMZ-S8-i00">
             <objects>
@@ -112,7 +198,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AnN-WV-EfN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2094" y="75"/>
+            <point key="canvasLocation" x="2093" y="86"/>
         </scene>
     </scenes>
     <resources>

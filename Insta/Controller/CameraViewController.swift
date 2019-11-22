@@ -81,14 +81,21 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
                 selectedImage = thumbnailImage
                 photoImageView.image = thumbnailImage
                 self.videoUrl = videoUrl
+                dismiss(animated: true, completion: nil)
             }
         }
         
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             photoImageView.image = image
             selectedImage = image
+            dismiss(animated: true) {
+                let cameraStoryboard = UIStoryboard(name: "Camera", bundle: nil)
+                let filterVC = cameraStoryboard.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
+                filterVC.postImage = image
+                let navController = UINavigationController(rootViewController: filterVC)
+                self.present(navController, animated: true)
+            }
         }
-        dismiss(animated: true, completion: nil)
     }
     
     func createThumbnailImage(forVideoUrl videoUrl: URL) -> UIImage? {
