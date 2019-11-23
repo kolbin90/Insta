@@ -15,4 +15,5 @@ struct Api {
     static let user_posts = User_PostsApi()
     static let follow = FollowApi()
     static let feed = FeedApi()
+    static let hashtag = HashTagApi()
 }
