@@ -83,15 +83,6 @@ class HelperService {
         guard let uid = Api.user.CURRENT_USER?.uid else {
             return
         }
-        
-        let words = caption.components(separatedBy: CharacterSet.whitespacesAndNewlines)
-        for var word in words {
-            if word.hasPrefix("#") {
-                word = word.trimmingCharacters(in: CharacterSet.punctuationCharacters)
-                let newHashtagRef = Api.hashtag.REF_HASHTAG.child(word.lowercased())
-                newHashtagRef.updateChildValues([newPostId: true])
-            }
-        }
         var dict = ["photoUrlString":photoUrlString, "ratio": ratio,"captionText":caption,"uid":uid,"likeCount":0] as [String : Any]
         if let videoUrlString = videoUrlString {
             dict["videoUrlString"] = videoUrlString

@@ -55,9 +55,9 @@
                                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.90681668130000004" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Tf-5S-jQs">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Tf-5S-jQs" customClass="KILabel">
                                                     <rect key="frame" x="15" y="552" width="384" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -157,7 +157,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="captionLabel" destination="6Tf-5S-jQs" id="5Ev-Eo-0Bd"/>
+                                            <outlet property="captionLabel" destination="6Tf-5S-jQs" id="TLN-md-CTE"/>
                                             <outlet property="commentImageView" destination="P85-Q4-PUw" id="YXl-le-bRF"/>
                                             <outlet property="headerView" destination="zP5-6r-mfn" id="bKG-OQ-E0v"/>
                                             <outlet property="imageViewHeightConstraint" destination="rZ3-IG-MxR" id="4B8-qA-Sjq"/>
@@ -246,7 +246,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ikd-so-kct">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ikd-so-kct" customClass="KILabel">
                                                     <rect key="frame" x="59" y="47" width="347" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -276,7 +276,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="commentLabel" destination="Ikd-so-kct" id="Vdf-Wf-lmA"/>
+                                            <outlet property="commentLabel" destination="Ikd-so-kct" id="ZxW-J4-3aU"/>
                                             <outlet property="profileImageView" destination="xZU-lh-fCY" id="eNY-Nf-a37"/>
                                             <outlet property="usernameLabel" destination="z8K-qK-tiM" id="pr5-Ns-u7j"/>
                                         </connections>
@@ -373,6 +373,6 @@
         <image name="share" width="37" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mIA-s4-fIL"/>
+        <segue reference="nLa-Ll-Lb9"/>
     </inferredMetricsTieBreakers>
 </document>

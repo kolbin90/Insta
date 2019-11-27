@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KILabel
 
 protocol CommentCellDelegate {
     func goToProfileUserVC(withUser user: UserModel)
@@ -16,7 +17,7 @@ class CommentCell: UITableViewCell {
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var commentLabel: KILabel!
 
     var delegate: CommentCellDelegate?
     var comment: Comment? {
