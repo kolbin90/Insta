@@ -191,10 +191,6 @@ static NSMutableDictionary *sLibraryVersions;
     }
 
     [FIRApp addAppToAppDictionary:app];
-
-    // The FIRApp instance is ready to go, `sDefaultApp` is assigned, other SDKs are now ready to be
-    // instantiated.
-    [app.container instantiateEagerComponents];
     [FIRApp sendNotificationsToSDKs:app];
   }
 }
@@ -356,7 +352,7 @@ static NSMutableDictionary *sLibraryVersions;
   }
 
   // Check if the Analytics flag is explicitly set. If so, no further actions are necessary.
-  if ([self.options isAnalyticsCollectionExplicitlySet]) {
+  if ([self.options isAnalyticsCollectionExpicitlySet]) {
     return;
   }
 

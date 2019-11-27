@@ -1295,7 +1295,8 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
 
 - (void)useAppLanguage {
   dispatch_sync(FIRAuthGlobalWorkQueue(), ^{
-    self->_requestConfiguration.languageCode = [[NSLocale preferredLanguages] firstObject];
+    self->_requestConfiguration.languageCode =
+        [NSBundle mainBundle].preferredLocalizations.firstObject;
   });
 }
 
