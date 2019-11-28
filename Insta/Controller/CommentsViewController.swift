@@ -75,7 +75,6 @@ class CommentsViewController: UIViewController {
             Api.comment.observeComment(withCommentId: commentId, completion: { (comment) in
                 self.fetchUser(uid: comment.uid!,completed: {
                     self.comments.append(comment)
-                    // self.activityIndicator.stopAnimating()
                     self.tableView.reloadData()
                 })
             })

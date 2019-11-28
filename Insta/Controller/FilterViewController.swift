@@ -28,9 +28,7 @@ class FilterViewController: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-        // Do any additional setup after loading the view.
         postImageHeightConstraint.constant = UIScreen.main.bounds.width / (postImage!.size.width / postImage!.size.height)
-        //layoutIfNeeded()
         postImageView.image = postImage
         filterImages()
     }
@@ -66,15 +64,7 @@ class FilterViewController: UIViewController {
         
         return newImage!
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
     @IBAction func closeBtn_TchUpIns(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
