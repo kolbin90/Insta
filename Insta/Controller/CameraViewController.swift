@@ -119,6 +119,6 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
 extension CameraViewController: FilterViewControllerDelegate {
     func useFiltredImage(image: UIImage) {
         selectedImage = image
-        photoImageView.image = image
+        photoImageView.image = selectedImage
     }
 }
