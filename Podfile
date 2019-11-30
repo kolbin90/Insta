@@ -9,7 +9,7 @@ target 'Insta' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'SDWebImage'
-
+  pod 'ActiveLabel'
 
   # Pods for Insta
 
