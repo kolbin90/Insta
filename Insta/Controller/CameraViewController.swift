@@ -110,7 +110,7 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
             let thumbnailCGImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 1, timescale: 10), actualTime: nil)
             return UIImage(cgImage: thumbnailCGImage)
         } catch let error{
-            print(error)
+            ProgressHUD.showError(error.localizedDescription)
         }
         return nil
     }
