@@ -133,7 +133,7 @@
                                                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.90681668130000004" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEZ-fe-rYK">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEZ-fe-rYK" customClass="ActiveLabel" customModule="ActiveLabel">
                                                             <rect key="frame" x="15" y="552" width="384" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -235,7 +235,7 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="captionLabel" destination="BEZ-fe-rYK" id="KGd-FW-2fZ"/>
+                                                    <outlet property="captionLabel" destination="BEZ-fe-rYK" id="QDG-F6-ScF"/>
                                                     <outlet property="commentImageView" destination="lf4-Lw-AN5" id="nLy-mc-1K4"/>
                                                     <outlet property="headerView" destination="swm-Pi-fS3" id="pLM-E5-ZYM"/>
                                                     <outlet property="imageViewHeightConstraint" destination="Tsi-1G-J6Q" id="fOz-fk-i5k"/>

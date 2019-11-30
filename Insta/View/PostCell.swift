@@ -9,6 +9,7 @@
 import UIKit
 import SDWebImage
 import AVFoundation
+import ActiveLabel
 
 protocol PostCellDelegate {
     func goToCommentsVC(withPostId id: String)
@@ -25,7 +26,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var commentImageView: UIImageView!
     @IBOutlet weak var shareImageView: UIImageView!
     @IBOutlet weak var likeCountButton: UIButton!
-    @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var captionLabel: ActiveLabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var volumeView: UIView!
     @IBOutlet weak var volumeImageView: UIImageView!
