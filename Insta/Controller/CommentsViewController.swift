@@ -116,6 +116,19 @@ class CommentsViewController: UIViewController {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
             }
+            
+            let words = self.commentTextField.text!.components(separatedBy: CharacterSet.whitespacesAndNewlines)
+            for var word in words {
+                if word.hasPrefix("#") {
+                    word = word.trimmingCharacters(in: CharacterSet.punctuationCharacters)
+                    let newHashtagRef = Api.hashtag.REF_HASHTAG.child(word.lowercased())
+                    newHashtagRef.updateChildValues([self.postId!: true], withCompletionBlock: { (error, ref) in
+                        print(error)
+                        print(ref)
+                    })  //([self.postId: true])
+                }
+            }
+            
             Api.post_comments.REF_POST_COMMENTS.child(self.postId).child(newCommentId).setValue(true, withCompletionBlock: { (error, ref) in
                 if let error = error {
                     ProgressHUD.showError(error.localizedDescription)
