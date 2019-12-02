@@ -24,6 +24,16 @@ class UserApi {
         }
         return nil
     }
+    
+    func observeUserByUsername(username: String, completion: @escaping (UserModel) -> Void) {
+        REF_USERS.queryOrdered(byChild: "username_lowercase").queryEqual(toValue: username).observeSingleEvent(of: .childAdded) { (snapshot) in
+            if let dict = snapshot.value as? [String: Any] {
+                let user = UserModel.transformToUser(dict: dict, key: snapshot.key)
+                completion(user)
+            }
+        }
+    }
+    
     func observeCurrentUser(completion: @escaping (UserModel) -> Void) {
         guard let currentUser = Auth.auth().currentUser else {
             return

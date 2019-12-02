@@ -104,6 +104,12 @@ class PostCell: UITableViewCell {
         captionLabel.handleHashtagTap { (word) in
             self.delegate?.goToHashtagVC(withHashtag: word)
         }
+        captionLabel.handleMentionTap { (username) in
+            Api.user.observeUserByUsername(username: username, completion: { (user) in
+                self.delegate?.goToProfileUserVC(withUser: user)
+            })
+            
+        }
         updateLikes(forPost: post)
         if let photoUrlString = post?.photoUrlString {
             let photoUrl = URL(string: photoUrlString)
