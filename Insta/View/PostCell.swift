@@ -14,6 +14,7 @@ import ActiveLabel
 protocol PostCellDelegate {
     func goToCommentsVC(withPostId id: String)
     func goToProfileUserVC(withUser user: UserModel)
+    func goToHashtagVC(withHashtag hashtag: String)
 }
 
 class PostCell: UITableViewCell {
@@ -100,6 +101,9 @@ class PostCell: UITableViewCell {
         imageViewHeightConstraint.constant = UIScreen.main.bounds.width / post.ratio!
         layoutIfNeeded()
         captionLabel.text = post?.captionText
+        captionLabel.handleHashtagTap { (word) in
+            self.delegate?.goToHashtagVC(withHashtag: word)
+        }
         updateLikes(forPost: post)
         if let photoUrlString = post?.photoUrlString {
             let photoUrl = URL(string: photoUrlString)

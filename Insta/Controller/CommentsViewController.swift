@@ -166,4 +166,10 @@ extension CommentsViewController: CommentCellDelegate {
     func goToProfileUserVC(withUser user: UserModel) {
         performSegue(withIdentifier: "CommentsToProfileUserSegue", sender: user)
     }
+    func goToHashtagVC(withHashtag hashtag: String) {
+        let storyboard = UIStoryboard.init(name: "Home", bundle: nil)
+        let hashtagVC = storyboard.instantiateViewController(withIdentifier: "HashtagViewController") as! HashtagViewController
+        hashtagVC.hashtag = hashtag
+        self.show(hashtagVC, sender: nil)
+    }
 }

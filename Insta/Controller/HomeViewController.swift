@@ -97,6 +97,12 @@ extension HomeViewController: PostCellDelegate {
     func goToCommentsVC(withPostId id: String) {
         performSegue(withIdentifier: "CommentsSegue", sender: id)
     }
+    func goToHashtagVC(withHashtag hashtag: String) {
+        let storyboard = UIStoryboard.init(name: "Home", bundle: nil)
+        let hashtagVC = storyboard.instantiateViewController(withIdentifier: "HashtagViewController") as! HashtagViewController
+        hashtagVC.hashtag = hashtag
+        self.show(hashtagVC, sender: nil)
+    }
     func goToProfileUserVC(withUser user: UserModel) {
         performSegue(withIdentifier: "HomeToProfileUserSegue", sender: user)
     }

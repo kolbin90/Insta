@@ -341,6 +341,66 @@
             </objects>
             <point key="canvasLocation" x="3741" y="-1246"/>
         </scene>
+        <!--Hashtag View Controller-->
+        <scene sceneID="elW-Qn-6Ly">
+            <objects>
+                <viewController storyboardIdentifier="HashtagViewController" id="nG4-9H-XWS" customClass="HashtagViewController" customModule="Insta" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KdU-eN-jnu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UQ7-Hu-gvp">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9nm-Yf-07q">
+                                    <size key="itemSize" width="94" height="94"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="OF2-dm-7en" customClass="PhotoCollectionViewCell" customModule="Insta" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="94" height="94"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="94" height="94"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-photo" translatesAutoresizingMaskIntoConstraints="NO" id="Bcb-rj-ccV">
+                                                    <rect key="frame" x="0.0" y="0.0" width="94" height="94"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Bcb-rj-ccV" secondAttribute="bottom" id="4p7-ye-DnS"/>
+                                            <constraint firstItem="Bcb-rj-ccV" firstAttribute="top" secondItem="OF2-dm-7en" secondAttribute="top" id="dKt-QK-nlf"/>
+                                            <constraint firstItem="Bcb-rj-ccV" firstAttribute="leading" secondItem="OF2-dm-7en" secondAttribute="leading" id="ouW-C5-hiR"/>
+                                            <constraint firstAttribute="trailing" secondItem="Bcb-rj-ccV" secondAttribute="trailing" id="qVF-D2-5BS"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="photoImageView" destination="Bcb-rj-ccV" id="dJZ-3Y-5Ie"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UQ7-Hu-gvp" firstAttribute="leading" secondItem="ajm-XP-ZIE" secondAttribute="leading" id="03A-3I-mWh"/>
+                            <constraint firstItem="UQ7-Hu-gvp" firstAttribute="trailing" secondItem="ajm-XP-ZIE" secondAttribute="trailing" id="AD7-vn-sAL"/>
+                            <constraint firstItem="UQ7-Hu-gvp" firstAttribute="top" secondItem="ajm-XP-ZIE" secondAttribute="top" id="ecy-2i-xju"/>
+                            <constraint firstAttribute="bottom" secondItem="UQ7-Hu-gvp" secondAttribute="bottom" id="keI-ad-gi3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ajm-XP-ZIE"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="UQ7-Hu-gvp" id="dAf-8N-sgc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3WO-ap-OW6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4480" y="-1247"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="BdX-Nq-Nfk">
             <objects>
@@ -369,6 +429,7 @@
         <image name="Home_Selected" width="21" height="23"/>
         <image name="Icon_Mute" width="25" height="25"/>
         <image name="like" width="46" height="41"/>
+        <image name="placeholder-photo" width="840" height="600"/>
         <image name="placeholderImg" width="225" height="225"/>
         <image name="share" width="37" height="41"/>
     </resources>

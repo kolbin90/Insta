@@ -11,6 +11,7 @@ import ActiveLabel
 
 protocol CommentCellDelegate {
     func goToProfileUserVC(withUser user: UserModel)
+    func goToHashtagVC(withHashtag hashtag: String)
 }
 
 class CommentCell: UITableViewCell {
@@ -58,6 +59,9 @@ class CommentCell: UITableViewCell {
 
     func updateView() {
         commentLabel.text = comment?.commentText
+        commentLabel.handleHashtagTap { (word) in
+            self.delegate?.goToHashtagVC(withHashtag: word)
+        }
     }
     
     func setupUserInfo() {

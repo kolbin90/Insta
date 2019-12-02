@@ -11,4 +11,12 @@ import FirebaseDatabase
 
 class HashTagApi {
     var REF_HASHTAG = Database.database().reference().child("hashtag")
+    
+    func observePostsForHashtag(hashtag word: String, completion: @escaping (Post) -> Void) {
+        REF_HASHTAG.child(word).observe(.childAdded) { (snapshot) in
+            Api.post.observePost(withId: snapshot.key, completion: { (post) in
+                completion(post)
+            })
+        }
+    }
 }
