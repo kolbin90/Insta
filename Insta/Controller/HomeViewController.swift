@@ -50,7 +50,7 @@ class HomeViewController: UIViewController {
         activityIndicator.startAnimating()
         Api.feed.observeFeed(forUid: Api.user.CURRENT_USER!.uid) { (post) in
             self.fetchUser(uid: post.uid!,completed: {
-                self.posts.append(post)
+                self.posts.insert(post, at: 0)
                 self.activityIndicator.stopAnimating()
                 self.tableView.reloadData()
             })
@@ -71,7 +71,7 @@ class HomeViewController: UIViewController {
     
     func fetchUser(uid: String, completed: @escaping () -> Void) {
         Api.user.observeUser(withUid: uid) { (user) in
-            self.users.append(user)
+            self.users.insert(user, at: 0)
             completed()
         }
     }

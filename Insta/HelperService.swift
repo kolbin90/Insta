@@ -92,7 +92,8 @@ class HelperService {
                 newHashtagRef.updateChildValues([newPostId: true])
             }
         }
-        var dict = ["photoUrlString":photoUrlString, "ratio": ratio,"captionText":caption,"uid":uid,"likeCount":0] as [String : Any]
+        let timestamp = Int(Date().timeIntervalSince1970)
+        var dict = ["photoUrlString":photoUrlString, "ratio": ratio,"captionText":caption,"uid":uid,"likeCount":0, "timestamp": timestamp] as [String : Any]
         if let videoUrlString = videoUrlString {
             dict["videoUrlString"] = videoUrlString
         }

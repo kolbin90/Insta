@@ -26,7 +26,7 @@ class UserApi {
     }
     
     func observeUserByUsername(username: String, completion: @escaping (UserModel) -> Void) {
-        REF_USERS.queryOrdered(byChild: "username_lowercase").queryEqual(toValue: username).observeSingleEvent(of: .childAdded) { (snapshot) in
+        REF_USERS.queryOrdered(byChild: "username_lowercase").queryEqual(toValue: username.lowercased()).observeSingleEvent(of: .childAdded) { (snapshot) in
             if let dict = snapshot.value as? [String: Any] {
                 let user = UserModel.transformToUser(dict: dict, key: snapshot.key)
                 completion(user)

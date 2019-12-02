@@ -19,6 +19,7 @@ class Post {
     var likes: Dictionary<String, Any>?
     var isLiked: Bool?
     var ratio: CGFloat?
+    var timestamp: Int?
 }
 extension Post {
     static func transformToImagePost(dict: [String:Any], id: String) -> Post {
@@ -43,6 +44,9 @@ extension Post {
                 post.isLiked = post.likes![currentUserId] != nil
             }
         }
+        
+        post.timestamp = dict["timestamp"] as? Int
+
         return post
     }
 }
