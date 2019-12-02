@@ -60,7 +60,14 @@ class CommentCell: UITableViewCell {
     func updateView() {
         commentLabel.text = comment?.commentText
         commentLabel.handleHashtagTap { (word) in
+            print(word)
             self.delegate?.goToHashtagVC(withHashtag: word)
+        }
+        commentLabel.handleMentionTap { (username) in
+            Api.user.observeUserByUsername(username: username, completion: { (user) in
+                self.delegate?.goToProfileUserVC(withUser: user)
+            })
+            
         }
     }
     

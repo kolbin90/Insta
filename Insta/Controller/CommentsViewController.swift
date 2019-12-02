@@ -30,7 +30,7 @@ class CommentsViewController: UIViewController {
         loadComments()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        tapGesture.cancelsTouchesInView = true
+        tapGesture.cancelsTouchesInView = false
         tableView.addGestureRecognizer(tapGesture)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_ : )), name: UIResponder.keyboardWillShowNotification, object: nil)
