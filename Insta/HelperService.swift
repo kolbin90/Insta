@@ -74,6 +74,7 @@ class HelperService {
     
     static func sendPostInfoToDatabase(photoUrlString: String, videoUrlString: String? = nil, ratio: CGFloat, caption: String, onSuccess: @escaping () -> Void){
         
+        let timestamp = Int(Date().timeIntervalSince1970)
         guard let uid = Api.user.CURRENT_USER?.uid else {
             return
         }
@@ -86,6 +87,7 @@ class HelperService {
             let arraySnapshot = snapshot.children.allObjects as! [DataSnapshot]
             arraySnapshot.forEach({ (child) in
                 Api.feed.REF_FEED.child(child.key).updateChildValues([newPostId: true])
+                Api.notification.REF_NOTIFICATION.child(child.key).childByAutoId().setValue(["from": uid, "type": "feed", "objectId": newPostId, "timestamp": timestamp])
             })
         }
 
@@ -100,7 +102,6 @@ class HelperService {
                 newHashtagRef.updateChildValues([newPostId: true])
             }
         }
-        let timestamp = Int(Date().timeIntervalSince1970)
         var dict = ["photoUrlString":photoUrlString, "ratio": ratio,"captionText":caption,"uid":uid,"likeCount":0, "timestamp": timestamp] as [String : Any]
         if let videoUrlString = videoUrlString {
             dict["videoUrlString"] = videoUrlString
