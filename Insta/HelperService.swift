@@ -73,16 +73,24 @@ class HelperService {
     
     
     static func sendPostInfoToDatabase(photoUrlString: String, videoUrlString: String? = nil, ratio: CGFloat, caption: String, onSuccess: @escaping () -> Void){
+        
+        guard let uid = Api.user.CURRENT_USER?.uid else {
+            return
+        }
         guard let newPostId = Api.post.REF_POSTS.childByAutoId().key else {
             return
         }
         
         Api.feed.REF_FEED.child(Api.user.CURRENT_USER!.uid).child(newPostId).setValue(true)
+        Api.follow.REF_FOLLOWERS.child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            let arraySnapshot = snapshot.children.allObjects as! [DataSnapshot]
+            arraySnapshot.forEach({ (child) in
+                Api.feed.REF_FEED.child(child.key).updateChildValues([newPostId: true])
+            })
+        }
 
         let newPostRef = Api.post.REF_POSTS.child(newPostId)
-        guard let uid = Api.user.CURRENT_USER?.uid else {
-            return
-        }
+        
         
         let words = caption.components(separatedBy: CharacterSet.whitespacesAndNewlines)
         for var word in words {
