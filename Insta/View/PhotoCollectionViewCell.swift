@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol PhotoCollectionViewCellDelegate {
+protocol PhotoCollectionViewCellDelegate: class {
     func goToDetailVC(withPost post: Post)
 }
 
 class PhotoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var photoImageView: UIImageView!
-    var delegate: PhotoCollectionViewCellDelegate?
+    weak var delegate: PhotoCollectionViewCellDelegate?
     var post: Post? {
         didSet {
             updateView()

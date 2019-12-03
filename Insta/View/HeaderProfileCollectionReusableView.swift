@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol HeaderProfileDelegate {
+protocol HeaderProfileDelegate: class {
     func updateFollowButton(forUser user: UserModel)
 }
 
-protocol HeaderProfileSettingDelegate {
+protocol HeaderProfileSettingDelegate: class {
     func goToSettingVC()
 }
 
@@ -29,8 +29,8 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
             updateView()
         }
     }
-    var delegate: HeaderProfileDelegate?
-    var delegateSetting: HeaderProfileSettingDelegate?
+    weak var delegate: HeaderProfileDelegate?
+    weak var delegateSetting: HeaderProfileSettingDelegate?
     
     func updateView() {
         self.usernameLabel.text = user!.username

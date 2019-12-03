@@ -19,7 +19,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.tintColor = .black
         tableView.dataSource = self
-        fetchUser(uid: post!.uid!) {
+        fetchUser(uid: post!.uid!) { [unowned self] in
             self.tableView.reloadData()
         }
         tableView.estimatedRowHeight = 582

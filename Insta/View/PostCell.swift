@@ -11,7 +11,7 @@ import SDWebImage
 import AVFoundation
 import ActiveLabel
 
-protocol PostCellDelegate {
+protocol PostCellDelegate: class {
     func goToCommentsVC(withPostId id: String)
     func goToProfileUserVC(withUser user: UserModel)
     func goToHashtagVC(withHashtag hashtag: String)
@@ -33,7 +33,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var volumeImageView: UIImageView!
     @IBOutlet weak var timestampLabel: UILabel!
     
-    var delegate: PostCellDelegate?
+    weak var delegate: PostCellDelegate?
     var player: AVPlayer?
     var playerLayer: AVPlayerLayer?
     

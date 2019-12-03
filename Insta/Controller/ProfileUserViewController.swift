@@ -36,7 +36,7 @@ class ProfileUserViewController: UIViewController {
     }
     func checkFollowingStatus() {
         if user.isFollowing == nil {
-            self.isFollowing(withUserId: user.id!) { (value) in
+            self.isFollowing(withUserId: user.id!) { [unowned self] (value) in
                 self.user.isFollowing = value
                 self.collectionView.reloadData()
             }
