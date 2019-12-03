@@ -163,14 +163,22 @@
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEW-m7-Ucb">
+                                                                    <rect key="frame" x="370" y="26" width="29" height="14"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="s00-ji-k0O" firstAttribute="leading" secondItem="swm-Pi-fS3" secondAttribute="leading" constant="15" id="Hmv-Fh-PMA"/>
+                                                                <constraint firstAttribute="trailing" secondItem="wEW-m7-Ucb" secondAttribute="trailing" constant="15" id="K44-sl-WmS"/>
                                                                 <constraint firstItem="k7V-AH-95o" firstAttribute="centerY" secondItem="s00-ji-k0O" secondAttribute="centerY" id="SQz-oi-Bne"/>
                                                                 <constraint firstItem="k7V-AH-95o" firstAttribute="leading" secondItem="s00-ji-k0O" secondAttribute="trailing" constant="8" id="Xn8-gd-zVN"/>
                                                                 <constraint firstItem="s00-ji-k0O" firstAttribute="top" secondItem="swm-Pi-fS3" secondAttribute="top" constant="15" id="d3E-KS-MyH"/>
                                                                 <constraint firstAttribute="bottom" secondItem="s00-ji-k0O" secondAttribute="bottom" constant="15" id="gSD-FG-ixI"/>
+                                                                <constraint firstItem="wEW-m7-Ucb" firstAttribute="centerY" secondItem="k7V-AH-95o" secondAttribute="centerY" id="hTy-TW-Kbs"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fCW-lx-GX6">
@@ -244,6 +252,7 @@
                                                     <outlet property="postImageView" destination="l6W-9I-zl8" id="09g-eW-4rD"/>
                                                     <outlet property="profileImageView" destination="s00-ji-k0O" id="tTL-FI-HIL"/>
                                                     <outlet property="shareImageView" destination="fZi-tk-qi0" id="aRy-AF-LIY"/>
+                                                    <outlet property="timestampLabel" destination="wEW-m7-Ucb" id="7oe-RJ-9fT"/>
                                                     <outlet property="usernameLabel" destination="k7V-AH-95o" id="Ycm-5t-bMv"/>
                                                     <outlet property="volumeImageView" destination="M29-D4-YIT" id="I0s-zD-zGD"/>
                                                     <outlet property="volumeView" destination="f64-uI-HDU" id="7xQ-8b-WTO"/>

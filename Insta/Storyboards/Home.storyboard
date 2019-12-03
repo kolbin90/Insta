@@ -85,14 +85,22 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7R-KI-RcU">
+                                                            <rect key="frame" x="370" y="26" width="29" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstItem="Q7R-KI-RcU" firstAttribute="centerY" secondItem="Cqp-w7-nKd" secondAttribute="centerY" id="0SI-MA-di1"/>
                                                         <constraint firstItem="xzK-zI-EGs" firstAttribute="top" secondItem="zP5-6r-mfn" secondAttribute="top" constant="15" id="H5n-Re-WwR"/>
                                                         <constraint firstAttribute="bottom" secondItem="xzK-zI-EGs" secondAttribute="bottom" constant="15" id="Nt8-zm-fxQ"/>
                                                         <constraint firstItem="Cqp-w7-nKd" firstAttribute="centerY" secondItem="xzK-zI-EGs" secondAttribute="centerY" id="d4M-EF-jMm"/>
                                                         <constraint firstItem="xzK-zI-EGs" firstAttribute="leading" secondItem="zP5-6r-mfn" secondAttribute="leading" constant="15" id="vrd-Mm-PnZ"/>
                                                         <constraint firstItem="Cqp-w7-nKd" firstAttribute="leading" secondItem="xzK-zI-EGs" secondAttribute="trailing" constant="8" id="ydv-PT-c7z"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Q7R-KI-RcU" secondAttribute="trailing" constant="15" id="zLj-ao-ei6"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m46-JP-62Z">
@@ -166,6 +174,7 @@
                                             <outlet property="postImageView" destination="xuu-Vc-NXh" id="LSu-o5-CM6"/>
                                             <outlet property="profileImageView" destination="xzK-zI-EGs" id="KCM-uQ-tEs"/>
                                             <outlet property="shareImageView" destination="aTn-Bh-lM7" id="E2P-YL-Gyh"/>
+                                            <outlet property="timestampLabel" destination="Q7R-KI-RcU" id="jT7-rM-Joa"/>
                                             <outlet property="usernameLabel" destination="Cqp-w7-nKd" id="N1m-dc-LOQ"/>
                                             <outlet property="volumeImageView" destination="yqp-rU-wG6" id="YCz-I1-Klj"/>
                                             <outlet property="volumeView" destination="H3V-QA-qeZ" id="sag-9Y-5dx"/>
@@ -434,6 +443,6 @@
         <image name="share" width="37" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nLa-Ll-Lb9"/>
+        <segue reference="mIA-s4-fIL"/>
     </inferredMetricsTieBreakers>
 </document>

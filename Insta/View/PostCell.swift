@@ -31,6 +31,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var volumeView: UIView!
     @IBOutlet weak var volumeImageView: UIImageView!
+    @IBOutlet weak var timestampLabel: UILabel!
     
     var delegate: PostCellDelegate?
     var player: AVPlayer?
@@ -56,6 +57,7 @@ class PostCell: UITableViewCell {
         Api.post.REF_POSTS.child(post!.id!).removeAllObservers()
         playerLayer?.removeFromSuperlayer()
         player?.pause()
+        timestampLabel.text = ""
     }
     
     override func awakeFromNib() {
@@ -71,6 +73,7 @@ class PostCell: UITableViewCell {
         let tapGestureForHeaderView = UITapGestureRecognizer(target: self, action: #selector(self.headerView_TchUpIns))
         headerView.addGestureRecognizer(tapGestureForHeaderView)
         headerView.isUserInteractionEnabled = true
+        timestampLabel.text = ""
     }
     
     @objc func headerView_TchUpIns() {
@@ -135,6 +138,43 @@ class PostCell: UITableViewCell {
             volumeView.layer.zPosition = 1
             player?.isMuted = false
             player?.play()
+        }
+        
+        if let timestamp = post.timestamp {
+            let now = Date()
+            let timestampDate = Date(timeIntervalSince1970: Double(timestamp))
+            let components = Set<Calendar.Component>([.second, .minute, .hour, .day, .weekOfMonth, .month, .year])
+            let diff = Calendar.current.dateComponents(components, from: timestampDate, to: now)
+            
+            var timeText = ""
+            
+            if let second = diff.second, second <= 0, let minute = diff.minute, minute == 0 {
+                timeText = "Now"
+            }
+            if let second = diff.second, second > 0, let minute = diff.minute, minute == 0  {
+                timeText = (second == 1) ? "\(second) second ago" : "\(second) seconds ago"
+            }
+            if let minute = diff.minute, minute > 0, let hour = diff.hour, hour == 0 {
+                timeText = (minute == 1) ? "\(minute) minute ago" : "\(minute) minutes ago"
+            }
+            if let hour = diff.hour, hour > 0, let day = diff.day, day == 0 {
+                timeText = (hour == 1) ? "\(hour) hour ago" : "\(hour) hours ago"
+            }
+            if let day = diff.day, day > 0, let week = diff.weekOfMonth, week == 0 {
+                timeText = (day == 1) ? "\(day) day ago" : "\(day) days ago"
+            }
+            
+            if let week = diff.weekOfMonth, week > 0, let month = diff.month, month == 0 {
+                timeText = (week == 1) ? "\(week) week ago" : "\(week) weeks ago"
+            }
+            if let month = diff.month, month > 0, let year = diff.year, year == 0 {
+                timeText = (month == 1) ? "\(month) month ago" : "\(month) monthes ago"
+            }
+            if let year = diff.year, year > 0{
+                timeText = (year == 1) ? "\(year) year ago" : "\(year) years ago"
+            }
+            
+            timestampLabel.text = timeText
         }
         
     }
