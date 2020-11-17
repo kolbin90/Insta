@@ -43,8 +43,14 @@ class SignInViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         if Api.user.CURRENT_USER != nil {
-            self.performSegue(withIdentifier: "SignInToTabBar", sender: nil)
+            presentMainTabBar()
         }
+    }
+    
+    func presentMainTabBar() {
+        let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarID")
+        tabBarVC.modalPresentationStyle = .fullScreen
+        self.present(tabBarVC, animated: true, completion: nil)
     }
     
     func handleTextField() {
@@ -67,7 +73,7 @@ class SignInViewController: UIViewController {
         ProgressHUD.show("Signing in")
         AuthService.signIn(email: emailTextField.text!, password: passwordTextField.text!, OnSuccess: {
             ProgressHUD.showSuccess("Success")
-            self.performSegue(withIdentifier: "SignInToTabBar", sender: nil)
+            self.presentMainTabBar()
         }) { (errorString) in
             ProgressHUD.showError(errorString!)
         }

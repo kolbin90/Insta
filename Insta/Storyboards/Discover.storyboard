@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -53,6 +51,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="SC1-v7-gJD"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="eNV-u2-ub6" secondAttribute="bottom" id="0fR-ZV-cmF"/>
@@ -60,7 +59,6 @@
                             <constraint firstItem="eNV-u2-ub6" firstAttribute="leading" secondItem="4OF-vg-eat" secondAttribute="leading" id="Uo5-VG-CN8"/>
                             <constraint firstItem="eNV-u2-ub6" firstAttribute="top" secondItem="SC1-v7-gJD" secondAttribute="top" id="Xwt-ZM-z8D"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="SC1-v7-gJD"/>
                     </view>
                     <navigationItem key="navigationItem" title="Discover" id="wjP-xR-lV0">
                         <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="0wB-at-xL4">
@@ -166,7 +164,7 @@
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEW-m7-Ucb">
                                                                     <rect key="frame" x="370" y="26" width="29" height="14"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                                    <color key="textColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -265,6 +263,7 @@
                                         <rect key="frame" x="197" y="465" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
+                                <viewLayoutGuide key="safeArea" id="p9k-QE-dZp"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="dTn-Q0-muC" firstAttribute="centerX" secondItem="p9k-QE-dZp" secondAttribute="centerX" id="4yn-f6-KHr"/>
@@ -274,9 +273,9 @@
                                     <constraint firstItem="w8W-9c-V84" firstAttribute="trailing" secondItem="p9k-QE-dZp" secondAttribute="trailing" id="aui-4L-RYm"/>
                                     <constraint firstItem="w8W-9c-V84" firstAttribute="bottom" secondItem="p9k-QE-dZp" secondAttribute="bottom" id="fSs-PX-RPG"/>
                                 </constraints>
-                                <viewLayoutGuide key="safeArea" id="p9k-QE-dZp"/>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="1Av-Az-h0z"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1Av-Az-h0z" firstAttribute="bottom" secondItem="3dm-Cb-NvV" secondAttribute="bottom" id="Glh-Po-uC8"/>
@@ -284,7 +283,6 @@
                             <constraint firstItem="1Av-Az-h0z" firstAttribute="trailing" secondItem="3dm-Cb-NvV" secondAttribute="trailing" id="rXJ-o5-qSt"/>
                             <constraint firstItem="3dm-Cb-NvV" firstAttribute="top" secondItem="EgB-bk-KGN" secondAttribute="top" id="y8x-oQ-hNn"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="1Av-Az-h0z"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="w8W-9c-V84" id="hEX-qL-XTT"/>
@@ -319,12 +317,12 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PeopleCell" rowHeight="76" id="bB7-da-2TU" customClass="PeopleCell" customModule="Insta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bB7-da-2TU" id="5Op-No-78J">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="75.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bB7-da-2TU" id="5Op-No-78J">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sHA-In-tUZ">
-                                                    <rect key="frame" x="15" y="8.5" width="60" height="60"/>
+                                                    <rect key="frame" x="15" y="8" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="dO1-bH-KCU"/>
                                                         <constraint firstAttribute="height" constant="60" id="mQy-sp-I1w"/>
@@ -336,13 +334,13 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpp-ct-l1l">
-                                                    <rect key="frame" x="90" y="28" width="43" height="21"/>
+                                                    <rect key="frame" x="90" y="27.5" width="43" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIR-Ud-qdn">
-                                                    <rect key="frame" x="299" y="22.5" width="100" height="32"/>
+                                                    <rect key="frame" x="299" y="22" width="100" height="32"/>
                                                     <color key="backgroundColor" red="0.2855439065" green="0.65239454289999999" blue="1" alpha="0.30358714790000002" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="l62-Lc-e1J"/>
@@ -371,6 +369,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Otc-Vo-i6x"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Fx6-8w-Xct" firstAttribute="leading" secondItem="Otc-Vo-i6x" secondAttribute="leading" id="Fjf-aJ-2Ks"/>
@@ -378,7 +377,6 @@
                             <constraint firstItem="Fx6-8w-Xct" firstAttribute="bottom" secondItem="Otc-Vo-i6x" secondAttribute="bottom" id="f4Y-ya-Xhe"/>
                             <constraint firstItem="Fx6-8w-Xct" firstAttribute="top" secondItem="Otc-Vo-i6x" secondAttribute="top" id="tTc-OQ-5g0"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Otc-Vo-i6x"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Fx6-8w-Xct" id="jrX-Gd-hva"/>
@@ -427,6 +425,11 @@
             <point key="canvasLocation" x="3591" y="4"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="BEZ-fe-rYK">
+            <size key="intrinsicContentSize" width="42" height="21"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Comment" width="43" height="41"/>
         <image name="Icon_Mute" width="25" height="25"/>
@@ -436,5 +439,8 @@
         <image name="placeholder-photo" width="840" height="600"/>
         <image name="placeholderImg" width="225" height="225"/>
         <image name="share" width="37" height="41"/>
+        <systemColor name="scrollViewTexturedBackgroundColor">
+            <color red="0.43529411764705878" green="0.44313725490196082" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

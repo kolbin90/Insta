@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mJr-6Y-Q8M">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mJr-6Y-Q8M">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,7 +24,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="wT2-78-EPD"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
@@ -35,7 +32,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="3bl-8z-eL7"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
@@ -55,7 +51,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAG-5K-Hl2">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAG-5K-Hl2">
                                 <rect key="frame" x="16" y="748" width="343" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="lB6-7H-HAn"/>
@@ -74,6 +70,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="3WW-YI-inh"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3WW-YI-inh" firstAttribute="trailing" secondItem="nAG-5K-Hl2" secondAttribute="trailing" constant="16" id="18t-Uu-gBd"/>
@@ -86,7 +83,6 @@
                             <constraint firstItem="9Ue-pX-D5R" firstAttribute="leading" secondItem="3WW-YI-inh" secondAttribute="leading" constant="20" id="viM-3A-L2R"/>
                             <constraint firstItem="zdF-EQ-iGJ" firstAttribute="centerX" secondItem="b59-sw-2P9" secondAttribute="centerX" id="xlR-Ib-zE6"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="3WW-YI-inh"/>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="JgP-k6-vpe" id="2Ka-rW-Tjv"/>
@@ -104,18 +100,17 @@
             <objects>
                 <viewController id="abm-YZ-Mx7" customClass="SignUpViewController" customModule="Insta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="exR-Rq-q7c">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nKv-8l-S44">
-                                <rect key="frame" x="20" y="309" width="335" height="194"/>
+                                <rect key="frame" x="20" y="282" width="335" height="194"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="20O-Of-lfb">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="886-ht-Cb4"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
@@ -124,7 +119,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="CcD-kr-Y2F"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
@@ -133,7 +127,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="htc-4X-4gV"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
@@ -154,14 +147,14 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar-1577909_960_720" translatesAutoresizingMaskIntoConstraints="NO" id="Lgh-yP-qai">
-                                <rect key="frame" x="137.66666666666666" y="84" width="100" height="100"/>
+                                <rect key="frame" x="137.66666666666666" y="40" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="aZW-MV-mdC"/>
                                     <constraint firstAttribute="height" constant="100" id="nV3-SP-jql"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bew-7S-cVl">
-                                <rect key="frame" x="16" y="748" width="343" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bew-7S-cVl">
+                                <rect key="frame" x="16" y="694" width="343" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="mK6-5h-K3L"/>
                                 </constraints>
@@ -173,6 +166,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Iuc-BS-OED"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Bew-7S-cVl" firstAttribute="bottom" secondItem="exR-Rq-q7c" secondAttribute="bottom" constant="-20" id="9KT-bY-F1d"/>
@@ -185,7 +179,6 @@
                             <constraint firstItem="Iuc-BS-OED" firstAttribute="trailing" secondItem="Bew-7S-cVl" secondAttribute="trailing" constant="16" id="rSK-Qu-Vku"/>
                             <constraint firstItem="Bew-7S-cVl" firstAttribute="leading" secondItem="Iuc-BS-OED" secondAttribute="leading" constant="16" id="rZB-BV-mx4"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Iuc-BS-OED"/>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="Hjm-hj-Tuk" id="32F-71-B5t"/>
@@ -209,10 +202,10 @@
             <point key="canvasLocation" x="178" y="291"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="yF3-rr-h8u"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="avatar-1577909_960_720" width="720" height="720"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="vYx-xJ-ect"/>
-    </inferredMetricsTieBreakers>
 </document>
